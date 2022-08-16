@@ -1,4 +1,8 @@
 const maskEmailDbc = /[a-z0-9.]+@[dbccompany]+.[com]+.[br]+$/gi
-const maskEmail = [/[a-z0-9]/, '@', 'd', 'b', 'c', 'c', 'o', 'm', 'p', 'a', 'n', 'y', '.', 'c', 'o', 'm', '.', 'b', 'r' ]
+const invalidEmail = /[a-z0-9]+@/gi
+const existsCharacterSpecial = /[0-9]/
+const existsCharacterUpperCase = /[0-9]/
+const existsNumber = /[0-9]/g 
+const existsCharacterLowerCase = /[0-9]/
 
-export {maskEmailDbc, maskEmail}
+export {maskEmailDbc, invalidEmail}

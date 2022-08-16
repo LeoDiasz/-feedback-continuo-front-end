@@ -12,7 +12,7 @@ export const Login = () => {
     <ScreenAndRegisterUser titleForm="Entrar na conta" isScreenLogin>
       <Formik
         initialValues={{login: "", senha: ""}}
-        validationsSchema={LoginSchema}
+        validationSchema={LoginSchema}
         onSubmit = {values => {
           signIn(values)
         }}
@@ -21,9 +21,7 @@ export const Login = () => {
           <Form>
             <div>
               <label htmlFor="login">E-MAIL</label>
-              <Field  name="login" render={({field}) => (
-                <MaskedInput type="text" name="login" id="login" placeholder="Digite seu e-mail" {...field}/>
-              )}/>
+              <Field name="login" id="login" placeholder="Digite seu e-mail"/>
               <div>{errors.login}</div>
             </div>
 
