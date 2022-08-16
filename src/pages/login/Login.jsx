@@ -1,9 +1,10 @@
 import {Formik, Form, Field} from "formik"
 import {useAuthContext} from "../../hooks/useAuthContext"
-import MaskedInput from "react-text-mask"
 import { ScreenAndRegisterUser } from '../../components/ScreenLoginAndRegisterUser'
 import Button from '../../components/Button/styles'
 import { LoginSchema } from "../../utils/validationsSchema"
+import { InputField, MaskInput } from "../../components/InputStyles/styles"
+import { FormDiv, Label } from "./styles";
 
 export const Login = () => {
   const {signIn} = useAuthContext()
@@ -18,23 +19,22 @@ export const Login = () => {
         }}
       >
         {({errors}) =>(
-          <Form>
+          <FormDiv>
             <div>
-              <label htmlFor="login">E-MAIL</label>
+              <Label htmlFor="login">E-MAIL</Label>
               <Field  name="login" render={({field}) => (
-                <MaskedInput type="text" name="login" id="login" placeholder="Digite seu e-mail" {...field}/>
+                <MaskInput type="text" name="login" id="login" placeholder="Digite seu e-mail" {...field}/>
               )}/>
               <div>{errors.login}</div>
             </div>
 
             <div>
-              <label htmlFor="senha">SENHA</label>
-              <Field name="senha" id="senha" placeholder="Digite sua senha"/>
+              <Label htmlFor="senha">SENHA</Label>
+              <InputField name="senha" id="senha" placeholder="Digite sua senha"/>
               <div>{errors.senha}</div>
             </div>
-
             <Button>ENTRAR</Button>
-          </Form>
+          </FormDiv>
          )
         } 
       </Formik>

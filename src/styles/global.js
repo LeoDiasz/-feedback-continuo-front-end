@@ -5,8 +5,8 @@ const theme = {
     blue: "#1E4682",
     green: "#7FC754",
     textGray: "#C6C9D2",
-    textGrayDark: "#9FA2B4",
-    placeholder: "#4B506D",
+    textGrayMedio: "#9FA2B4",
+    textGrayDark: "#4B506D",
     error: "#F12B2C",
     inputBorder: "#F0F1F7",
     border: "#DFE0EB"
