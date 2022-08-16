@@ -32,14 +32,40 @@ const SectionBanner = styled.section`
 
 const SectionForm = styled.section`
   min-height: 100vh;
-  
+  display: grid;
+  align-items: center;
+  margin: 30px 0;
+
+  h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #474748;
+    margin-bottom: 30px;
+  }
+
+  > div:first-child {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid ${props => props.theme.colors.textGray};
+    border-radius: 8px;
+  }
+
+  a:last-child{
+    margin-bottom: 30px;
+  }
 
   a {
-    color: ${props => props.theme.colors.textGrayDark}
-  }
+    color: ${props => props.theme.colors.textGrayDark};
+    margin: 20px 0 20px 0;
+    }
   span {
-    color: ${props => props.theme.colors.blue}
+    color: ${props => props.theme.colors.blue};
   }
+  
 `
 
-export {DivContainer, SectionBanner, SectionForm}
+export { DivContainer, SectionBanner, SectionForm }
