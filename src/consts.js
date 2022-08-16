@@ -1,1 +1,0 @@
-// const regexEmailDbc = ^.(@dbccompany.com.br).$;

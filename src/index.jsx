@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Routers from './routers';
-import { Provider } from 'react-redux';
-import store from './store'
+import { GlobalStyle, theme } from './styles/global';
+import { ThemeProvider } from 'styled-components';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-    <Routers />
-  </Provider>
-
+  <>
+    <GlobalStyle/>
+    <ThemeProvider theme={theme}>
+      <Routers />
+    </ThemeProvider>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
