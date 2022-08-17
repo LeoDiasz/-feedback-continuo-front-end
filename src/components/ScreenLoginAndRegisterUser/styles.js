@@ -34,7 +34,7 @@ const SectionForm = styled.section`
   min-height: 100vh;
   display: grid;
   align-items: center;
-  margin: 30px 0;
+  padding: 30px 0;
 
   h1 {
     font-size: 18px;
@@ -49,7 +49,7 @@ const SectionForm = styled.section`
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    padding: 30px;
+    padding: 15px 30px;
     -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
     box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
     border-radius: 8px;

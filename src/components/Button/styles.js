@@ -4,6 +4,7 @@ const Button = styled.button`
     background-color: ${props => props.backgroundColor ? props.backgroundColor : props.theme.colors.green};
     color: ${props => props.color ? props.color : "#ffffff"};
     border: ${props => props.border ? props.border : "none"};
+    width: ${props => props.width ? props.width : "100%"};
     border-radius: 4px;
     padding: 10px;
 `
@@ -25,15 +26,15 @@ const ButtonIcon = styled.button `
 `
 
 const ButtonUpload = styled.button `
+    height: 40px;
     border-radius: 8px;
-    padding: 5px 15px;
-    background: transparent;
-    border: 1px solid;
-    border-color: ${props => props.theme.colors.textGray};
-    color: ${props => props.theme.colors.blue};
+    width: 100%;
+    padding: 5px 20px;
+    background-color: ${props => props.theme.colors.blue};
+    border: none;
     font-weight: bold;
-
     transition: filter 0.2s;
+    color: #fff;
     
     &:hover {
         filter: brightness(0.98)

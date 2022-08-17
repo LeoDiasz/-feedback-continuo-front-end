@@ -40,6 +40,11 @@ const GlobalStyle = createGlobalStyle`
     opacity: 0.3;
     cursor: not-allowed;
   }
+
+  a {
+    color: inherit;
+  }
+
 `
 
 export {GlobalStyle, theme}

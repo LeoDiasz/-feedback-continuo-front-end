@@ -14,10 +14,6 @@ const CreateUserSchema = Yup.object().shape({
   .min(2, 'Mínimo de 2 caractéres')
   .max(20, 'Máximo de 20 caractéres')
   .required("Necessário preencher"),
-  lastName: Yup.string()
-  .min(2, 'Mínimo de 2 caractéres')
-  .max(30, 'Máximo de 30 caractéres')
-  .required("Necessário preencher"),
   email: Yup.string()
   .matches(invalidEmail, "Email invalido")
   .matches(emailDbc, 'O email deve conter: @dbccompany.com.br')

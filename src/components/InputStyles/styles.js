@@ -2,7 +2,7 @@ import styled, {css} from "styled-components"
 import MaskedInput from "react-text-mask"
 import { Field } from "formik"
 
-const baseStyleInputs = css`
+export const baseStyleInputs = css`
   width: 100%;
   min-height: 40px;
   padding: 0 20px;
@@ -41,12 +41,12 @@ const Label = styled.label`
 
 const TextValidation = styled.span`
   color: ${props => props.theme.colors.error};
-  font-size: 14px;
+  font-size: 11px;
 `
 
 const DivTextValidation = styled.div`
-  height: 15px;
-  margin: 5px 0 10px;
+  height: 10px;
+  margin: 0 0 15px;
 `
 
 export {Label, Input, MaskInput, InputField, TextValidation, SelectInput, DivTextValidation}

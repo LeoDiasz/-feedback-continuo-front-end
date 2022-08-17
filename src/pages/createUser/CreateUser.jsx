@@ -10,26 +10,24 @@ import { ScreenAndRegisterUser } from '../../components/ScreenLoginAndRegisterUs
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { DivTextValidation, InputField, Label, TextValidation } from "../../components/InputStyles/styles"
 import { FormDiv } from "../login/styles"
-import { PreviewAvatar, DivUploadAvatar } from "./styles"
+import { PreviewAvatar, DivUploadAvatar, DivInputUpload } from "./styles"
 import {Button, ButtonIcon, ButtonUpload} from '../../components/Button/styles'
+import {listOptionsRole} from "../../utils/consts"
 
 
 export const CreateUser = () => {
   const [avatarUserChoose, setAvatarUserChoose] = useState()
   const { signIn } = useAuthContext()
-  const listOptionsRole = ["AGILE_COACH", "ANALISTA_DE_DADOS", "ANALISTA_DE_RH", "ANALISTA_DE_TESTES", "ANALISTA_DE_SUPORTE", "ARQUITETO_DE_SISTEMAS", "ASSISTENTE_COMERCIAL", "COORDENADOR_DE_DEPARTAMENTO_PESSOAL", "DESENVOLVEDOR_DE_SOFTWARE", "ENGENHEIRO_DE_DADOS", "ENGENHEIRO_DE_SOFTWARE", "GERENTE_DE_SOLUCOES", "GERENTE_DE_PROJETOS", "LIDER_TECNICO", "UX_DESIGNER" ]
-
-  
+ 
   const changeHandlerAvatar = (event) => {
     const file = event.target.files[0]
-  
     setAvatarUserChoose(file)
   };
 
   const handleCreateUser = async (userDatas) => {
 
     const userFormated = { 
-      name: userDatas.name + " " + userDatas.lastName, 
+      name: userDatas.name,
       userRole: userDatas.role, 
       email: userDatas.email, 
       userPassword: userDatas.password 
@@ -64,7 +62,7 @@ export const CreateUser = () => {
 
   const handleUploadAvatar = (event) => {
     event.preventDefault()
-
+    
     const inputAvatar = document.getElementById("avatar")
 
     if(avatarUserChoose) {
@@ -84,7 +82,6 @@ export const CreateUser = () => {
         initialValues={
           {
             name: "",
-            lastName: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -99,18 +96,10 @@ export const CreateUser = () => {
         {({ errors, values}) => (
           <FormDiv>
             <div>
-              <Label htmlFor="name">NOME * </Label>
+              <Label htmlFor="name">NOME COMPLETO * </Label>
               <InputField name="name" id="name" placeholder="Digite seu nome" />
               <DivTextValidation>
                 <TextValidation>{errors.name}</TextValidation> 
-              </DivTextValidation>
-            </div>
-
-            <div>
-              <Label htmlFor="lastName">SOBRENOME * </Label>
-              <InputField name="lastName" id="lastName" placeholder="Digite seu sobrenome" />
-              <DivTextValidation>
-                <TextValidation>{errors.lastName}</TextValidation> 
               </DivTextValidation>
             </div>
 
@@ -154,25 +143,13 @@ export const CreateUser = () => {
             <div>
               <Label htmlFor="avatar">FOTO DE PERFIL</Label>
               <DivUploadAvatar>
-                <div>
-                  <ButtonIcon onClick={handleUploadAvatar}>
-                    <CgAdd/>
-                  </ButtonIcon>
-                  <ButtonUpload onClick={handleUploadAvatar}>{avatarUserChoose ? "Remover imagem" : "Adicionar imagem"}</ButtonUpload>
-                </div>
+                <DivInputUpload onClick={handleUploadAvatar}>
+                  <span>{avatarUserChoose ? avatarUserChoose.name: ""}</span>
+                </DivInputUpload>
 
-                {avatarUserChoose ? (
-                  <PreviewAvatar>
-                    <img  src={URL.createObjectURL(avatarUserChoose)} onClick={handleUploadAvatar} />
-                  </PreviewAvatar>
-                ) : (
-                  <PreviewAvatar>
-                    <img  src={avatarUpload} onClick={handleUploadAvatar}/>
-                  </PreviewAvatar>
-                ) }
-
+                <ButtonUpload onClick={handleUploadAvatar}>{avatarUserChoose ? "Remover imagem" : "Adicionar imagem"}</ButtonUpload>
               </DivUploadAvatar>
-              <input style={{display:"none"}} 
+              <input 
                 name="avatar" 
                 id="avatar" 
                 type="file" 
@@ -180,6 +157,7 @@ export const CreateUser = () => {
                 placeholder="Digite seu e-mail" 
                 onChange={changeHandlerAvatar} 
                 values={avatarUserChoose}
+                style={{display: "none"}}
               />
             </div>              
 
