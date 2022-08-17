@@ -14,7 +14,8 @@ const UserProvider = ({children}) => {
     try {
       const {data: datasUser} = await apiDbc.get("/users/recuperar-usuario-logado")
 
-      datasUser.avatar = "data:image/png;base64," + datasUser.avatar
+      datasUser.avatar = datasUser.avatar ?  "data:image/png;base64," + datasUser.avatar : null
+
       setUser(datasUser)
 
     } catch(Error) {
@@ -28,7 +29,17 @@ const UserProvider = ({children}) => {
     try {
       const {data: listCollaborators} = await apiDbc.get("/users/list-all")
       
-      setListCollaborators(listCollaborators)
+      const listCollaboratorsFiltredAvatar = listCollaborators.map(collaborator => {
+        const collaboratorFiltred = {
+          avatar: collaborator.avatar ? "data:image/png;base64," + collaborator.avatar : null,
+          idUser: collaborator.idUser,
+          name: collaborator.name,
+          userRole: collaborator.userRole,
+        }
+        return collaboratorFiltred
+      })
+
+      setListCollaborators(listCollaboratorsFiltredAvatar)
     } catch(Error) {
       console.log(Error)
     }

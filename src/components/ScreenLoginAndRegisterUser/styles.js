@@ -3,6 +3,7 @@ import styled from "styled-components"
 const DivContainer = styled.div`
   display: grid;
   grid-template-columns: 45% 55%;
+  height: 100vh;
 `
 
 const SectionBanner = styled.section`
@@ -12,7 +13,7 @@ const SectionBanner = styled.section`
   justify-content: center;
   gap: 40px;
   background-color: ${props => props.theme.colors.blue};
-  min-height: 100vh;
+  height: 100%;
   color: #fff;
 
   p {
@@ -31,7 +32,7 @@ const SectionBanner = styled.section`
 `
 
 const SectionForm = styled.section`
-  min-height: 100vh;
+  width: 100%;
   display: grid;
   align-items: center;
   margin: 30px 0;

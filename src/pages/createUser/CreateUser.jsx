@@ -1,9 +1,7 @@
 import { Formik} from "formik"
-import {CgAdd} from "react-icons/cg"
 import toast from "react-hot-toast"
 import { useState } from "react"
 import PasswordStrengthBar from 'react-password-strength-bar';
-import avatarUpload from "../../images/uploadUser.jpg"
 import { apiDbc } from "../../services/api"
 import { CreateUserSchema } from "../../utils/validationsSchema"
 import { ScreenAndRegisterUser } from '../../components/ScreenLoginAndRegisterUser'
