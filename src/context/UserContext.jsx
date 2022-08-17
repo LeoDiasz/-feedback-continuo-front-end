@@ -26,9 +26,8 @@ const UserProvider = ({children}) => {
     
     try {
       const {data: listCollaborators} = await apiDbc.get("/users/list-all")
-
+      
       setListCollaborators(listCollaborators)
-
     } catch(Error) {
       console.log(Error)
     }

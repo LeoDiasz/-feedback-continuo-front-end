@@ -3,7 +3,7 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 
 export const PrivateRoute = () => {
   const {isLogged} = useAuthContext()
-
+  console.log(isLogged)
   return (
     isLogged ? <Outlet/> : <Navigate to="/"/>
   )
