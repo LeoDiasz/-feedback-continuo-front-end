@@ -13,20 +13,20 @@ const AuthProvider = ({children}) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const getToken = localStorage.getItem("token")
 
-    if (token) {
+    if (getToken) {
       setIslogged(true)
-      setToken(token)
-      apiDbc.defaults.headers.common["authorization"] = token
+      setToken(getToken)
+      apiDbc.defaults.headers.common["authorization"] = getToken
     }
     
-    setLoading(false)
     const locationNow = window.location.href
-
-    if(token && locationNow === "http://localhost:3000/"){
+    
+    if(getToken && locationNow === "http://localhost:3000/"){
       navigate("/home")
     }
+    setLoading(false)
     
   }, [])
 
