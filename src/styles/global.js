@@ -40,10 +40,7 @@ const GlobalStyle = createGlobalStyle`
     opacity: 0.3;
     cursor: not-allowed;
   }
-
-
 `
-
 
 export {GlobalStyle, theme}
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useUserContext } from '../../hooks/useUserContext'
 import uploadUser from "../../images/uploadUser.jpg"
@@ -54,6 +55,7 @@ export const Home = () => {
           <div><span>5</span><p>Feedback enviados</p></div>
           <div><span>3</span><p>Feedback recebidos</p></div>
         </DivUsuarios>
+        <Link to="/feedback/create">Feedback</Link>
         <DivFeedback> {/* Grid de Feedbakcs */}
           <Abas>
             <p onClick={mudarAbaEnviado}>Feedback Enviados</p>
