@@ -1,10 +1,10 @@
-import {Formik, Form, Field} from "formik"
+import {Formik} from "formik"
 import {useAuthContext} from "../../hooks/useAuthContext"
 import { ScreenAndRegisterUser } from '../../components/ScreenLoginAndRegisterUser'
-import Button from '../../components/Button/styles'
+import {Button} from '../../components/Button/styles'
 import { LoginSchema } from "../../utils/validationsSchema"
-import { InputField, MaskInput } from "../../components/InputStyles/styles"
-import { FormDiv, Label } from "./styles";
+import { DivTextValidation, InputField, TextValidation, Label } from "../../components/InputStyles/styles"
+import { FormDiv} from "./styles";
 
 export const Login = () => {
   const {signIn} = useAuthContext()
@@ -23,15 +23,19 @@ export const Login = () => {
             <div>
               <Label htmlFor="login">E-MAIL</Label>
               <InputField name="login" id="login" placeholder="Digite seu e-mail"/>
-              <div>{errors.login}</div>
+              <DivTextValidation>
+                <TextValidation>{errors.login}</TextValidation>
+              </DivTextValidation>
             </div>
 
             <div>
               <Label htmlFor="senha">SENHA</Label>
               <InputField name="senha" id="senha" placeholder="Digite sua senha"/>
-              <div>{errors.senha}</div>
+              <DivTextValidation>
+                <TextValidation>{errors.senha}</TextValidation>
+              </DivTextValidation>
             </div>
-            <Button>ENTRAR</Button>
+            <Button type="submit" disabled={Object.values(errors).length > 0}>ENTRAR</Button>
           </FormDiv>
          )
         } 

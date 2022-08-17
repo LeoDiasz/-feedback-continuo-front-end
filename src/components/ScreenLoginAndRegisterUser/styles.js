@@ -44,13 +44,14 @@ const SectionForm = styled.section`
   }
 
   > div:first-child {
-    width: 450px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
     padding: 30px;
-    border: 1px solid ${props => props.theme.colors.textGray};
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
+    box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
     border-radius: 8px;
   }
 
@@ -61,11 +62,13 @@ const SectionForm = styled.section`
   a {
     color: ${props => props.theme.colors.textGrayDark};
     margin: 20px 0 20px 0;
+
+    span:last-child {
+      color: ${props => props.theme.colors.blue};
     }
-  span {
-    color: ${props => props.theme.colors.blue};
-  }
   
+  }
+ 
 `
 
 export { DivContainer, SectionBanner, SectionForm }

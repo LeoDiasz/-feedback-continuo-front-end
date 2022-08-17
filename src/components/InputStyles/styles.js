@@ -7,12 +7,12 @@ const baseStyleInputs = css`
   min-height: 40px;
   padding: 0 20px;
   border-radius: 8px;
-  margin: 8px 0 10px 0;
+  margin-top: 8px;
   border: 1px solid ${props => props.theme.colors.textGray};
-  color: ${props => props.theme.colors.textGray};
+  color: ${props => props.theme.colors.textGrayDark};
 
   &::placeholder {
-    color: var(--color-text-gray-dark);
+    color: ${props => props.theme.colors.textGray};
   }
 `
 
@@ -34,12 +34,19 @@ const SelectInput = styled.select`
 `
 
 const Label = styled.label`
-  color: ${props => props.theme.colors.textGray};
+  font-size: 12px;
+  font-weight: 400;
+  color: ${props => props.theme.colors.textGrayDark};
 `
 
 const TextValidation = styled.span`
-  margin-top: 10px;
-  color: var(--color-text-error);
+  color: ${props => props.theme.colors.error};
+  font-size: 14px;
 `
 
-export {Label, Input, MaskInput, InputField, TextValidation, SelectInput}
+const DivTextValidation = styled.div`
+  height: 15px;
+  margin: 5px 0 10px;
+`
+
+export {Label, Input, MaskInput, InputField, TextValidation, SelectInput, DivTextValidation}

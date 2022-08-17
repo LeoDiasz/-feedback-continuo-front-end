@@ -9,23 +9,26 @@ import { ProfileCollaborator } from './pages/profileCollaborator/ProfileCollabor
 import { ForgotPassword } from './pages/forgotPassword/ForgotPassword';
 import { Collaborators } from './pages/collaborators/Collaborators';
 import { AuthProvider } from './context/AuthContext';
+import { UserProvider } from './context/UserContext';
 
 function Routers() {
     return (
         <BrowserRouter>
             <AuthProvider>
-                <Routes>
-                    <Route path='/' element={<Login />} />
-                    <Route path='/user/create' element={<CreateUser />} />
-                    <Route element={<PrivateRoute/>}>
-                        <Route path='/home' element={<Home/>} />
-                        <Route path='/feedback/create' element={<CreateFeedback />} />
-                        <Route path='/collaborators' element={<Collaborators />} />
-                        <Route path='/collaborator/profile' element={<ProfileCollaborator />} />
-                        <Route path='/user/forgot-password' element={<ForgotPassword />} />
-                    </Route>
-                    <Route path='*' element={<NotFound />} />      
-                </Routes>
+                <UserProvider>
+                    <Routes>
+                        <Route path='/' element={<Login />} />
+                        <Route path='/user/create' element={<CreateUser />} />
+                        <Route element={<PrivateRoute/>}>
+                            <Route path='/home' element={<Home/>} />
+                            <Route path='/feedback/create' element={<CreateFeedback />} />
+                            <Route path='/collaborators' element={<Collaborators />} />
+                            <Route path='/collaborator/profile' element={<ProfileCollaborator />} />
+                            <Route path='/user/forgot-password' element={<ForgotPassword />} />
+                        </Route>
+                        <Route path='*' element={<NotFound />} />      
+                    </Routes>
+                </UserProvider>
             </AuthProvider>
         </BrowserRouter>
     )

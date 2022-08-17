@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const LabelUpload = styled.label`
-    margin: 15px auto;
+export const PreviewAvatar = styled.div`
+    margin-right: 30px;
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 100px;
     height: 100px;
@@ -17,4 +16,24 @@ export const LabelUpload = styled.label`
         border-radius: 50%;
         object-fit: cover;
     }
+
+    img:hover {
+        filter: brightness(0.98);
+    }
+`
+
+export const DivUploadAvatar = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    
+    > div:first-child {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 8px;
+        
+    }
+    
 `

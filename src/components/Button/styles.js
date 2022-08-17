@@ -1,13 +1,43 @@
 import styled from "styled-components"
 
 const Button = styled.button`
-    background-color: ${props => props.theme.colors.green};
-    color: #ffffff;
-    border: none;
+    background-color: ${props => props.backgroundColor ? props.backgroundColor : props.theme.colors.green};
+    color: ${props => props.color ? props.color : "#ffffff"};
+    border: ${props => props.border ? props.border : "none"};
     border-radius: 4px;
-    margin-top: 15px;
     padding: 10px;
 `
 
+const ButtonIcon = styled.button `
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
 
-export default Button
+    font-size: 30px;
+    color: ${props => props.theme.colors.blue};
+
+    transition: filter 0.2s;
+    
+    &:hover {
+        filter: brightness(0.98)
+    }
+`
+
+const ButtonUpload = styled.button `
+    border-radius: 8px;
+    padding: 5px 15px;
+    background: transparent;
+    border: 1px solid;
+    border-color: ${props => props.theme.colors.textGray};
+    color: ${props => props.theme.colors.blue};
+    font-weight: bold;
+
+    transition: filter 0.2s;
+    
+    &:hover {
+        filter: brightness(0.98)
+    }
+`
+
+export {Button, ButtonIcon, ButtonUpload}

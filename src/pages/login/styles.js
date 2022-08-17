@@ -5,12 +5,10 @@ export const FormDiv = styled(Form)`
     display: grid;
     margin: 0 auto;
     width: 100% ;
+
+    button {
+        margin-top: 20px;
+    }
 `; 
 
-export const Label = styled.label`
-    font-size: 12px;
-    font-weight: 400;
-    color: ${props => props.theme.colors.textGrayDark};
-    
-`;
 
