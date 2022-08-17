@@ -12,6 +12,8 @@ const UserProvider = ({children}) => {
 
     try {
       const {data: datasUser} = await apiDbc.get("/users/recuperar-usuario-logado")
+
+      datasUser.avatar = "data:image/png;base64," + datasUser.avatar
       setUser(datasUser)
 
     } catch(Error) {
