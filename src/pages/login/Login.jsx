@@ -35,7 +35,7 @@ export const Login = () => {
                 <TextValidation>{errors.senha}</TextValidation>
               </DivTextValidation>
             </div>
-            <Button type="submit" disabled={Object.values(errors).length > 0}>ENTRAR</Button>
+            <Button type="submit" id="id-button-login" disabled={Object.values(errors).length > 0}>ENTRAR</Button>
           </FormDiv>
          )
         } 

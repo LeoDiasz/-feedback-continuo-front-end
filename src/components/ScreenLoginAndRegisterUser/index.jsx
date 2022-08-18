@@ -22,9 +22,9 @@ export const ScreenAndRegisterUser = ({children, titleForm, isScreenLogin}) => {
           {titleForm && <h1>{titleForm}</h1>}
           {children}
           {isScreenLogin ? (
-            <Link to="user/create">Não possui conta? <span>Criar</span></Link>
+            <Link id="id-navigate-for-create" to="user/create">Não possui conta? <span>Criar</span></Link>
           ) : (
-            <Link to="/">Já possui conta? <span>Login</span></Link>
+            <Link id="id-navigate-for-login" to="/">Já possui conta? <span>Login</span></Link>
           )}
         </div>
       </SectionForm>

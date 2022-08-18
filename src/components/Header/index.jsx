@@ -31,10 +31,10 @@ export const Header = () => {
         
         <DivLogout>
           {isOpenButtonSignOut && (
-            <Button  width="100px" onClick={signOut}>Sair</Button>
+            <Button  width="100px" id="id-button-signout" onClick={signOut}>Sair</Button>
           )}
           <button onClick={() => setIsOpenButtonSignOut(isOpenButtonSignOut ? false : true)}>
-            {user && <AvatarUser img={user.avatar ? user.avatar : uploadUser} width="60px"/>}
+            {user && <AvatarUser img={user.avatar ? user.avatar : uploadUser} width="60px" id="id-avatar-top-right"/>}
           </button>
 
         </DivLogout>

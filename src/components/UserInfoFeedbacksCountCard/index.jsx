@@ -13,9 +13,9 @@ export const UserInfoFeedbacksCountCard = ({user, listFeedbacksSend, listFeedbac
           <>
             <AvatarUser img={user.avatar ? user.avatar : uploadUser} width="170px"/>
             <DivInfoText>
-              <h2>{user.name}</h2>
-              <p>{user.userRole}</p>
-              <small>{user.email}</small>
+              <h2 id="id-user-name">{user.name}</h2>
+              <p > {user.userRole}</p>
+              <small id="id-user-email">{user.email}</small>
             </DivInfoText>
             <DivFeedbacksCount>
               <Button backgroundColor={colors.blue}>
