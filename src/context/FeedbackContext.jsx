@@ -5,9 +5,12 @@ import { apiDbc } from "../services/api"
 const FeedbackContext = createContext()
 
 const FeedbackProvider = ({ children }) => {
+
     const [listFeedbacksReceveid, setListFeedbacksReceveid] = useState([])
     const [listFeedbacksSend, setListFeedbacksSend] = useState([])
+
     const { listCollaborators } = useUserContext()
+    
     const [feedback, setFeedback] = useState('')
     const [idUserReceiveFeed, setIdUserReceiveFeed ] = useState('')
     const [feedbackSuggestions, setFeedbackSuggestions] = useState([])
@@ -79,8 +82,7 @@ const FeedbackProvider = ({ children }) => {
             console.log(error)
         }
     }
-
-   
+  
     return (
         <FeedbackContext.Provider value={{
             getTagsServer,
@@ -89,10 +91,10 @@ const FeedbackProvider = ({ children }) => {
             listFeedbacksReceveid,
             listFeedbacksSend,
             feedback,
-            idUserReceiveFeed,
-            feedbackSuggestions,
             tags,
-            tagsSuggestions,
+            feedbackSuggestions,
+            idUserReceiveFeed,
+            tagsSuggestions,            
             onSuggestionFeedbackHandler,
             onChangeFeedbackHandler,
             onSuggestionTagsHandler,

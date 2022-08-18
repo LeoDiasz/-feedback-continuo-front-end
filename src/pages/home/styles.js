@@ -14,6 +14,8 @@ const DivFeedback = styled.div`
     border: 1px solid ${props => props.theme.colors.border};
     border-top: none;
     border-radius: 8px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
+    box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
 `;
 
 const Abas = styled.div`   
@@ -49,3 +51,4 @@ const Abas = styled.div`
 `;
 
 export {MainContent, DivFeedback, Abas}
+
