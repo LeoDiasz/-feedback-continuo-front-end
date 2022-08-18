@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useUserContext } from '../../hooks/useUserContext'
 import uploadUser from "../../images/uploadUser.jpg"

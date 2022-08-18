@@ -7,26 +7,63 @@ const FeedbackContext = createContext()
 const FeedbackProvider = ({ children }) => {
     const { listCollaborators } = useUserContext()
     
-    const [text, setText] = useState('')
-    const [suggestions, setSuggestions] = useState([])
-
-    const onSuggestionHandler = (text) => {
-        setText(text)
-        setSuggestions([])
+    ////////////////////////////////////////////////////////////////
+    //AutoComplete Feedback
+    const [feedback, setFeedback] = useState('')
+    const [idUserReceiveFeed, setIdUserReceiveFeed ] = useState('')
+    const [feedbackSuggestions, setFeedbackSuggestions] = useState([])
+    
+    const onSuggestionFeedbackHandler = (feedback, idUser) => {
+        setFeedback(feedback)
+        setFeedbackSuggestions([])
+        setIdUserReceiveFeed(idUser)
+    }
+    
+    const onChangeFeedbackHandler = (feedback) => {
+        let filtro = []
+        console.log(filtro)
+        if (feedback.length > 0) {
+            filtro = listCollaborators.filter(({ name }) => {
+                const regex = new RegExp(`${feedback}`, "gi")
+                return name.match(regex)
+            })
+        }
+        setFeedbackSuggestions(filtro)
+        setFeedback(feedback)
     }
 
-    const onChangeHandler = (text) => {
+    ////////////////////////////////////////////////////////////////
+    //AutoComplete Tags
+    const [tags, setTags] = useState('')
+    const [tagsSuggestions, setTagsSuggestions] = useState([])
+    
+    const onSuggestionTagsHandler = (text) => {
+        setTags(text)
+        setTagsSuggestions([])
+    }
+
+    const onChangeTagsHandler = (text) => {
         let filtro = []
-
         if (text.length > 0) {
-
-            filtro = listCollaborators.filter(({ name }) => {
+            filtro = getTags.filter(({ name }) => {
                 const regex = new RegExp(`${text}`, "gi")
                 return name.match(regex)
             })
         }
-        setSuggestions(filtro)
-        setText(text)
+        setTagsSuggestions(filtro)
+        setTags(text)
+    }
+    ////////////////////////////////////////////////////////////////
+
+    const [getTags, setGetTags] = useState([])
+
+    const getTagsServer = async () => {
+        try {
+            const { data } = await apiDbc.get('/tag')
+            setGetTags(data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const getFeedbackUser = async () => {
@@ -49,12 +86,18 @@ const FeedbackProvider = ({ children }) => {
 
     return (
         <FeedbackContext.Provider value={{
-            text,
-            suggestions,
+            feedback,
+            idUserReceiveFeed,
+            feedbackSuggestions,
+            tags,
+            tagsSuggestions,
             getFeedbackUser,
             handleCreateFeedback,
-            onSuggestionHandler,
-            onChangeHandler
+            onSuggestionFeedbackHandler,
+            onChangeFeedbackHandler,
+            onSuggestionTagsHandler,
+            onChangeTagsHandler,
+            getTagsServer
 
         }}>
             {children}
