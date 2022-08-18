@@ -1,49 +1,45 @@
 import { Form, Field } from "formik";
 import styled from "styled-components";
 
-export const Forms = styled(Form)`
-    position: relative;
+const Forms = styled(Form)`
     margin: 50px auto;
     padding: 30px;
     border: 1px solid ${props => props.theme.colors.border};
     border-radius: 8px;
 
-    nav {
-        position: absolute;
-        background: #FFFFFF;
-        width: 500px;
-        border-radius: 8px;
+    >div:first-child {
+        position: relative;
     }
 
-    nav>ul>li {
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-        color: ${props => props.theme.colors.textGrayDark};
-        background-color: #FFFFFF;
-        border: 1px solid ${props => props.theme.colors.textGray};
-        border-radius: 8px;
-        margin-top: 4px;
-        padding: 4px 8px;
-        cursor: pointer;
-    }
-
-    li img {
-        width: 40px;
-        height: 40px;
-    }
-
-    li p {
-        padding: 0 15px;
-        border-right: 1px solid ${props => props.theme.colors.textGray};
-    }
-
-    li p:last-child{
-        border: none;
-    }
 `;
 
-export const InputAuto = styled(Field)`
+const SearchTagsContent = styled.ul`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        width: 100px;
+        border-bottom: 5px;
+        background-color: ${props => props.theme.colors.textGray};
+        padding: 5px 10px;
+        font-size: 14px;
+
+        transition: filter 0.3s;
+        cursor: pointer;
+
+        :hover {
+            filter: brightness(0.95)
+        }
+    }
+    
+`
+
+const InputAuto = styled(Field)`
     width: 100%;
     min-height: 40px;
     padding: 0 20px;
@@ -60,4 +56,26 @@ export const InputAuto = styled(Field)`
         outline: none;
     }
     
-`   
+`  
+
+
+const ListCollaboratorsContent = styled.ul`
+        position: absolute;
+        background: transparent;
+        width: 100%;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+
+        button {
+            background: transparent;
+            border: none;
+            width: 100%;
+            -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
+            box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
+        }
+
+        
+`
+
+export {InputAuto, ListCollaboratorsContent, Forms, SearchTagsContent}

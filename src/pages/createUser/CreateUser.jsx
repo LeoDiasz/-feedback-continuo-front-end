@@ -119,7 +119,7 @@ export const CreateUser = () => {
               />
             </div>              
 
-            <Button type="submit" disabled={Object.values(errors).length > 0}>CRIAR CONTA</Button>
+            <Button id="createButtonId" type="submit" disabled={Object.values(errors).length > 0}>CRIAR CONTA</Button>
           </FormDiv>
         )}
       </Formik>

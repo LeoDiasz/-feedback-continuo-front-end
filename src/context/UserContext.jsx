@@ -43,9 +43,9 @@ const UserProvider = ({children}) => {
   const getListCollaborators = async () => {
     
     try {
-      const {data: listCollaborators} = await apiDbc.get("/users/list-all")
+      const {data: listCollaborators} = await apiDbc.get("/users/list-all?page=0&register=5")
       
-      const listCollaboratorsFiltredAvatar = listCollaborators.map(collaborator => {
+      const listCollaboratorsFiltredAvatar = listCollaborators.content.map(collaborator => {
         const collaboratorFiltred = {
           avatar: collaborator.avatar ? "data:image/png;base64," + collaborator.avatar : null,
           idUser: collaborator.idUser,
