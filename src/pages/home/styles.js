@@ -1,71 +1,23 @@
 import styled from "styled-components";
 
-export const Grid = styled.div`
-    width: 100%;
-    display: grid;
-    align-items: flex-start;
-    grid-template-columns: 35% 65%;
-    padding: 60px 0;
-`;
-
-export const DivUsuarios = styled.div`
-    align-self: flex-start;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    & h1 {
-        margin: 20px 0 10px 0; 
+const MainContent = styled.main`
+    > div {
+        display: grid;
+        grid-template-columns: 35% 65%;
+        align-items: flex-start;
+        width: 100%;
+        padding: 60px 0;
+        gap: 40px;
     }
-    
-    & p {
-        margin-bottom: 10px;           
-    }
+`
 
-    & img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    }
-    
-
-    & div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: ${props => props.theme.colors.blue};
-        color: #FFFFFF;
-        width: 280px;
-        height: 50px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-
-        & span {
-            display: grid;
-            align-items: center;
-            justify-content: center;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: #FFFFFF;
-            color: ${props => props.theme.colors.blue};
-        }
-
-        & p {
-            margin-left: 12px;
-            margin-bottom: 0;
-        }
-    }    
-`;
-
-export const DivFeedback = styled.div`
+const DivFeedback = styled.div`
     border: 1px solid ${props => props.theme.colors.border};
     border-top: none;
     border-radius: 8px;
 `;
 
-export const Abas = styled.div`   
+const Abas = styled.div`   
     display: grid;
     grid-template-columns: 50% 50%;
     height: 40px;
@@ -97,75 +49,4 @@ export const Abas = styled.div`
     }
 `;
 
-export const FeedBackRecebidoContent = styled.div`
-display: ${props => props.displayRecebido && props.displayRecebido};
-grid-template-columns: 25% 75%;
-align-items: center;
-margin: 15px;
-border: 1px solid ${props => props.theme.colors.border};
-border-radius: 8px; 
-
-    & div:first-child{
-        display: grid;
-        justify-items: center;
-        padding: 8px;
-
-     & h1 {
-        font-size: 16px;
-        margin: 10px 0 5px 0; 
-    }
-        
-    & p {
-        font-size: 14px;
-        margin-bottom: 5px;           
-    }
-
-    & img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-        }
-    }
-    
-    & div:last-child {
-        padding: 8px;
-    }
-`;
-
-export const FeedBackEnviadoContent = styled.div`
-
-    display: ${props => props.displayEnviado && props.displayEnviado};
-    grid-template-columns: 25% 75%;
-    align-items: center;
-    margin: 15px;
-    border: 1px solid ${props => props.theme.colors.border};
-    border-radius: 8px;
-
-    & div:first-child{
-        display: grid;
-        justify-items: center;
-        padding: 8px;
-
-     & h1 {
-        font-size: 16px;
-        margin: 10px 0 5px 0; 
-    }
-        
-    & p {
-        font-size: 14px;
-        margin-bottom: 5px;           
-    }
-
-    & img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-        }
-    }
-    
-    & div:last-child {
-        padding: 8px;
-    } 
-`
+export {MainContent, DivFeedback, Abas}

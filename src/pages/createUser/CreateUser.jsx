@@ -1,62 +1,23 @@
 import { Formik} from "formik"
-import toast from "react-hot-toast"
 import { useState } from "react"
 import PasswordStrengthBar from 'react-password-strength-bar';
-import { apiDbc } from "../../services/api"
 import { CreateUserSchema } from "../../utils/validationsSchema"
+import {listOptionsRole} from "../../utils/consts"
+import { useUserContext } from "../../hooks/useUserContext";
 import { ScreenAndRegisterUser } from '../../components/ScreenLoginAndRegisterUser'
-import { useAuthContext } from "../../hooks/useAuthContext"
 import { DivTextValidation, InputField, Label, TextValidation } from "../../components/InputStyles/styles"
 import { FormDiv } from "../login/styles"
-import { PreviewAvatar, DivUploadAvatar, DivInputUpload } from "./styles"
-import {Button, ButtonIcon, ButtonUpload} from '../../components/Button/styles'
-import {listOptionsRole} from "../../utils/consts"
-
+import {DivUploadAvatar, DivInputUpload } from "./styles"
+import {Button, ButtonUpload} from '../../components/Button/styles'
 
 export const CreateUser = () => {
   const [avatarUserChoose, setAvatarUserChoose] = useState()
-  const { signIn } = useAuthContext()
+  const { handleCreateUser} = useUserContext()
  
   const changeHandlerAvatar = (event) => {
     const file = event.target.files[0]
     setAvatarUserChoose(file)
   };
-
-  const handleCreateUser = async (userDatas) => {
-
-    const userFormated = { 
-      name: userDatas.name,
-      userRole: userDatas.role, 
-      email: userDatas.email, 
-      userPassword: userDatas.password 
-    }
-
-    const formData = new FormData()
-
-    formData.append("file", avatarUserChoose)
-
-    try {
-
-      const { data: userDatasReturn } = await apiDbc.post("/users/create", userFormated)
-
-      formData.append("id", userDatasReturn.idUser)
-      toast.success("Usuário criado com sucesso.")
-
-      await apiDbc.put(`/users/update-file`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-
-      const userLogin = { 
-        login: userDatas.email, 
-        senha: userDatas.password 
-      }
-
-      await signIn(userLogin)
-
-    } catch (Error) {
-      toast.error("Não foi possivel criar o usuario")
-
-    }
-
-  }
 
   const handleUploadAvatar = (event) => {
     event.preventDefault()
@@ -71,7 +32,6 @@ export const CreateUser = () => {
 
     inputAvatar.click()
 
-   
   }
 
   return (
@@ -88,7 +48,7 @@ export const CreateUser = () => {
         }
         validationSchema={CreateUserSchema}
         onSubmit={values => {
-          handleCreateUser(values)
+          handleCreateUser(values, avatarUserChoose)
         }}
       >
         {({ errors, values}) => (
@@ -161,8 +121,7 @@ export const CreateUser = () => {
 
             <Button type="submit" disabled={Object.values(errors).length > 0}>CRIAR CONTA</Button>
           </FormDiv>
-        )
-        }
+        )}
       </Formik>
     </ScreenAndRegisterUser>
   )

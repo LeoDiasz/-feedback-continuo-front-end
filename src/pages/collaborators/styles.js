@@ -9,26 +9,19 @@ const SectionCollaboratorsContainer =  styled.section`
     padding: 60px 0;
 
     > div {
-    
-      h1 {
-        color: ${props => props.theme.colors.black}
-      }
+        h1 {
+          color: ${props => props.theme.colors.black};
+          margin-bottom: 5px;
+        }
 
-      span {
-        font-size: 0.9rem;
-        color: ${props => props.theme.colors.textGrayDark}
-      }
+        span {
+          font-size: 0.9rem;
+          color: ${props => props.theme.colors.textGrayDark}
+        }
     }
     
-    input {
-      
-    }
-
   }
-
-
 `
-
 
 const ListCollaboratorsContent = styled.ul`
   display: flex;
