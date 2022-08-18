@@ -1,20 +1,24 @@
 import { FeedbackContent } from './styles'
 import uploadUser from "../../images/uploadUser.jpg"
 import { AvatarUser } from "../../components/AvatarUser"
+import { TagsList } from '../TagsList'
 
-export const FeedbackUserCard = () => {
-    
+export const FeedbackUserCard = ({ feedbackDatas }) => {
+
     return (
-        <FeedbackContent >
-            <div>
-                <AvatarUser img={uploadUser} width="80px"/>
-                <h1>Lucas Araujo</h1>
+        <FeedbackContent>
+            <div key={feedbackDatas.idFeedback}>
+                <AvatarUser img={uploadUser} width="80px" />
+                <h1>Leonardo</h1>
                 <p>Cargo</p>
                 <p>Email</p>
             </div>
             <div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, harum optio! Reprehenderit dignissimos rerum delectus quae provident in placeat veniam maxime consequatur asperiores impedit, unde nihil vel obcaecati aspernatur! Optio consequatur illum qui asperiores? Itaque explicabo, consectetur ad, cum quidem laudantium temporibus eveniet ex expedita dicta ab perspiciatis magni enim!</p>
+                <p>{feedbackDatas.message}</p>
             </div>
-        </FeedbackContent>
+            <div>
+                <TagsList listTags={feedbackDatas.tagsList} />
+            </div>
+        </FeedbackContent >
     )
 }

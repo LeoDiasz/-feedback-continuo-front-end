@@ -29,9 +29,8 @@ const FeedbackProvider = ({ children }) => {
 
     const handleCreateFeedback = async (values) => {
         try {
-            const data = await apiDbc.post("/feedback", values)
-
-            console.log(data)
+            await apiDbc.post("/feedback", values)
+            console.log(values)
         } catch (error) {
             console.log(error)
         }

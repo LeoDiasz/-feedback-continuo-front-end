@@ -73,6 +73,12 @@ export const CreateFeedback = () => {
   ?  listTagsServer.filter(tag => tag.name.toUpperCase().includes(searchTags.toUpperCase())) 
   : []
 
+  const tagListFilterAPI = listTagsChoose.map((value) => {
+    if(value.name) {
+      return {name: value.name}
+    }
+  })
+
   return (
     <>
       <Header />
@@ -81,19 +87,19 @@ export const CreateFeedback = () => {
           initialValues={{
             message: '',
             anonymous: '',
-            feedbackIdUser: '',
+            feedbackUserId: '',
             tagsList: '',
           }}
           onSubmit={values => {
 
             const newValues = {
               message: values.message,
-              anonymous: values.anonymous,
-              feedbackIdUser: parseInt(idUserChooseForFeedback),
-              tagsList: listTagsChoose,
+              anonymous: values.anonymous ? values.anonymous : false,
+              feedbackUserId: parseInt(idUserChooseForFeedback),
+              tagsList: tagListFilterAPI,
             }
             console.log(newValues)
-            // handleCreateFeedback(newValues)
+            handleCreateFeedback(newValues)
           }}
         >
           {({ errors, handleChange, values}) => (

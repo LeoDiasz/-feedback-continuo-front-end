@@ -12,7 +12,7 @@ export const TagsList = ({listTags, setListTags}) => {
   return (
     <ListTagsContent>
        {listTags && listTags.map(({name, idTag}) => (
-          <li>
+          <li key={idTag}>
             <span># {name.toUpperCase()}</span>
             <TiDelete onClick={() => handleDeleteTag(idTag)}/>
           </li>
