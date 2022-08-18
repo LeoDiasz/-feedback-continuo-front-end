@@ -57,7 +57,7 @@ export const CreateUser = () => {
               <Label htmlFor="name">NOME COMPLETO * </Label>
               <InputField name="name" id="name" placeholder="Digite seu nome" />
               <DivTextValidation>
-                <TextValidation>{errors.name}</TextValidation> 
+                <TextValidation id="id-message-name">{errors.name}</TextValidation> 
               </DivTextValidation>
             </div>
 
@@ -65,7 +65,7 @@ export const CreateUser = () => {
               <Label htmlFor="email">E-MAIL * </Label>
               <InputField name="email" id="email" placeholder="email @dbccompany.com.br" />
               <DivTextValidation>
-                <TextValidation>{errors.email}</TextValidation> 
+                <TextValidation id="id-message-email">{errors.email}</TextValidation> 
               </DivTextValidation>
             </div>
 
@@ -73,7 +73,7 @@ export const CreateUser = () => {
               <Label htmlFor="password">SENHA * </Label>
               <InputField name="password" id="password" placeholder="Digite uma senha" />
               <DivTextValidation>
-                <TextValidation>{errors.password}</TextValidation>
+                <TextValidation id="id-message-password">{errors.password}</TextValidation>
               </DivTextValidation>
               <PasswordStrengthBar password={values.password}/>
             </div>
@@ -82,7 +82,7 @@ export const CreateUser = () => {
               <Label htmlFor="password"> CONFIRMAR SENHA * </Label>
               <InputField name="confirmPassword" id="confirmPassword" placeholder="confirme sua senha" />
               <DivTextValidation>
-                <TextValidation>{errors.confirmPassword}</TextValidation> 
+                <TextValidation id="id-message-confirm-password">{errors.confirmPassword}</TextValidation> 
               </DivTextValidation>
             </div>
 
@@ -119,7 +119,7 @@ export const CreateUser = () => {
               />
             </div>              
 
-            <Button id="createButtonId" type="submit" disabled={Object.values(errors).length > 0}>CRIAR CONTA</Button>
+            <Button id="id-button-create-user" type="submit" disabled={Object.values(errors).length > 0}>CRIAR CONTA</Button>
           </FormDiv>
         )}
       </Formik>
