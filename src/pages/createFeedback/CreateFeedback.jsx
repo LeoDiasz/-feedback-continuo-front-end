@@ -69,7 +69,6 @@ export const CreateFeedback = () => {
                   onChange={e => onChangeFeedbackHandler(e.target.value)}
                   value={feedback}
                 />
-              </div>
                 <nav>
                   <ul>
                     {feedbackSuggestions && feedbackSuggestions.map(({ idUser, name, avatar, userRole }) =>
@@ -81,6 +80,7 @@ export const CreateFeedback = () => {
                     )}
                   </ul>
                 </nav>
+              </div>
               <div>
                 <Label htmlFor="message">Feedback</Label>
                 <InputField type="text" name="message" id="message" placeholder='Digite o feedback que gostaria de enviar' />

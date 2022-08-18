@@ -67,24 +67,19 @@ const FeedbackProvider = ({ children }) => {
     }
     ////////////////////////////////////////////////////////////////
     //Get dos Feedbacks
+    const [listFeedbackReceived, setListFeedbackReceived] = useState([])
+    const [listFeedbackGived, setListFeedbackGived] = useState([])
 
-    const getFeedbackUserReceived = async () => {
+    const getFeedbackUser = async (type) => {
         try {
-            const { data: dataFeedbackReceive } = await apiDbc.get("/feedback/receveid?page=0")
-            console.log(dataFeedbackReceive)
+            const { data: dataFeedback } = await apiDbc.get(`/feedback/${type}?page=0`)
+            type === 'receveid' ? setListFeedbackReceived(dataFeedback) : setListFeedbackGived(dataFeedback)
+        
         } catch (error) {
             console.log(error)
         }
     }
-    const getFeedbackUserGived = async () => {
-        try {
-            const { data: dataFeedbackGived } = await apiDbc.get("/feedback/gived?page=0")
-            console.log(dataFeedbackGived)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
+    
     const handleCreateFeedback = async (values) => {
         try {
             const data = await apiDbc.post("/feedback", values)
@@ -97,12 +92,12 @@ const FeedbackProvider = ({ children }) => {
     return (
         <FeedbackContext.Provider value={{
             feedback,
-            idUserReceiveFeed,
-            feedbackSuggestions,
             tags,
+            feedbackSuggestions,
+            listFeedbackReceived,
+            idUserReceiveFeed,
             tagsSuggestions,
-            getFeedbackUserReceived,
-            getFeedbackUserGived,
+            getFeedbackUser,
             handleCreateFeedback,
             onSuggestionFeedbackHandler,
             onChangeFeedbackHandler,

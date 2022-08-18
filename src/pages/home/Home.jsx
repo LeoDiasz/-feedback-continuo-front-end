@@ -1,40 +1,27 @@
 import { useEffect, useState } from 'react'
+import uploadUser from "../../images/uploadUser.jpg"
 import { useUserContext } from '../../hooks/useUserContext'
 import { useFeedbackContext } from '../../hooks/useFeedbackContext'
-import uploadUser from "../../images/uploadUser.jpg"
 import { Loading } from '../../components/Loading'
-import { Grid, DivUsuarios, DivFeedback, Abas, FeedBackRecebidoContent, FeedBackEnviadoContent } from './styles'
+import { Grid, DivUsuarios, DivFeedback, Abas } from './styles'
 import { Container } from '../../components/Container/styles'
 import { Header } from '../../components/Header'
 import { AvatarUser } from '../../components/AvatarUser'
+import { FeedbackUserCard } from '../../components/FeedbackUserCard'
 
 export const Home = () => {
   const {user, getDatasUser} = useUserContext()
-  const { getFeedbackUserReceived, getFeedbackUserGived} = useFeedbackContext()
+  const { getFeedbackUser, listFeedbackReceived} = useFeedbackContext()
   const [loading, setLoading] = useState(true)
-  const [displayEnviado, setDisplayEnviado] = useState('grid');
-  const [displayRecebido, setDisplayRecebido] = useState('none');
-  const [heigth, setHeigth] = useState('')
- 
+  console.log(listFeedbackReceived)
+
   const setup = async () => {
+
     setLoading(true)
+
     await getDatasUser()
-    await getFeedbackUserReceived()
-    await getFeedbackUserGived()
-    
+    await getFeedbackUser('receveid')
     setLoading(false)
-  }
-
-  const mudarAbaRecebido = () => {
-    setDisplayEnviado('none')
-    setDisplayRecebido('grid')
-    setHeigth('red')
-    console.log(heigth)
-  }
-
-  const mudarAbaEnviado = () => {
-    setDisplayRecebido('none')
-    setDisplayEnviado('grid')
   }
  
   useEffect(() => {
@@ -70,35 +57,14 @@ export const Home = () => {
             </DivUsuarios>
           
             <DivFeedback> {/* Grid de Feedbakcs */}
+            
               <Abas>
-                <p onClick={mudarAbaEnviado}>Feedback Enviados</p>
-                <p onClick={mudarAbaRecebido}>Feedback Recebidos</p>
+                <p >Feedback Enviados</p>
+                <p >Feedback Recebidos</p>
               </Abas>
 
-              <FeedBackRecebidoContent displayRecebido={displayRecebido} heigth={heigth}>
-                <div>
-                  <img src={uploadUser} alt="" />
-                  <h1>Lucas Araujo</h1>
-                  <p>Cargo</p>
-                  <p>Email</p>
-                </div>
-                <div>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, harum optio! Reprehenderit dignissimos rerum delectus quae provident in placeat veniam maxime consequatur asperiores impedit, unde nihil vel obcaecati aspernatur! Optio consequatur illum qui asperiores? Itaque explicabo, consectetur ad, cum quidem laudantium temporibus eveniet ex expedita dicta ab perspiciatis magni enim!</p>
-                </div>
-              </FeedBackRecebidoContent>
-
-              <FeedBackEnviadoContent displayEnviado={displayEnviado}>
-                <div>
-                  <img src={uploadUser} alt="" />
-                  <h1>Leonardo Dias</h1>
-                  <p>Cargo</p>
-                  <p>Email</p>
-                </div>
-                <div>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, harum optio! Reprehenderit dignissimos rerum delectus quae provident in placeat veniam maxime consequatur asperiores impedit, unde nihil vel obcaecati aspernatur! Optio consequatur illum qui asperiores? Itaque explicabo, consectetur ad, cum quidem laudantium temporibus eveniet ex expedita dicta ab perspiciatis magni enim!</p>
-                </div>
-              </FeedBackEnviadoContent>
-
+             <FeedbackUserCard />
+             
             </DivFeedback>
           </Grid>
         </Container >

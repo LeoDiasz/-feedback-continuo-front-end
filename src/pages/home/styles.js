@@ -63,6 +63,8 @@ export const DivFeedback = styled.div`
     border: 1px solid ${props => props.theme.colors.border};
     border-top: none;
     border-radius: 8px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
+    box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
 `;
 
 export const Abas = styled.div`   
@@ -96,76 +98,3 @@ export const Abas = styled.div`
         cursor: pointer;
     }
 `;
-
-export const FeedBackRecebidoContent = styled.div`
-display: ${props => props.displayRecebido && props.displayRecebido};
-grid-template-columns: 25% 75%;
-align-items: center;
-margin: 15px;
-border: 1px solid ${props => props.theme.colors.border};
-border-radius: 8px; 
-
-    & div:first-child{
-        display: grid;
-        justify-items: center;
-        padding: 8px;
-
-     & h1 {
-        font-size: 16px;
-        margin: 10px 0 5px 0; 
-    }
-        
-    & p {
-        font-size: 14px;
-        margin-bottom: 5px;           
-    }
-
-    & img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-        }
-    }
-    
-    & div:last-child {
-        padding: 8px;
-    }
-`;
-
-export const FeedBackEnviadoContent = styled.div`
-
-    display: ${props => props.displayEnviado && props.displayEnviado};
-    grid-template-columns: 25% 75%;
-    align-items: center;
-    margin: 15px;
-    border: 1px solid ${props => props.theme.colors.border};
-    border-radius: 8px;
-
-    & div:first-child{
-        display: grid;
-        justify-items: center;
-        padding: 8px;
-
-     & h1 {
-        font-size: 16px;
-        margin: 10px 0 5px 0; 
-    }
-        
-    & p {
-        font-size: 14px;
-        margin-bottom: 5px;           
-    }
-
-    & img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-        }
-    }
-    
-    & div:last-child {
-        padding: 8px;
-    } 
-`
