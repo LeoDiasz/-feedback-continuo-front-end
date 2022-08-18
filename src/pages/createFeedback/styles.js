@@ -2,18 +2,20 @@ import { Form, Field } from "formik";
 import styled from "styled-components";
 
 export const Forms = styled(Form)`
+    position: relative;
     margin: 50px auto;
     padding: 30px;
     border: 1px solid ${props => props.theme.colors.border};
     border-radius: 8px;
 
-    div>nav {
+    nav {
         position: absolute;
         background: #FFFFFF;
         width: 500px;
+        border-radius: 8px;
     }
 
-    div>nav>ul>li {
+    nav>ul>li {
         display: flex;
         align-items: center;
         font-size: 14px;

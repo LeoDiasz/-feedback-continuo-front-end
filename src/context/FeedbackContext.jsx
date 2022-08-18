@@ -54,7 +54,7 @@ const FeedbackProvider = ({ children }) => {
         setTags(text)
     }
     ////////////////////////////////////////////////////////////////
-
+    //Get das Tags
     const [getTags, setGetTags] = useState([])
 
     const getTagsServer = async () => {
@@ -65,11 +65,21 @@ const FeedbackProvider = ({ children }) => {
             console.log(error)
         }
     }
+    ////////////////////////////////////////////////////////////////
+    //Get dos Feedbacks
 
-    const getFeedbackUser = async () => {
+    const getFeedbackUserReceived = async () => {
         try {
-            const { data: dataFeedback } = await apiDbc.get("/feedback/gived?page=0")
-            console.log(dataFeedback)
+            const { data: dataFeedbackReceive } = await apiDbc.get("/feedback/receveid?page=0")
+            console.log(dataFeedbackReceive)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const getFeedbackUserGived = async () => {
+        try {
+            const { data: dataFeedbackGived } = await apiDbc.get("/feedback/gived?page=0")
+            console.log(dataFeedbackGived)
         } catch (error) {
             console.log(error)
         }
@@ -91,7 +101,8 @@ const FeedbackProvider = ({ children }) => {
             feedbackSuggestions,
             tags,
             tagsSuggestions,
-            getFeedbackUser,
+            getFeedbackUserReceived,
+            getFeedbackUserGived,
             handleCreateFeedback,
             onSuggestionFeedbackHandler,
             onChangeFeedbackHandler,
