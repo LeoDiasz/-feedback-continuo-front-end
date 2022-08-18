@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useUserContext } from '../../hooks/useUserContext'
+import { useFeedbackContext } from '../../hooks/useFeedbackContext'
 import uploadUser from "../../images/uploadUser.jpg"
 import { Loading } from '../../components/Loading'
 import { Grid, DivUsuarios, DivFeedback, Abas, FeedBackRecebidoContent, FeedBackEnviadoContent } from './styles'
@@ -10,6 +10,7 @@ import { AvatarUser } from '../../components/AvatarUser'
 
 export const Home = () => {
   const {user, getDatasUser} = useUserContext()
+  const { getFeedbackUserReceived, getFeedbackUserGived} = useFeedbackContext()
   const [loading, setLoading] = useState(true)
   const [displayEnviado, setDisplayEnviado] = useState('grid');
   const [displayRecebido, setDisplayRecebido] = useState('none');
@@ -18,7 +19,9 @@ export const Home = () => {
   const setup = async () => {
     setLoading(true)
     await getDatasUser()
-
+    await getFeedbackUserReceived()
+    await getFeedbackUserGived()
+    
     setLoading(false)
   }
 
