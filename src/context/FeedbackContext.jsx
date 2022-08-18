@@ -5,14 +5,39 @@ import { apiDbc } from "../services/api"
 const FeedbackContext = createContext()
 
 const FeedbackProvider = ({ children }) => {
+
+    const [listFeedbacksReceveid, setListFeedbacksReceveid] = useState([])
+    const [listFeedbacksSend, setListFeedbacksSend] = useState([])
+
     const { listCollaborators } = useUserContext()
     
-    ////////////////////////////////////////////////////////////////
-    //AutoComplete Feedback
     const [feedback, setFeedback] = useState('')
     const [idUserReceiveFeed, setIdUserReceiveFeed ] = useState('')
     const [feedbackSuggestions, setFeedbackSuggestions] = useState([])
-    
+    const [getTags, setGetTags] = useState([])
+    const [tags, setTags] = useState([])
+    const [tagsSuggestions, setTagsSuggestions] = useState([])
+
+    const getFeedbacksUser = async (type, id) => {
+        try {
+            const { data: listFeedbacks } = await apiDbc.get(`/feedback/${type}-por-id?page=0&id=${id}`)
+            type === "receveid" ? setListFeedbacksReceveid(listFeedbacks) : setListFeedbacksSend(listFeedbacks)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleCreateFeedback = async (values) => {
+        try {
+            const data = await apiDbc.post("/feedback", values)
+
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const onSuggestionFeedbackHandler = (feedback, idUser) => {
         setFeedback(feedback)
         setFeedbackSuggestions([])
@@ -32,11 +57,6 @@ const FeedbackProvider = ({ children }) => {
         setFeedback(feedback)
     }
 
-    ////////////////////////////////////////////////////////////////
-    //AutoComplete Tags
-    const [tags, setTags] = useState('')
-    const [tagsSuggestions, setTagsSuggestions] = useState([])
-    
     const onSuggestionTagsHandler = (text) => {
         setTags(text)
         setTagsSuggestions([])
@@ -51,11 +71,8 @@ const FeedbackProvider = ({ children }) => {
             })
         }
         setTagsSuggestions(filtro)
-        setTags(text)
+        setTags([...tags, text])
     }
-    ////////////////////////////////////////////////////////////////
-    //Get das Tags
-    const [getTags, setGetTags] = useState([])
 
     const getTagsServer = async () => {
         try {
@@ -65,46 +82,23 @@ const FeedbackProvider = ({ children }) => {
             console.log(error)
         }
     }
-    ////////////////////////////////////////////////////////////////
-    //Get dos Feedbacks
-    const [listFeedbackReceived, setListFeedbackReceived] = useState([])
-    const [listFeedbackGived, setListFeedbackGived] = useState([])
-
-    const getFeedbackUser = async (type) => {
-        try {
-            const { data: dataFeedback } = await apiDbc.get(`/feedback/${type}?page=0`)
-            type === 'receveid' ? setListFeedbackReceived(dataFeedback) : setListFeedbackGived(dataFeedback)
-        
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    
-    const handleCreateFeedback = async (values) => {
-        try {
-            const data = await apiDbc.post("/feedback", values)
-            console.log(data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
+  
     return (
         <FeedbackContext.Provider value={{
+            getTagsServer,
+            getFeedbacksUser,
+            handleCreateFeedback,
+            listFeedbacksReceveid,
+            listFeedbacksSend,
             feedback,
             tags,
             feedbackSuggestions,
-            listFeedbackReceived,
             idUserReceiveFeed,
-            tagsSuggestions,
-            getFeedbackUser,
-            handleCreateFeedback,
+            tagsSuggestions,            
             onSuggestionFeedbackHandler,
             onChangeFeedbackHandler,
             onSuggestionTagsHandler,
             onChangeTagsHandler,
-            getTagsServer
-
         }}>
             {children}
         </FeedbackContext.Provider>

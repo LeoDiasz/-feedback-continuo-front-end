@@ -10,10 +10,13 @@ import { Button } from '../../components/Button/styles'
 import { AvatarUser } from '../../components/AvatarUser'
 import uploadUser from "../../images/uploadUser.jpg"
 
-export const CreateFeedback = () => {
 
-  const { getListCollaborators } = useUserContext()
+export const CreateFeedback = () => {
+  const { getListCollaborators, user } = useUserContext()
+
   const {
+    getTagsServer,
+    getFeedbacksUser,
     handleCreateFeedback,
     onChangeFeedbackHandler,
     onSuggestionFeedbackHandler,
@@ -24,12 +27,13 @@ export const CreateFeedback = () => {
     onChangeTagsHandler,
     tags,
     tagsSuggestions,
-    getTagsServer
   } = useFeedbackContext()
 
   const setup = async () => {
     await getListCollaborators()
     await getTagsServer()
+    await getFeedbacksUser("receveid", user.idUser)
+    await getFeedbacksUser("gived", user.idUser)
   }
 
   useEffect(() => {
@@ -52,7 +56,7 @@ export const CreateFeedback = () => {
               message: values.message,
               anonymous: false,
               feedbackIdUser: parseInt(idUserReceiveFeed),
-              tagsList: [values.tags],
+              tagsList: [],
             }
             console.log(newValues)
             // handleCreateFeedback(newValues)
@@ -69,18 +73,19 @@ export const CreateFeedback = () => {
                   onChange={e => onChangeFeedbackHandler(e.target.value)}
                   value={feedback}
                 />
-                <nav>
-                  <ul>
-                    {feedbackSuggestions && feedbackSuggestions.map(({ idUser, name, avatar, userRole }) =>
-                      <li key={idUser} onClick={() => onSuggestionFeedbackHandler(name, idUser)}>
-                        <AvatarUser img={avatar ? avatar : uploadUser} />
-                        <p>{name}</p>
-                        <p>{userRole}</p>
-                      </li>
-                    )}
-                  </ul>
-                </nav>
               </div>
+              <nav>
+                <ul>
+                  {feedbackSuggestions && feedbackSuggestions.map(({ idUser, name, avatar, userRole }) =>
+                    <li key={idUser} onClick={() => onSuggestionFeedbackHandler(name, idUser)}>
+                      <AvatarUser img={avatar ? avatar : uploadUser} />
+                      <p>{name}</p>
+                      <p>{userRole}</p>
+                    </li>
+                  )}
+                </ul>
+              </nav>
+
               <div>
                 <Label htmlFor="message">Feedback</Label>
                 <InputField type="text" name="message" id="message" placeholder='Digite o feedback que gostaria de enviar' />
@@ -94,6 +99,11 @@ export const CreateFeedback = () => {
                   onChange={e => onChangeTagsHandler(e.target.value)}
                   value={tags}
                 />
+                <div>
+                  {tags && tags.map(tag => (
+                    <p>tag</p>
+                  ))}
+                </div>
                 <nav>
                   <ul>
                     {tagsSuggestions && tagsSuggestions.map(({ idTag, name }) =>
@@ -106,8 +116,7 @@ export const CreateFeedback = () => {
               </div>
               <Button type='submit'>Criar</Button>
             </Forms>
-          )
-          }
+          )}
         </Formik>
       </Container>
     </>
