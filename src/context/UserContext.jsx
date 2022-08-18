@@ -10,9 +10,8 @@ const UserProvider = ({children}) => {
   const [listCollaborators, setListCollaborators] = useState()
 
   const getDatasUser = async () => {
-
     try {
-      const {data: datasUser} = await apiDbc.get("/users/recuperar-usuario-logado")
+      const {data: datasUser} = await apiDbc.get("/users/recover-logged-user")
 
       datasUser.avatar = datasUser.avatar ?  "data:image/png;base64," + datasUser.avatar : null
 
@@ -21,7 +20,6 @@ const UserProvider = ({children}) => {
     } catch(Error) {
       console.log(Error)
     }
-
   }
 
   const getListCollaborators = async () => {

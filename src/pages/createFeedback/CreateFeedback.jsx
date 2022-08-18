@@ -2,24 +2,17 @@ import { Formik } from 'formik'
 import { Container } from '../../components/Container/styles'
 import { Forms } from './styles'
 import { Label, InputField } from '../../components/InputStyles/styles'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useUserContext } from '../../hooks/useUserContext'
 import { useFeedbackContext } from '../../hooks/useFeedbackContext'
 import { Header } from '../../components/Header'
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import { Button } from '../../components/Button/styles'
-
 
 export const CreateFeedback = () => {
 
   const { user, listCollaborators, getListCollaborators } = useUserContext()
+  const { handleCreateFeedback, onChangeHandler, onSuggestionHandler, suggestions, text } = useFeedbackContext()
 
-  const { handleCreateFeedback } = useFeedbackContext()
-
-  const [anonimo, setAnonimo] = useState(false)
-  console.log(anonimo)
   const setup = async () => {
     await getListCollaborators()
   }
@@ -36,13 +29,13 @@ export const CreateFeedback = () => {
           initialValues={{
             message: '',
             anonymous: '',
-            feedbackIdUser:'',
+            feedbackIdUser: '',
             tagsList: '',
           }}
           onSubmit={values => {
             const newValues = {
               message: values.message,
-              anonymous: anonimo,
+              anonymous: '',
               feedbackIdUser: parseInt(values.feedbackIdUser),
               tagsList: [values.tags],
             }
@@ -53,12 +46,15 @@ export const CreateFeedback = () => {
           {({ errors }) => (
             <Forms>
               <div>
-                <Label htmlFor="feedbackIdUser">Para quem gostaria de enviar?</Label>
-                <InputField name="feedbackIdUser" id="feedbackIdUser" component="select">
-                  {listCollaborators && listCollaborators.map(({ name, userRole, idUser }) => (
-                    <option key={idUser} value={idUser}>{name} - {userRole}</option>
-                  ))}
-                </InputField>
+                <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
+                <InputField
+                  type="text"
+                  onChange={e => onChangeHandler(e.target.value)}
+                  value={text}
+                />
+                {suggestions && suggestions.map(({ name, idUser }) =>
+                  <div key={idUser} onClick={() => onSuggestionHandler(name)}>{name}</div>
+                )}
               </div>
               <div>
                 <Label htmlFor="message">Feedback</Label>
@@ -66,13 +62,11 @@ export const CreateFeedback = () => {
               </div>
               <div>
                 <Label htmlFor="tags">Tags</Label>
-                <InputField name="tags" id="tags" type="text">
-
-                </InputField>
-
-                <FormGroup>
-                  <FormControlLabel control={<Checkbox />} onChange={() => setAnonimo(true)} label="Enviar feedbak anônimo?" />
-                </FormGroup>
+                <InputField
+                  type="text"
+                  onChange={e => onChangeHandler(e.target.value)}
+                  value={text}
+                />
               </div>
               <Button type='submit'>Criar</Button>
             </Forms>
