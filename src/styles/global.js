@@ -9,7 +9,9 @@ const theme = {
     textGrayDark: "#4B506D",
     error: "#F12B2C",
     inputBorder: "#F0F1F7",
-    border: "#DFE0EB"
+    border: "#DFE0EB",
+    black: "#474748",
+    backgroundCard: "#FCFDFE",
   }
 }
 

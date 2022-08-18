@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import { CollaboratorInfoCard } from '../../components/CollaboratorInfoCard'
 import { Container } from '../../components/Container/styles'
 import { Header } from '../../components/Header'
+import { Input } from '../../components/InputStyles/styles'
 import { Loading } from '../../components/Loading'
 import { useUserContext } from '../../hooks/useUserContext'
 import {ListCollaboratorsContent, SectionCollaboratorsContainer} from "./styles"
@@ -9,6 +10,7 @@ import {ListCollaboratorsContent, SectionCollaboratorsContainer} from "./styles"
 export const Collaborators = () => {
   const {listCollaborators, getListCollaborators} = useUserContext()
   const [isLoading, setIsLoading] = useState(true)
+  const [searchUser, setSearchUser] = useState("")
 
   const setup = async () => {
     await getListCollaborators()
@@ -20,6 +22,10 @@ export const Collaborators = () => {
     setup()
   }, [])
 
+  const filteredCollaborators = searchUser.length > 0 
+    ? listCollaborators.filter(collaborator => collaborator.name.toLowerCase().includes(searchUser.toLowerCase())) 
+    : []
+
   if(isLoading) {
     return (
       <Loading/>
@@ -29,15 +35,34 @@ export const Collaborators = () => {
   return (
     <>
       <Header/>
-      <section>
+      <SectionCollaboratorsContainer>
         <Container>
+            <div>
+              <h1>Colaboradores</h1>
+              <span>{listCollaborators ? `${listCollaborators.length} colaboradores`: "nenhum colaborador"}</span>
+            </div>
+
+            <Input 
+              placeholder='Procure por um colaborador pelo nome' 
+              type="text" 
+              onChange={e => setSearchUser(e.target.value)} 
+              value={searchUser} 
+            />
+
            <ListCollaboratorsContent>
-            {listCollaborators && listCollaborators.map((collaborator, i) => (
-              <CollaboratorInfoCard key={i} datasCollaborator={collaborator}/>
-            ))}
+            {searchUser.length > 0 ? (
+              filteredCollaborators.map((collaborator, i) => (
+                <CollaboratorInfoCard key={i} datasCollaborator={collaborator}/>
+              ))
+            ) : (
+              listCollaborators.map((collaborator, i) => (
+                <CollaboratorInfoCard key={i} datasCollaborator={collaborator}/>
+              ))
+            )}
+           
            </ListCollaboratorsContent>
         </Container>
-      </section>
+      </SectionCollaboratorsContainer>
     </>
   )
 }

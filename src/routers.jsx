@@ -25,7 +25,7 @@ function Routers() {
                                 <Route path='/home' element={<Home />} />
                                 <Route path='/feedback/create' element={<CreateFeedback />} />
                                 <Route path='/collaborators' element={<Collaborators />} />
-                                <Route path='/collaborator/profile' element={<ProfileCollaborator />} />
+                                <Route path='/collaborator/profile/:id' element={<ProfileCollaborator />} />
                                 <Route path='/user/forgot-password' element={<ForgotPassword />} />
                             </Route>
                             <Route path='*' element={<NotFound />} />

@@ -53,11 +53,15 @@ export const Home = () => {
         <Container>
           <Grid>
             <DivUsuarios> {/* Grid de Usuarios */}
-              <AvatarUser img={user.avatar ? user.avatar : uploadUser}/>
-        
-              <h1>{user.name}</h1>
-              <p>{user.userRole}</p>
-              <p>{user.email}</p>
+              {user && (
+                <>
+                  <AvatarUser img={user.avatar ? user.avatar : uploadUser}/>
+            
+                  <h1>{user.name}</h1>
+                  <p>{user.userRole}</p>
+                  <p>{user.email}</p>
+                </>
+              )}
               <div><span>5</span><p>Feedback enviados</p></div>
               <div><span>3</span><p>Feedback recebidos</p></div>
             </DivUsuarios>

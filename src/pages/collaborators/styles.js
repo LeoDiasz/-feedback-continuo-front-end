@@ -1,8 +1,33 @@
 import styled from "styled-components"
 
-const SectionCollaboratorsContainer = {
-  
-}
+const SectionCollaboratorsContainer =  styled.section`
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 60px 0;
+
+    > div {
+    
+      h1 {
+        color: ${props => props.theme.colors.black}
+      }
+
+      span {
+        font-size: 0.9rem;
+        color: ${props => props.theme.colors.textGrayDark}
+      }
+    }
+    
+    input {
+      
+    }
+
+  }
+
+
+`
 
 
 const ListCollaboratorsContent = styled.ul`

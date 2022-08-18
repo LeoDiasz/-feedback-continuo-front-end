@@ -7,6 +7,7 @@ import { AvatarUser } from "../AvatarUser"
 import { Container } from "../Container/styles"
 import { HeaderContainer, DivLogout} from "./styles"
 import { Button } from "../Button/styles"
+import uploadUser from "../../images/uploadUser.jpg"
 
 export const Header = () => {
   const [isOpenButtonSignOut, setIsOpenButtonSignOut] = useState(false)
@@ -18,7 +19,6 @@ export const Header = () => {
       <Container>
         <nav>
           <Logo/>
-          
           <ul>
             <li>
               <Link to="/collaborators">Colaboradores</Link>
@@ -34,7 +34,7 @@ export const Header = () => {
             <Button  width="100px" onClick={signOut}>Sair</Button>
           )}
           <button onClick={() => setIsOpenButtonSignOut(isOpenButtonSignOut ? false : true)}>
-            <AvatarUser img={user.avatar} width="60px"/>
+            {user && <AvatarUser img={user.avatar ? user.avatar : uploadUser} width="60px"/>}
           </button>
 
         </DivLogout>

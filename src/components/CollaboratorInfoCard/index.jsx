@@ -1,21 +1,17 @@
 import { AvatarUser } from "../AvatarUser"
+import {useNavigate} from "react-router-dom";
 import { CardContent } from "./styles"
 import uploadUserImg from "../../images/uploadUser.jpg"
 
 export const CollaboratorInfoCard = ({datasCollaborator}) => {
+  const navigate = useNavigate()
 
-  // avatar: null
-  // idUser: 15
-  // name: "Dr. Raven Wiza"
-  // userRole: "Engenheiro de Dados"
-
-
-  console.log(datasCollaborator)
   return (
-    <CardContent>
-      <AvatarUser img={datasCollaborator.avatar ? datasCollaborator.avatar : uploadUserImg}/>
+    <CardContent onClick={() => navigate(`/collaborator/profile/${datasCollaborator.idUser}`)}>
+      <AvatarUser width="60px" img={datasCollaborator.avatar ? datasCollaborator.avatar : uploadUserImg}/>
       <div>
-        <h3></h3>
+        <h4>{datasCollaborator.name}</h4>
+        <p>{datasCollaborator.userRole}</p>
       </div>
     </CardContent>
   )
