@@ -40,7 +40,6 @@ export const HeaderContainer = styled.header`
     border: none;
   }
 
-  
 
 `
 

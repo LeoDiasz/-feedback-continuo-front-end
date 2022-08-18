@@ -7,7 +7,6 @@ const MainContent = styled.main`
         align-items: flex-start;
         width: 100%;
         padding: 60px 0;
-        gap: 40px;
     }
 `
 
