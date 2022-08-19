@@ -12,7 +12,10 @@ const FeedbackProvider = ({ children }) => {
     const getFeedbacksUser = async (type, id) => {
         try {
             const { data: listFeedbacks } = await apiDbc.get(`/feedback/${type}-por-id?page=0&id=${id}`)
-            console.log(listFeedbacks)
+            
+            let lenght = listFeedbacks.totalElements;
+            console.log(lenght)
+
             listFeedbacks.content = listFeedbacks.content.map(feedback => {
                 if (type === "receveid") {
                     feedback.feedbacksGiven.avatar = feedback.feedbacksGiven.avatar ? "data:image/png;base64," + feedback.feedbacksGiven.avatar : null

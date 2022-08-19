@@ -50,7 +50,7 @@ const UserProvider = ({ children }) => {
   const getListCollaborators = async () => {
 
     try {
-      const { data: listCollaborators } = await apiDbc.get(`/users/list-all?page=${atualPage}&register=${usersPerPage}`)
+      const { data: listCollaborators } = await apiDbc.get(`/users/list-all-pageable?page=${atualPage}&register=${usersPerPage}`)
 
       const listCollaboratorsFiltredAvatar = listCollaborators.content.map(collaborator => {
         const collaboratorFiltred = {
