@@ -10,13 +10,11 @@ const FeedbackProvider = ({ children }) => {
     const [listTagsServer, setListTagsServer] = useState([])
 
     const getFeedbacksUser = async (type, id) => {
-        try {
-            const { data: listFeedbacks } = await apiDbc.get(`/feedback/${type}-por-id?page=0&id=${id}`)
-            
-            let lenght = listFeedbacks.totalElements;
-            console.log(lenght)
 
-            listFeedbacks.content = listFeedbacks.content.map(feedback => {
+        try {
+            let { data: listFeedbacks } = await apiDbc.get(`/feedback/${type}-por-id?idUser=${id}`)
+
+            listFeedbacks = listFeedbacks.map(feedback => {
                 if (type === "receveid") {
                     feedback.feedbacksGiven.avatar = feedback.feedbacksGiven.avatar ? "data:image/png;base64," + feedback.feedbacksGiven.avatar : null
                 } else {
@@ -25,7 +23,7 @@ const FeedbackProvider = ({ children }) => {
                 return feedback;
             })
             type === "receveid" ? setListFeedbacksReceveid(listFeedbacks) : setListFeedbacksSend(listFeedbacks)
-
+            
         } catch (error) {
             console.log(error)
         }

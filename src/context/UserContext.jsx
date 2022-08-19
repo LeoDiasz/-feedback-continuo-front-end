@@ -67,7 +67,6 @@ const UserProvider = ({ children }) => {
 
     try {
       const { data: listCollaboratorsPagesOff } = await apiDbc.get(`/users/list-all`)
-      
       const listCollaboratorsPagesOffFiltredAvatar = listCollaboratorsPagesOff.map(collaborator => {
         return {
           avatar: collaborator.avatar ? "data:image/png;base64," + collaborator.avatar : null,

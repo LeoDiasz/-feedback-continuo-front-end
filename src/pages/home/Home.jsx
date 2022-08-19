@@ -17,13 +17,12 @@ export const Home = () => {
     const {id} = await getDatasUser()
     await getFeedbacksUser("receveid", id)
     await getFeedbacksUser("gived", id)
-   
+    
     setLoading(false)
   }
 
   useEffect(() => {
-    setup()
-    
+    setup()    
   }, [])
 
   if(loading) {

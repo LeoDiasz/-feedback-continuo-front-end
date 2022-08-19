@@ -4,7 +4,6 @@ import { SectionFeedbacksContent, Tabs, ButtonTabs } from './styles'
 
 export const SectionFeedbacksUser = ({ listFeedbacksReceveid, listFeedbacksSend }) => {
     
-    
     const [showFeedbacks, setShowFeedbacks] = useState(true)
 
     return (
@@ -14,7 +13,7 @@ export const SectionFeedbacksUser = ({ listFeedbacksReceveid, listFeedbacksSend 
                 <ButtonTabs onClick={() => setShowFeedbacks(false)} isUpHeight={!showFeedbacks && '60px'}>Feedback Enviados</ButtonTabs>
             </Tabs>
             <SectionFeedbacksContent>
-                <FeedbackList type={showFeedbacks ? 'feedbacksGiven' : 'feedbackEntityReceived'} listFeedbacks={showFeedbacks ? listFeedbacksReceveid.content : listFeedbacksSend.content} />
+                <FeedbackList type={showFeedbacks ? 'feedbacksGiven' : 'feedbackEntityReceived'} listFeedbacks={showFeedbacks ? listFeedbacksReceveid : listFeedbacksSend} />
             </SectionFeedbacksContent>
         </div>
     )

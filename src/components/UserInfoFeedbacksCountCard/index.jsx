@@ -5,6 +5,8 @@ import { CardUser, DivInfoText, DivFeedbacksCount } from "./styles"
 import { Button } from "../Button/styles"
 
 export const UserInfoFeedbacksCountCard = ({user, listFeedbacksSend, listFeedbacksReceveid}) => {
+
+  
   const {colors} = useThemeContext()
   return (
     <CardUser>
@@ -18,11 +20,11 @@ export const UserInfoFeedbacksCountCard = ({user, listFeedbacksSend, listFeedbac
             </DivInfoText>
             <DivFeedbacksCount>
               <Button backgroundColor={colors.primary}>
-                <span>{listFeedbacksSend.length > 0 ? listFeedbacksSend.length : "0"}</span>
+                {/* <span>{listFeedbacksSend.length > 0 ? listFeedbacksSend.length : "0"}</span> */}
                 Feedbacks Enviados
               </Button>
               <Button backgroundColor={colors.primary}>
-                <span>{listFeedbacksReceveid.length > 0 ? listFeedbacksReceveid.length : "0"}</span>
+                {/* <span>{listFeedbacksReceveid.length > 0 ? listFeedbacksReceveid.length : "0"}</span> */}
                 Feedbacks recebidos
               </Button>
             </DivFeedbacksCount>
