@@ -38,8 +38,8 @@ export const Home = () => {
         <Container>
           <UserInfoFeedbacksCountCard
             user={user}
-            listFeedbacksReceveid={listFeedbacksReceveid.content} 
-            listFeedbacksSend={listFeedbacksSend.content}
+            listFeedbacksReceveid={listFeedbacksReceveid} 
+            listFeedbacksSend={listFeedbacksSend}
           />          
           <SectionFeedbacksUser listFeedbacksReceveid={listFeedbacksReceveid} listFeedbacksSend={listFeedbacksSend}/> 
         </Container >

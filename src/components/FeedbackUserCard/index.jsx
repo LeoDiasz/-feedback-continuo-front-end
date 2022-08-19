@@ -1,9 +1,35 @@
+import { useState } from 'react'
+import Switch from 'react-switch'
+import { apiDbc } from '../../services/api'
 import { TagsList } from '../TagsList'
 import { AvatarUser } from "../../components/AvatarUser"
 import { FeedbackContent, DivDatasUser, DivMessageFeedback } from './styles'
-import Switch from 'react-switch'
 
 export const FeedbackUserCard = ({ feedbackDatas, type }) => {
+    const [isPublicFeedback, setIsPublicFeedback] = useState(() => {
+        if (feedbackDatas.publico) {
+            return true
+        } else {
+            return false
+        }
+    })
+
+    const changeVisibleFeedbackReceveid = async () => {
+
+        setIsPublicFeedback(isPublicFeedback ? false : true)   
+
+        let updateVisible
+
+        updateVisible = isPublicFeedback ? false : true
+        
+        try {
+            await apiDbc.put(`/feedback?idFeedback=${feedbackDatas.idFeedback}&publico=${updateVisible}`)
+
+        } catch (Error) {
+            console.log(Error)
+        }
+        
+    }
     
     return (
         <FeedbackContent>
@@ -25,7 +51,18 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
             <DivMessageFeedback>
                 <p>{feedbackDatas.message}</p>
                 <TagsList listTags={feedbackDatas.tagsList} isNotShowDelete />
-                
+                {type === "feedbacksGiven" && (
+                    <Switch
+                        onChange={changeVisibleFeedbackReceveid}
+                        checked={isPublicFeedback}
+                        checkedIcon={false}
+                        uncheckedIcon={false}
+                        height={10}
+                        width={40}
+                        handleDiameter={20}
+
+                    />
+                )}
             </DivMessageFeedback>
         </FeedbackContent >
     )

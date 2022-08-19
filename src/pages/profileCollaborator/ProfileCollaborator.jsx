@@ -17,7 +17,7 @@ export const ProfileCollaborator = () => {
 
   const setup = async () => {
     await getDatasCollaboratorById(id)
-    await getFeedbacksUser("receveid", id)
+    await getFeedbacksUser("receveid", id, true)
     await getFeedbacksUser("gived", id)
     setIsLoading(false)
   }

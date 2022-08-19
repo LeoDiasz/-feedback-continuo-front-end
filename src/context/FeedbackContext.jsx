@@ -1,6 +1,7 @@
 import { createContext, useState } from "react"
 import toast from "react-hot-toast"
 import { apiDbc } from "../services/api"
+import { useUserContext } from "../hooks/useUserContext"
 
 const FeedbackContext = createContext()
 
@@ -9,10 +10,20 @@ const FeedbackProvider = ({ children }) => {
     const [listFeedbacksSend, setListFeedbacksSend] = useState([])
     const [listTagsServer, setListTagsServer] = useState([])
 
-    const getFeedbacksUser = async (type, id) => {
+    const {user} = useUserContext()
 
+    const getFeedbacksUser = async (type, id, isFiltered) => {
+        
         try {
             let { data: listFeedbacks } = await apiDbc.get(`/feedback/${type}-por-id?idUser=${id}`)
+
+            if (isFiltered) {
+                listFeedbacks = listFeedbacks.filter(feedback => {
+                    if (type === "receveid" && (feedback.publico == false && user.idUser === feedback.feedbackUserId)) {
+                        return feedback
+                    }
+                }) 
+            }
 
             listFeedbacks = listFeedbacks.map(feedback => {
                 if (type === "receveid") {
@@ -22,8 +33,10 @@ const FeedbackProvider = ({ children }) => {
                 }
                 return feedback;
             })
+
+                
             type === "receveid" ? setListFeedbacksReceveid(listFeedbacks) : setListFeedbacksSend(listFeedbacks)
-            
+                
         } catch (error) {
             console.log(error)
         }
@@ -50,6 +63,8 @@ const FeedbackProvider = ({ children }) => {
             console.log(Error)
         }
     }
+
+   
 
     return (
         <FeedbackContext.Provider value={{
