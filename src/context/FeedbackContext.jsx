@@ -19,7 +19,7 @@ const FeedbackProvider = ({ children }) => {
 
             if (isFiltered) {
                 listFeedbacks = listFeedbacks.filter(feedback => {
-                    if (type === "receveid" && (feedback.publico == false && user.idUser === feedback.feedbackUserId)) {
+                    if (type === "receveid" && !(feedback.publico == false && user.idUser === feedback.feedbackUserId)) {
                         return feedback
                     }
                 }) 
