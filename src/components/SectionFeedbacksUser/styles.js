@@ -23,13 +23,13 @@ const ButtonTabs = styled.button`
     position: absolute;
     bottom: 0;
     width: 50%;
-    height: ${props => props.height ? props.height : '50px'};   
-    background: ${props => props.height ? "#FFFFFF" : "#EEEEEE"};
+    height: ${props => props.isUpHeight ? props.isUpHeight : '50px'};   
+    background: ${props => props.isUpHeight ? "#FFFFFF" : "#EEEEEE"};
     border: 1px solid ${props => props.theme.colors.border};     
     border-radius: 8px 8px 0 0; 
     font-weight: bold;
     font-size: 14px;
-    color: ${props => props.height ? props.theme.colors.black : "#9E9E9E"};
+    color: ${props => props.isUpHeight ? props.theme.colors.black : "#9E9E9E"};
 
     cursor: pointer;
 

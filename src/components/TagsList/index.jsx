@@ -11,8 +11,8 @@ export const TagsList = ({listTags, setListTags, isNotShowDelete}) => {
 
   return (
     <ListTagsContent>
-       {listTags && listTags.map(({name, idTag}) => (
-          <li key={idTag}>
+       {listTags && listTags.map(({name, idTag}, i) => (
+          <li key={i}>
             <span># {name.toUpperCase()}</span>
             {!isNotShowDelete && (
               <TiDelete onClick={() => handleDeleteTag(idTag)}/>

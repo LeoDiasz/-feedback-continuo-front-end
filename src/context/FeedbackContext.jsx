@@ -12,6 +12,15 @@ const FeedbackProvider = ({ children }) => {
     const getFeedbacksUser = async (type, id) => {
         try {
             const { data: listFeedbacks } = await apiDbc.get(`/feedback/${type}-por-id?page=0&id=${id}`)
+            console.log(listFeedbacks)
+            listFeedbacks.content = listFeedbacks.content.map(feedback => {
+                if (type === "receveid") {
+                    feedback.feedbacksGiven.avatar = feedback.feedbacksGiven.avatar ? "data:image/png;base64," + feedback.feedbacksGiven.avatar : null
+                } else {
+                    feedback.feedbackEntityReceived.avatar = feedback.feedbackEntityReceived.avatar ? "data:image/png;base64," + feedback.feedbackEntityReceived.avatar : null
+                }
+                return feedback;
+            })
             type === "receveid" ? setListFeedbacksReceveid(listFeedbacks) : setListFeedbacksSend(listFeedbacks)
 
         } catch (error) {
@@ -30,8 +39,8 @@ const FeedbackProvider = ({ children }) => {
 
     const handleCreateFeedback = async (feedbackDatas) => {
 
-        feedbackDatas.tagsList = feedbackDatas.tagsList.map(tag => {return {name: tag.name}})
-        
+        feedbackDatas.tagsList = feedbackDatas.tagsList.map(tag => { return { name: tag.name } })
+
         try {
             await apiDbc.post("/feedback", feedbackDatas)
 
@@ -47,8 +56,8 @@ const FeedbackProvider = ({ children }) => {
             getFeedbacksUser,
             handleCreateFeedback,
             listFeedbacksReceveid,
-            listFeedbacksSend, 
-            listTagsServer          
+            listFeedbacksSend,
+            listTagsServer
         }}>
             {children}
         </FeedbackContext.Provider>
