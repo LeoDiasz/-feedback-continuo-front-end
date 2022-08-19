@@ -2,7 +2,6 @@ import { Formik } from 'formik'
 import { useEffect, useState } from 'react'
 import { useUserContext } from '../../hooks/useUserContext'
 import { useFeedbackContext } from '../../hooks/useFeedbackContext'
-import { CollaboratorInfoCard } from '../../components/CollaboratorInfoCard'
 import { Header } from '../../components/Header'
 import { Loading } from '../../components/Loading'
 import { Container } from '../../components/Container/styles'
@@ -11,7 +10,6 @@ import { Button } from '../../components/Button/styles'
 import { Forms, InputAuto, ListCollaboratorsContent, SearchTagsContent, SectionContent } from './styles'
 import { TagsList } from '../../components/TagsList'
 import { SuggestionUserCreateFeedback } from '../../components/SuggestionUserCreateFeedback'
-import { SuggestionDiv } from '../../components/SuggestionUserCreateFeedback/styles'
 
 
 export const CreateFeedback = () => {
@@ -156,7 +154,6 @@ export const CreateFeedback = () => {
                  />
               </div>
 
-
               <div>
                 <Label htmlFor="tags">Escolha as tags</Label>
                 <InputAuto
@@ -173,11 +170,11 @@ export const CreateFeedback = () => {
                       <p>{name}</p>
                     </li>
                   )}
-                </SearchTagsContent>
+                  </SearchTagsContent>
                 <TagsList 
                   listTags={listTagsChoose} 
                   setListTags={setListTagsChoose}
-                />
+                  />
               </div>
 
               <div>

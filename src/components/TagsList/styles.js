@@ -6,6 +6,7 @@ export const ListTagsContent = styled.ul`
   gap: 10px;
   flex-wrap: wrap;
   width: 100%;
+  height: 50px;
 
   li {
     display: flex;
