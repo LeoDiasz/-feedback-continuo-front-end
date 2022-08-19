@@ -20,43 +20,47 @@ const Forms = styled(FormPattern)`
         
     }
 
+    > div:nth-child(3) {
+        position: relative;
+    }
+
     > div {
         width: 100%;
     }
 
-    > div:last-child {
+    > div:nth-child(4){
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        padding: 10px 0;
+        gap: 10px;    
+        
+        input {
+            transform: scale(1.2);
+        }
     }
 
 `;
 
 const SearchTagsContent = styled.ul`
+    position: absolute;
+    background-color: #FFFFFF;
     display: flex;
+    max-height: 110px;
     flex-direction: column;
-    gap: 10px;
+    padding-bottom: 5px;
     width: 100%;
-    padding: 20px 10px;
+    z-index: 1;
+    overflow-y: auto;
 
     li {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: ${props => props.theme.colors.backgroundLight};
-        font-weight: bold;
-        border-radius: 8px;
-        width: 100px;
-        border-bottom: 5px;
-        background-color: ${props => props.theme.colors.textGrayMedio};
-        padding: 5px 10px;
+        color: ${props => props.theme.colors.textGrayDark};
+        font-size: 12px;
+        padding: 5px 0 0 10px;
         font-size: 10px;
-
         transition: filter 0.3s;
         cursor: pointer;
 
         :hover {
-            filter: brightness(0.95);
+            filter: brightness(0.90);
         }
     }
 `
@@ -78,7 +82,7 @@ const InputAuto = styled(Field)`
         outline: none;
     }
     
-`  
+`
 
 const ListCollaboratorsContent = styled.ul`
         position: absolute;
@@ -87,14 +91,21 @@ const ListCollaboratorsContent = styled.ul`
         max-height: 150px;
         border-radius: 8px;
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
+        z-index: 1;
         overflow-y: auto;
         
         p {
             color: ${props => props.theme.colors.textGrayDark};
             font-size: 12px;
             padding: 5px 0 0 10px;
+            transition: filter 0.3s;
+            cursor: pointer;
+
+        :hover {
+            filter: brightness(0.90);
+        }
         }
 `
 
-export {InputAuto, ListCollaboratorsContent, Forms, SearchTagsContent, SectionContent}
+export { InputAuto, ListCollaboratorsContent, Forms, SearchTagsContent, SectionContent }

@@ -53,13 +53,12 @@ const UserProvider = ({ children }) => {
       const { data: listCollaborators } = await apiDbc.get(`/users/list-all-pageable?page=${atualPage}&register=${usersPerPage}`)
 
       const listCollaboratorsFiltredAvatar = listCollaborators.content.map(collaborator => {
-        const collaboratorFiltred = {
+        return {
           avatar: collaborator.avatar ? "data:image/png;base64," + collaborator.avatar : null,
           idUser: collaborator.idUser,
           name: collaborator.name,
           userRole: collaborator.userRole,
         }
-        return collaboratorFiltred
       })
       setListCollaborators(listCollaboratorsFiltredAvatar)
       setPages(listCollaborators.totalPages)
