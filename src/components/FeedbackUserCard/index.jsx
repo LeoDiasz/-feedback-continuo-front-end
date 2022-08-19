@@ -4,8 +4,11 @@ import { apiDbc } from '../../services/api'
 import { TagsList } from '../TagsList'
 import { AvatarUser } from "../../components/AvatarUser"
 import { FeedbackContent, DivDatasUser, DivMessageFeedback } from './styles'
+import { useUserContext } from '../../hooks/useUserContext'
 
 export const FeedbackUserCard = ({ feedbackDatas, type }) => {
+    const {user} = useUserContext()
+
     const [isPublicFeedback, setIsPublicFeedback] = useState(() => {
         if (feedbackDatas.publico) {
             return true
@@ -51,7 +54,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
             <DivMessageFeedback>
                 <p>{feedbackDatas.message}</p>
                 <TagsList listTags={feedbackDatas.tagsList} isNotShowDelete />
-                {type === "feedbacksGiven" && (
+                {type === "feedbacksGiven" && feedbackDatas.feedbackUserId == user.idUser && (
                     <Switch
                         onChange={changeVisibleFeedbackReceveid}
                         checked={isPublicFeedback}
