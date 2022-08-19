@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const LogoContent = styled.img`
-  width: 77px;
+  width: ${props => props.width ? props.width : "150px"};
 
   transition: filter 0.2s;
 

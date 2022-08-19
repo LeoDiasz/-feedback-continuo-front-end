@@ -12,14 +12,12 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
                         <AvatarUser img={feedbackDatas.feedbacksGiven.avatar} width="75px" />
                         <h4>{feedbackDatas.feedbacksGiven.name}</h4>
                         <p>{feedbackDatas.feedbacksGiven.userRole}</p>
-                        <small>Email</small>
                     </>
                 ) : (
                     <>
                         <AvatarUser img={feedbackDatas.feedbackEntityReceived.avatar} width="75px" />
                         <h4>{feedbackDatas.feedbackEntityReceived.name}</h4>
                         <p>{feedbackDatas.feedbackEntityReceived.userRole}</p>
-                        <small>Email</small>
                     </>
                 )}
             </DivDatasUser>

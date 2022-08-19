@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom"
 import bannerChat from "../../images/banner-chat.png"
+import bannerWoman from "../../images/banner-woman.png"
 import { Logo } from "../Logo"
 import { DivContainer, SectionBanner, SectionForm } from "./styles"
 
@@ -9,16 +10,19 @@ export const ScreenAndRegisterUser = ({children, titleForm, isScreenLogin}) => {
     <DivContainer>
       <SectionBanner>
         <div>
-          <h1>DBC Feedback</h1>
-          <p>Realize feedback entre os colaboradores da DBC</p>
+          <h1>DBC Feedbacks</h1>
+          <p>Realize feedback entre seus colegas</p>
         </div>
-  
-        <img src={bannerChat} alt="banner chat" />
+
+        <div>
+          <img src={bannerChat} alt="banner chat" />
+
+        </div>
        
       </SectionBanner>
       <SectionForm>
         <div>
-          <Logo/>
+          <Logo isDisabledText/>
           {titleForm && <h1>{titleForm}</h1>}
           {children}
           {isScreenLogin ? (

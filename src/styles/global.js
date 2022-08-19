@@ -2,16 +2,20 @@ import { createGlobalStyle } from "styled-components";
 
 const theme = {
   colors: {
-    blue: "#1E4682",
-    green: "#7FC754",
+    primary: "#1166d9",
+    secondary: "#54b14c",
+    secondaryLight: "#FDA6BF",
+    tertiary: "#4E7CDE",
+    yellow: "#E8C779",
     textGray: "#C6C9D2",
     textGrayMedio: "#9FA2B4",
     textGrayDark: "#4B506D",
     error: "#F12B2C",
     inputBorder: "#F0F1F7",
     border: "#DFE0EB",
-    black: "#474748",
+    black: "#292929",
     backgroundCard: "#FCFDFE",
+    backgroundLight: "#F2F2F2",
   }
 }
 

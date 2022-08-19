@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Button = styled.button`
-    background-color: ${props => props.backgroundColor ? props.backgroundColor : props.theme.colors.green};
+    background-color: ${props => props.backgroundColor ? props.backgroundColor : props.theme.colors.secondary};
     color: ${props => props.color ? props.color : "#ffffff"};
     border: ${props => props.border ? props.border : "none"};
     width: ${props => props.width ? props.width : "100%"};
@@ -30,7 +30,7 @@ const ButtonUpload = styled.button `
     border-radius: 8px;
     width: 100%;
     padding: 5px 20px;
-    background-color: ${props => props.theme.colors.blue};
+    background-color: ${props => props.theme.colors.primary};
     border: none;
     font-weight: bold;
     transition: filter 0.2s;

@@ -6,5 +6,5 @@ export const PagerPagination = styled.button`
     color: #FFFFFF;
     border: none;
     border-radius: 4px;
-    background-color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.colors.secondary};
 `

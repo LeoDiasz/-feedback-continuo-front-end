@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const HeaderContainer = styled.header`
-  background-color: ${props => props.theme.colors.blue};
+  background-color: ${props => props.theme.colors.primary};
   padding: 20px 0;
 
   > div {
@@ -21,7 +21,7 @@ export const HeaderContainer = styled.header`
   }
 
   li {
-    color: #fff;
+    color: ${props => props.theme.colors.backgroundLight};
     font-weight: bold;
 
     + li {
@@ -30,7 +30,7 @@ export const HeaderContainer = styled.header`
 
     transition: color 0.2s;
     :hover {
-      color: ${props => props.theme.colors.green}
+      color: ${props => props.theme.colors.secondary}
     
     }
   }

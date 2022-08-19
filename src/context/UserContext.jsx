@@ -87,15 +87,15 @@ const UserProvider = ({ children }) => {
 
       formData.append("id", userDatasReturn.idUser)
 
-      await apiDbc.put(`/users/update-file`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-
       const userLogin = {
         login: userDatas.email,
         senha: userDatas.password
       }
 
-      await signIn(userLogin)
+      await apiDbc.put(`/users/update-file`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
 
+      await signIn(userLogin)
+    
     } catch (Error) {
 
       if (Error.response.data.status == 400) {

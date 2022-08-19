@@ -4,10 +4,10 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 import { useUserContext } from "../../hooks/useUserContext"
 import { Logo } from "../Logo"
 import { AvatarUser } from "../AvatarUser"
-import { Container } from "../Container/styles"
-import { HeaderContainer, DivLogout} from "./styles"
-import { Button } from "../Button/styles"
 import uploadUser from "../../images/uploadUser.jpg"
+import { Container } from "../Container/styles"
+import { Button } from "../Button/styles"
+import { HeaderContainer, DivLogout} from "./styles"
 
 export const Header = () => {
   const [isOpenButtonSignOut, setIsOpenButtonSignOut] = useState(false)
@@ -18,7 +18,7 @@ export const Header = () => {
     <HeaderContainer>
       <Container>
         <nav>
-          <Logo/>
+          <Logo width="120px" isLogoWhite/>
           <ul>
             <li>
               <Link to="/collaborators">Colaboradores</Link>
@@ -38,8 +38,6 @@ export const Header = () => {
           </button>
 
         </DivLogout>
-
-
       </Container>
     </HeaderContainer>
   )

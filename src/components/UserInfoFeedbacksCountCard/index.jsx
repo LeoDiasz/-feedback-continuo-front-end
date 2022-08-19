@@ -10,7 +10,7 @@ export const UserInfoFeedbacksCountCard = ({user, listFeedbacksSend, listFeedbac
   return (
     <CardUser>
        {user && (
-          <>
+          <div>
             <AvatarUser img={user.avatar ? user.avatar : uploadUser} width="170px"/>
             <DivInfoText>
               <h2 id="id-user-name">{user.name}</h2>
@@ -18,16 +18,16 @@ export const UserInfoFeedbacksCountCard = ({user, listFeedbacksSend, listFeedbac
               <small id="id-user-email">{user.email}</small>
             </DivInfoText>
             <DivFeedbacksCount>
-              <Button backgroundColor={colors.blue}>
+              <Button backgroundColor={colors.primary}>
                 <span>{listFeedbacksSend.length > 0 ? listFeedbacksSend.length : "0"}</span>
                 Feedbacks Enviados
               </Button>
-              <Button backgroundColor={colors.blue}>
+              <Button backgroundColor={colors.primary}>
                 <span>{listFeedbacksReceveid.length > 0 ? listFeedbacksReceveid.length : "0"}</span>
                 Feedbacks recebidos
               </Button>
             </DivFeedbacksCount>
-          </>
+          </div>
         )}
     </CardUser>
   )

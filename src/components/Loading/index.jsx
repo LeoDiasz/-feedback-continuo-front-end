@@ -8,7 +8,7 @@ export const Loading = () => {
   return (
     <DivLoading>
       <FadeLoader
-      color={colors.blue}
+      color={colors.secondary}
       cssOverride={{}}
       loading
       size={30}

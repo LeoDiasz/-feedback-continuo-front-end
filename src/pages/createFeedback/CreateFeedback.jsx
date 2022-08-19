@@ -8,8 +8,9 @@ import { Loading } from '../../components/Loading'
 import { Container } from '../../components/Container/styles'
 import { Label, InputField } from '../../components/InputStyles/styles'
 import { Button } from '../../components/Button/styles'
-import { Forms, InputAuto, ListCollaboratorsContent, SearchTagsContent } from './styles'
+import { Forms, InputAuto, ListCollaboratorsContent, SearchTagsContent, SectionContent } from './styles'
 import { TagsList } from '../../components/TagsList'
+import { FormPattern } from '../../components/FormPattern/styles'
 
 export const CreateFeedback = () => {
   const { getListCollaborators, user } = useUserContext()
@@ -97,101 +98,103 @@ export const CreateFeedback = () => {
   return (
     <>
       <Header />
-      <Container>
-        <Formik
-          initialValues={{
-            message: '',
-            anonymous: '',
-            feedbackUserId: '',
-            tagsList: '',
-          }}
-          onSubmit={values => {
-            const newValues = {
-              message: values.message,
-              anonymous: values.anonymous ? values.anonymous : false,
-              feedbackUserId: parseInt(idUserChooseForFeedback),
-              tagsList: listTagsChoose,
-            }
-            
-            handleCreateFeedback(newValues)
-          }}
-        >
-          {({ errors, handleChange, values}) => (
-            <Forms>
-              <div>
-                <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
-                <InputAuto
-                  type="text"
-                  name="userFeedbackSend"
-                  id="userFeedbackSend"
-                  onChange={e => setSearchUserForFeedback(e.target.value)}
-                  value={searchUserForFeedback}
-                  onClick={() => setSearchUserForFeedback(" ")}
-                />
-                <ListCollaboratorsContent>
-                  {searchUserForFeedback.length > 0 && isChooseUser && (
-                    filteredCollaborators.map((collaborator) => (
-                      <button onClick={() => handleChooseUserForFeedback(collaborator.name, collaborator.idUser)}>
-                        <CollaboratorInfoCard  
-                          key={collaborator.idUser} 
-                          datasCollaborator={collaborator}
-                          notIsNavigate
-                          shadowNone
-                        />
-                      </button>
-                    ))
-                  )}
-                </ListCollaboratorsContent>
-              </div>
-             
-              <div>
-                <Label htmlFor="message">Feedback</Label>
-                <InputField 
-                  type="text" 
-                  name="message" 
-                  id="message" 
-                  placeholder='Digite o feedback que gostaria de enviar' 
-                />
-              </div>
+      <SectionContent>
+        <Container>
+          <Formik
+            initialValues={{
+              message: '',
+              anonymous: '',
+              feedbackUserId: '',
+              tagsList: '',
+            }}
+            onSubmit={values => {
+              const newValues = {
+                message: values.message,
+                anonymous: values.anonymous ? values.anonymous : false,
+                feedbackUserId: parseInt(idUserChooseForFeedback),
+                tagsList: listTagsChoose,
+              }
+              
+              handleCreateFeedback(newValues)
+            }}
+          >
+            {({ errors, handleChange, values}) => (
+              <Forms>
+                <div>
+                  <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
+                  <InputAuto
+                    type="text"
+                    name="userFeedbackSend"
+                    id="userFeedbackSend"
+                    onChange={e => setSearchUserForFeedback(e.target.value)}
+                    value={searchUserForFeedback}
+                    onClick={() => setSearchUserForFeedback(" ")}
+                  />
+                  <ListCollaboratorsContent>
+                    {searchUserForFeedback.length > 0 && isChooseUser && (
+                      filteredCollaborators.map((collaborator) => (
+                        <button onClick={() => handleChooseUserForFeedback(collaborator.name, collaborator.idUser)}>
+                          <CollaboratorInfoCard  
+                            key={collaborator.idUser} 
+                            datasCollaborator={collaborator}
+                            notIsNavigate
+                            shadowNone
+                          />
+                        </button>
+                      ))
+                    )}
+                  </ListCollaboratorsContent>
+                </div>
+              
+                <div>
+                  <Label htmlFor="message">Feedback</Label>
+                  <InputField 
+                    type="text" 
+                    name="message" 
+                    id="message" 
+                    placeholder='Digite o feedback que gostaria de enviar' 
+                  />
+                </div>
 
-              <div>
-                <Label htmlFor="tags">Escolha as tags</Label>
-                <InputAuto
-                  type="text"
-                  name="tags"
-                  id="tags"
-                  onChange={handleChangeTags}
-                  onKeyDown={handleKeyDownCreateTag}
-                  value={searchTags}
-                />
-                <SearchTagsContent>
-                  {searchTags.length > 0 && filteredTags.map(({ idTag, name }) =>
-                    <li key={idTag} onClick={() => handleChooseTags(name)}>
-                      <p>{name}</p>
-                    </li>
-                  )}
-                </SearchTagsContent>
-                <TagsList 
-                  listTags={listTagsChoose} 
-                  setListTags={setListTagsChoose}
-                />
-              </div>
+                <div>
+                  <Label htmlFor="tags">Escolha as tags</Label>
+                  <InputAuto
+                    type="text"
+                    name="tags"
+                    id="tags"
+                    onChange={handleChangeTags}
+                    onKeyDown={handleKeyDownCreateTag}
+                    value={searchTags}
+                  />
+                  <SearchTagsContent>
+                    {searchTags.length > 0 && filteredTags.map(({ idTag, name }) =>
+                      <li key={idTag} onClick={() => handleChooseTags(name)}>
+                        <p>{name}</p>
+                      </li>
+                    )}
+                  </SearchTagsContent>
+                  <TagsList 
+                    listTags={listTagsChoose} 
+                    setListTags={setListTagsChoose}
+                  />
+                </div>
 
-              <div>
-                <Label htmlFor="message">Quer deixar feedback anonimo</Label>
-                <input 
-                  type="checkbox" 
-                  name="anonymous" 
-                  id="anonymous" 
-                  onChange={handleChange} 
-                  value={values.anonymous}
-                />
-              </div>
-              <Button type='submit' backgroundColor="#7FC754">Criar</Button>
-            </Forms>
-          )}
-        </Formik>
-      </Container>
+                <div>
+                  <Label htmlFor="message">Quer deixar feedback anonimo</Label>
+                  <input 
+                    type="checkbox" 
+                    name="anonymous" 
+                    id="anonymous" 
+                    onChange={handleChange} 
+                    value={values.anonymous}
+                  />
+                </div>
+                <Button type='submit'>Criar</Button>
+              </Forms>
+            )}
+          </Formik>
+        </Container>
+      </SectionContent>
     </>
 
 

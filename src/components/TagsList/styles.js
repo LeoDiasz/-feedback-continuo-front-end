@@ -12,7 +12,7 @@ export const ListTagsContent = styled.ul`
     align-items: center;
     justify-content: space-between;
     gap: 5px;
-    background-color: ${props => props.theme.colors.blue};
+    background-color: ${props => props.theme.colors.textGrayMedio};
     padding: 5px 10px;
     border-radius: 6px;
     color: #fff;

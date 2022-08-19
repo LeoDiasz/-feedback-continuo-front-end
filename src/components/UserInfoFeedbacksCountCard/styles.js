@@ -1,12 +1,17 @@
 import styled from "styled-components"
 
 const CardUser = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
-  min-width: 350px;
-  width: 100%;
+    display: flex;
+    width: 100%;
+
+  > div {
+    justify-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    width: 75%;
+  }
 `
 
 const DivInfoText = styled.div`
@@ -41,9 +46,10 @@ const DivFeedbacksCount = styled.div`
     justify-content: center;
     gap: 20px;
     min-width: 40px; 
-    width: 60%;
-    font-size: 14px;
+    width: 100%;
+    font-size: 12px;
     font-weight: bold;
+    border-radius: 10px;
     
     > span {
       border-radius: 50%;

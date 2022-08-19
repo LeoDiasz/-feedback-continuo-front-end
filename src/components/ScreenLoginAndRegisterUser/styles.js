@@ -10,11 +10,16 @@ const SectionBanner = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 40px;
-  background-color: ${props => props.theme.colors.blue};
+  justify-content: flex-start;
+  padding-top: 120px;
+  gap: 60px;
+  background-color: ${props => props.theme.colors.primary};
   height: 100%;
   color: #fff;
+
+  > div {
+    width: 80%;
+  }
 
   p {
     color: ${props => props.theme.colors.textGray};
@@ -27,7 +32,8 @@ const SectionBanner = styled.section`
   }
   
   img {
-    width: 55%;
+    align-self: center;
+    width: 70%;
   }
 `
 
@@ -35,7 +41,8 @@ const SectionForm = styled.section`
   width: 100%;
   display: grid;
   align-items: center;
-  margin: 30px 0;
+  padding: 30px 0;
+  background-color: ${props => props.theme.colors.backgroundLight};
 
   h1 {
     font-size: 18px;
@@ -54,6 +61,7 @@ const SectionForm = styled.section`
     -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
     box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
     border-radius: 8px;
+    background-color: #fff;
   }
 
   a:last-child{

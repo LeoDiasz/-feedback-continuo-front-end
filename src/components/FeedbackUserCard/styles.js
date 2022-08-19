@@ -25,25 +25,21 @@ const DivDatasUser = styled.div`
     justify-content: space-between;
     text-align: center;
     
-    h2 {
-    color: ${props => props.theme.colors.black}
-    }
-
-    small, p {
-    color: ${props => props.theme.colors.textGrayDark};
+    h4 {
+        margin-top: 5px;
+        color: ${props => props.theme.colors.black}
     }
 
     p {
+        color: ${props => props.theme.colors.textGrayDark};
         margin-top: 4px;
         margin-bottom: 5px;
         font-size: 14px;
         font-weight: bold;
+        max-width: 100%;
     }
 
 
-    &::after {
-        content: "";
-    }
 `
 
 const DivMessageFeedback = styled.div`
@@ -52,11 +48,12 @@ const DivMessageFeedback = styled.div`
     justify-content: space-between;
     height: 100%;
     align-items: flex-start;
+    overflow: hidden;
 
     p {
         margin-top: 10px;
         width: 100%;
-
+        word-break: break-all
     }
 `
 
