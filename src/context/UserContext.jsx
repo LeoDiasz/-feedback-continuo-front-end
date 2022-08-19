@@ -10,6 +10,7 @@ const UserProvider = ({ children }) => {
   const [collaborator, setCollaborator] = useState()
   const { signIn } = useAuthContext()
   const [listCollaborators, setListCollaborators] = useState()
+  const [listCollaboratorsPagesOff, setListCollaboratorsPagesOff] = useState()
   const [usersPerPage, setUsersPerPage] = useState(10)
   const [atualPage, setAtualPage] = useState(0)
   const [pages, setPages] = useState(0)
@@ -57,6 +58,26 @@ const UserProvider = ({ children }) => {
       })
       setListCollaborators(listCollaboratorsFiltredAvatar)
       setPages(listCollaborators.totalPages)
+    } catch (Error) {
+      console.log(Error)
+    }
+  }
+
+  const getListCollaboratorsWithoutPages = async () => {
+
+    try {
+      const { data: listCollaboratorsPagesOff } = await apiDbc.get(`/users/list-all`)
+      
+      const listCollaboratorsPagesOffFiltredAvatar = listCollaboratorsPagesOff.map(collaborator => {
+        return {
+          avatar: collaborator.avatar ? "data:image/png;base64," + collaborator.avatar : null,
+          idUser: collaborator.idUser,
+          name: collaborator.name,
+          userRole: collaborator.userRole,
+        }
+      })
+
+      setListCollaboratorsPagesOff(listCollaboratorsPagesOffFiltredAvatar)
     } catch (Error) {
       console.log(Error)
     }
@@ -115,6 +136,8 @@ const UserProvider = ({ children }) => {
         getDatasUser,
         getDatasCollaboratorById,
         getListCollaborators,
+        getListCollaboratorsWithoutPages,
+        listCollaboratorsPagesOff,
         handleCreateUser,
         user,
         collaborator,

@@ -13,15 +13,14 @@ import { SuggestionUserCreateFeedback } from '../../components/SuggestionUserCre
 
 
 export const CreateFeedback = () => {
-  const { getListCollaborators, user } = useUserContext()
-  const {listCollaborators} = useUserContext()
+  const { getListCollaboratorsWithoutPages, getListCollaborators, user, listCollaboratorsPagesOff } = useUserContext()
   const [isLoading, setIsLoading] = useState(true)
   const [idUserChooseForFeedback, setIdUserChooseForFeedback] = useState("")
   const [searchUserForFeedback , setSearchUserForFeedback] = useState("")
   const [isChooseUser, setIsChooseUser] = useState(true)
   const [listTagsChoose, setListTagsChoose] = useState([])
   const [searchTags, setSearchTags] = useState("")
-
+  
   const {
     getTagsServer,
     getFeedbacksUser,
@@ -30,7 +29,8 @@ export const CreateFeedback = () => {
   } = useFeedbackContext()
 
   const setup = async () => {
-    await getListCollaborators()
+    await getListCollaboratorsWithoutPages()
+    getListCollaborators()
     await getTagsServer()
     await getFeedbacksUser("receveid", user.idUser)
     await getFeedbacksUser("gived", user.idUser)
@@ -88,7 +88,7 @@ export const CreateFeedback = () => {
   }
 
   const filteredCollaborators = searchUserForFeedback.length > 0 
-  ? listCollaborators.filter(collaborator => collaborator.name.toLowerCase().includes(searchUserForFeedback.toLowerCase())) 
+  ? listCollaboratorsPagesOff.filter(collaborator => collaborator.name.toLowerCase().includes(searchUserForFeedback.toLowerCase())) 
   : []
 
   const filteredTags = searchTags.length > 0 
