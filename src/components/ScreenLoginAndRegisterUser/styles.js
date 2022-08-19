@@ -11,13 +11,13 @@ const SectionBanner = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 120px;
+  padding-top: 100px;
   gap: 60px;
   background-color: ${props => props.theme.colors.primary};
   height: 100%;
   color: #fff;
 
-  > div {
+  > div:first-child{
     width: 80%;
   }
 
@@ -33,7 +33,7 @@ const SectionBanner = styled.section`
   
   img {
     align-self: center;
-    width: 70%;
+    width: 50%;
   }
 `
 
@@ -58,8 +58,9 @@ const SectionForm = styled.section`
     align-items: center;
     margin: 0 auto;
     padding: 30px;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
-    box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
+    -webkit-box-shadow: 0px 0px 8px 8px rgba(235,235,235,0.6);
+    -moz-box-shadow: 0px 0px 8px 8px rgba(235,235,235,0.6);
+    box-shadow: 0px 0px 8px 8px rgba(235,235,235,0.6);
     border-radius: 8px;
     background-color: #fff;
   }
@@ -73,7 +74,7 @@ const SectionForm = styled.section`
     margin: 20px 0 20px 0;
 
     span:last-child {
-      color: ${props => props.theme.colors.blue};
+      color: ${props => props.theme.colors.primary};
     }
   
   }

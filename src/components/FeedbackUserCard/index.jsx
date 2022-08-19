@@ -1,6 +1,7 @@
 import { TagsList } from '../TagsList'
 import { AvatarUser } from "../../components/AvatarUser"
 import { FeedbackContent, DivDatasUser, DivMessageFeedback } from './styles'
+import Switch from 'react-switch'
 
 export const FeedbackUserCard = ({ feedbackDatas, type }) => {
     
@@ -24,6 +25,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
             <DivMessageFeedback>
                 <p>{feedbackDatas.message}</p>
                 <TagsList listTags={feedbackDatas.tagsList} isNotShowDelete />
+                
             </DivMessageFeedback>
         </FeedbackContent >
     )
