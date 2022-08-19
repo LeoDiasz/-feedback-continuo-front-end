@@ -17,16 +17,19 @@ const Tabs = styled.div`
 `;
 
 const ButtonTabs = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     bottom: 0;
     width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: ${props => props.height ? props.height : '50px'};   
-    background: #FFFFFF;
+    background: ${props => props.height ? "#FFFFFF" : "#EEEEEE"};
     border: 1px solid ${props => props.theme.colors.border};     
-    border-radius: 8px 8px 0 0;  
+    border-radius: 8px 8px 0 0; 
+    font-weight: bold;
+    font-size: 14px;
+    color: ${props => props.height ? props.theme.colors.black : "#9E9E9E"};
 
     cursor: pointer;
 

@@ -1,24 +1,22 @@
-import { FeedbackContent } from './styles'
-import uploadUser from "../../images/uploadUser.jpg"
-import { AvatarUser } from "../../components/AvatarUser"
 import { TagsList } from '../TagsList'
+import { AvatarUser } from "../../components/AvatarUser"
+import uploadUser from "../../images/uploadUser.jpg"
+import { FeedbackContent, DivDatasUser, DivMessageFeedback } from './styles'
 
 export const FeedbackUserCard = ({ feedbackDatas }) => {
 
     return (
         <FeedbackContent>
-            <div key={feedbackDatas.idFeedback}>
-                <AvatarUser img={uploadUser} width="80px" />
-                <h1>Leonardo</h1>
+            <DivDatasUser key={feedbackDatas.idFeedback}>
+                <AvatarUser img={uploadUser} width="75px" />
+                <h4>Leonardo</h4>
                 <p>Cargo</p>
-                <p>Email</p>
-            </div>
-            <div>
+                <small>Email</small>
+            </DivDatasUser>
+            <DivMessageFeedback>
                 <p>{feedbackDatas.message}</p>
-            </div>
-            <div>
-                <TagsList listTags={feedbackDatas.tagsList} />
-            </div>
+                <TagsList listTags={feedbackDatas.tagsList} isNotShowDelete />
+            </DivMessageFeedback>
         </FeedbackContent >
     )
 }

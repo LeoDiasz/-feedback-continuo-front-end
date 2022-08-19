@@ -3,7 +3,7 @@ import { FeedbackList } from '../../components/FeedbackList'
 import { SectionFeedbacksContent, Tabs, ButtonTabs } from './styles'
 
 export const SectionFeedbacksUser = ({ listFeedbacksReceveid, listFeedbacksSend }) => {
-
+    
     const [showFeedbacks, setShowFeedbacks] = useState(true)
 
     return (

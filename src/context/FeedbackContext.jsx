@@ -1,4 +1,5 @@
 import { createContext, useState } from "react"
+import toast from "react-hot-toast"
 import { apiDbc } from "../services/api"
 
 const FeedbackContext = createContext()
@@ -27,12 +28,16 @@ const FeedbackProvider = ({ children }) => {
         }
     }
 
-    const handleCreateFeedback = async (values) => {
+    const handleCreateFeedback = async (feedbackDatas) => {
+
+        feedbackDatas.tagsList = feedbackDatas.tagsList.map(tag => {return {name: tag.name}})
+        
         try {
-            await apiDbc.post("/feedback", values)
-            console.log(values)
-        } catch (error) {
-            console.log(error)
+            await apiDbc.post("/feedback", feedbackDatas)
+
+            toast.success("Feedback criado com sucesso!")
+        } catch (Error) {
+            console.log(Error)
         }
     }
 

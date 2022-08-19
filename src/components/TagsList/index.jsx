@@ -1,7 +1,7 @@
 import {ListTagsContent} from "./styles"
 import {TiDelete} from "react-icons/ti"
 
-export const TagsList = ({listTags, setListTags}) => {
+export const TagsList = ({listTags, setListTags, isNotShowDelete}) => {
 
   const handleDeleteTag = (idTag) => {
     const listTagFiltered = listTags.filter(tag => tag.idTag != idTag)
@@ -14,7 +14,9 @@ export const TagsList = ({listTags, setListTags}) => {
        {listTags && listTags.map(({name, idTag}) => (
           <li key={idTag}>
             <span># {name.toUpperCase()}</span>
-            <TiDelete onClick={() => handleDeleteTag(idTag)}/>
+            {!isNotShowDelete && (
+              <TiDelete onClick={() => handleDeleteTag(idTag)}/>
+            )}
           </li>
       )) }
     </ListTagsContent>

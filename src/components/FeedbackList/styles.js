@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Feedbackscontent = styled.ul`
-    li + li {
+    > li + li {
         margin-top: 15px;
     }
 `

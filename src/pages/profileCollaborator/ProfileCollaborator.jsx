@@ -7,6 +7,7 @@ import { Loading } from '../../components/Loading'
 import { UserInfoFeedbacksCountCard } from "../../components/UserInfoFeedbacksCountCard"
 import { SectionContent } from "./styles"
 import { Container } from "../../components/Container/styles"
+import { SectionFeedbacksUser } from "../../components/SectionFeedbacksUser"
 
 export const ProfileCollaborator = () => {
   const {id} = useParams()
@@ -41,6 +42,10 @@ export const ProfileCollaborator = () => {
           listFeedbacksReceveid={listFeedbacksReceveid} 
           listFeedbacksSend={listFeedbacksSend}
         /> 
+        <SectionFeedbacksUser 
+          listFeedbacksReceveid={listFeedbacksReceveid}
+          listFeedbacksSend={listFeedbacksSend}
+        />
       </Container >
     </SectionContent>
   </>

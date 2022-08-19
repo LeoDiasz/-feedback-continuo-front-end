@@ -25,8 +25,6 @@ export const CreateFeedback = () => {
     getTagsServer,
     getFeedbacksUser,
     handleCreateFeedback,
-    listFeedbacksReceveid,
-    listFeedbacksSend,
     listTagsServer
   } = useFeedbackContext()
 
@@ -54,7 +52,30 @@ export const CreateFeedback = () => {
     const tagCreate = {name: tagName, idTag: countAllTagsChoose}
     setListTagsChoose([...listTagsChoose, tagCreate])
   }
+
+  const handleKeyDownCreateTag = (event) => {
+    if (event.key !== "Enter") return
+
+    event.preventDefault()
+    const valueTag = event.target.value
+
+    if(!valueTag.trim()) return
+
+    const countAllTagsChoose = listTagsChoose.length + 1
+
+    const tagCreate = {name: valueTag, idTag: countAllTagsChoose}
+
+    setSearchTags("")
+    setListTagsChoose([...listTagsChoose, tagCreate ])
+  }
   
+  const handleChangeTags = (event) => {
+  
+    const valueFiltered = event.target.value.replace(/\s/,"")
+    setSearchTags(valueFiltered)
+
+  }
+
   useEffect(() => {
     setup()
   }, [])
@@ -73,12 +94,6 @@ export const CreateFeedback = () => {
   ?  listTagsServer.filter(tag => tag.name.toUpperCase().includes(searchTags.toUpperCase())) 
   : []
 
-  const tagListFilterAPI = listTagsChoose.map((value) => {
-    if(value.name) {
-      return {name: value.name}
-    }
-  })
-
   return (
     <>
       <Header />
@@ -91,14 +106,13 @@ export const CreateFeedback = () => {
             tagsList: '',
           }}
           onSubmit={values => {
-
             const newValues = {
               message: values.message,
               anonymous: values.anonymous ? values.anonymous : false,
               feedbackUserId: parseInt(idUserChooseForFeedback),
-              tagsList: tagListFilterAPI,
+              tagsList: listTagsChoose,
             }
-            console.log(newValues)
+            
             handleCreateFeedback(newValues)
           }}
         >
@@ -132,7 +146,12 @@ export const CreateFeedback = () => {
              
               <div>
                 <Label htmlFor="message">Feedback</Label>
-                <InputField type="text" name="message" id="message" placeholder='Digite o feedback que gostaria de enviar' />
+                <InputField 
+                  type="text" 
+                  name="message" 
+                  id="message" 
+                  placeholder='Digite o feedback que gostaria de enviar' 
+                />
               </div>
 
               <div>
@@ -141,7 +160,8 @@ export const CreateFeedback = () => {
                   type="text"
                   name="tags"
                   id="tags"
-                  onChange={e => setSearchTags(e.target.value)}
+                  onChange={handleChangeTags}
+                  onKeyDown={handleKeyDownCreateTag}
                   value={searchTags}
                 />
                 <SearchTagsContent>
@@ -151,12 +171,21 @@ export const CreateFeedback = () => {
                     </li>
                   )}
                 </SearchTagsContent>
-                <TagsList listTags={listTagsChoose} setListTags={setListTagsChoose}/>
+                <TagsList 
+                  listTags={listTagsChoose} 
+                  setListTags={setListTagsChoose}
+                />
               </div>
 
               <div>
                 <Label htmlFor="message">Quer deixar feedback anonimo</Label>
-                <input type="checkbox" name="anonymous" id="anonymous" onChange={handleChange} value={values.anonymous}/>
+                <input 
+                  type="checkbox" 
+                  name="anonymous" 
+                  id="anonymous" 
+                  onChange={handleChange} 
+                  value={values.anonymous}
+                />
               </div>
               <Button type='submit' backgroundColor="#7FC754">Criar</Button>
             </Forms>
