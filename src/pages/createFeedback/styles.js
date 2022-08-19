@@ -36,7 +36,6 @@ const SearchTagsContent = styled.ul`
             filter: brightness(0.95)
         }
     }
-    
 `
 
 const InputAuto = styled(Field)`
@@ -58,24 +57,21 @@ const InputAuto = styled(Field)`
     
 `  
 
-
 const ListCollaboratorsContent = styled.ul`
         position: absolute;
-        background: transparent;
+        background: #FFFFFF;
         width: 100%;
+        max-height: 150px;
         border-radius: 8px;
         display: flex;
-        flex-direction: column;
-
-        button {
-            background: transparent;
-            border: none;
-            width: 100%;
-            -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
-            box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
-        }
-
+        flex-direction: column; 
+        overflow-y: auto;
         
+        p {
+            color: ${props => props.theme.colors.textGrayDark};
+            font-size: 12px;
+            padding: 5px 0 0 10px;
+        }
 `
 
 export {InputAuto, ListCollaboratorsContent, Forms, SearchTagsContent}

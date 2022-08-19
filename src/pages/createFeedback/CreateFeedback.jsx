@@ -10,6 +10,8 @@ import { Label, InputField } from '../../components/InputStyles/styles'
 import { Button } from '../../components/Button/styles'
 import { Forms, InputAuto, ListCollaboratorsContent, SearchTagsContent } from './styles'
 import { TagsList } from '../../components/TagsList'
+import { SuggestionUserCreateFeedback } from '../../components/SuggestionUserCreateFeedback'
+import { SuggestionDiv } from '../../components/SuggestionUserCreateFeedback/styles'
 
 export const CreateFeedback = () => {
   const { getListCollaborators, user } = useUserContext()
@@ -131,14 +133,12 @@ export const CreateFeedback = () => {
                 <ListCollaboratorsContent>
                   {searchUserForFeedback.length > 0 && isChooseUser && (
                     filteredCollaborators.map((collaborator) => (
-                      <button onClick={() => handleChooseUserForFeedback(collaborator.name, collaborator.idUser)}>
-                        <CollaboratorInfoCard  
+                      <p onClick={() => handleChooseUserForFeedback(collaborator.name, collaborator.idUser)}>
+                        <SuggestionUserCreateFeedback
                           key={collaborator.idUser} 
                           datasCollaborator={collaborator}
-                          notIsNavigate
-                          shadowNone
                         />
-                      </button>
+                      </p>
                     ))
                   )}
                 </ListCollaboratorsContent>
