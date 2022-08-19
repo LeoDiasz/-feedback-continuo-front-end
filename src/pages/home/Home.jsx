@@ -14,7 +14,6 @@ export const Home = () => {
   const [loading, setLoading] = useState(true)  
   
   const setup = async () => {
-
     const {id} = await getDatasUser()
     await getFeedbacksUser("receveid", id)
     await getFeedbacksUser("gived", id)
