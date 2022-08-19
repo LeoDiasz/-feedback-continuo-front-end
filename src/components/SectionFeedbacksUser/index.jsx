@@ -7,12 +7,14 @@ export const SectionFeedbacksUser = ({ listFeedbacksReceveid, listFeedbacksSend 
     const [showFeedbacks, setShowFeedbacks] = useState(true)
 
     return (
-        <SectionFeedbacksContent>
+        <div>
             <Tabs>
                 <ButtonTabs onClick={() => setShowFeedbacks(true)} height={showFeedbacks && "60px"}>Feedback Recebidos</ButtonTabs>
                 <ButtonTabs onClick={() => setShowFeedbacks(false)} height={!showFeedbacks && '60px'}>Feedback Enviados</ButtonTabs>
             </Tabs>
-            <FeedbackList listFeedbacks={showFeedbacks ? listFeedbacksReceveid.content : listFeedbacksSend.content} />
-        </SectionFeedbacksContent>
+            <SectionFeedbacksContent>
+                <FeedbackList listFeedbacks={showFeedbacks ? listFeedbacksReceveid.content : listFeedbacksSend.content} />
+            </SectionFeedbacksContent>
+        </div>
     )
 }
