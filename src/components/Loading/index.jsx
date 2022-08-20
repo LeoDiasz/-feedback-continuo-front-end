@@ -2,11 +2,11 @@ import {FadeLoader} from "react-spinners"
 import {useThemeContext} from "../../hooks/useThemeContext"
 import { DivLoading } from "./styles"
 
-export const Loading = () => {
+export const Loading = ({id}) => {
   const {colors} = useThemeContext()
 
   return (
-    <DivLoading>
+    <DivLoading id={id}>
       <FadeLoader
         color={colors.primary}
         cssOverride={{}}

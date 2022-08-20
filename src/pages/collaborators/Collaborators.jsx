@@ -7,29 +7,54 @@ import Pagination from '../../components/Pagination'
 import { Input } from '../../components/InputStyles/styles'
 import { Container } from '../../components/Container/styles'
 import { ListCollaboratorsContent, SectionCollaboratorsContainer, Teste } from "./styles"
+import { Footer } from '../../components/Footer'
 
 export const Collaborators = () => {
-  const { listCollaborators, getListCollaborators } = useUserContext()
+  const { listCollaborators, getListCollaborators, listCollaboratorsPagesOff, getListCollaboratorsWithoutPages } = useUserContext()
   const [isLoading, setIsLoading] = useState(true)
   const [searchCollaborator, setSearchCollaborator] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
 
   const setup = async () => {
-    await getListCollaborators()
+    await getListCollaborators(currentPage)
 
     setIsLoading(false)
   }
 
   useEffect(() => {
-    setup()
+    getListCollaboratorsWithoutPages()
   }, [])
 
+  useEffect(() => {
+    setup()
+  }, [currentPage])
+
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      if(entries.some(entry => entry.isIntersecting)) {
+        
+        setCurrentPage(currentPageInsideState => currentPageInsideState + 1)
+        console.log(entries)
+      }
+ 
+    })
+    
+    const sentinel = document.getElementById("sentinel")
+
+    intersectionObserver.observe(sentinel)
+    return () => intersectionObserver.disconnect(sentinel)
+
+  }, [isLoading])
+
   const filteredCollaborators = searchCollaborator.length > 0
-    ? listCollaborators.filter(collaborator => collaborator.name.toLowerCase().includes(searchCollaborator.toLowerCase()))
-    : []
+    ? listCollaboratorsPagesOff.filter(collaborator => collaborator.name.toLowerCase().includes(searchCollaborator.toLowerCase()))
+    : listCollaboratorsPagesOff
 
   if (isLoading) {
     return (
-      <Loading />
+      <>
+        <Loading id="sentinel"/>
+      </>
     )
   }
 
@@ -40,7 +65,7 @@ export const Collaborators = () => {
         <Container>
           <div>
             <h1>Colaboradores</h1>
-            <span>{listCollaborators ? `${listCollaborators.length} colaboradores` : "nenhum colaborador"}</span>
+            <span>{listCollaboratorsPagesOff ? `${listCollaboratorsPagesOff.length} colaboradores` : "nenhum colaborador"}</span>
           </div>
 
           <Input
@@ -50,26 +75,23 @@ export const Collaborators = () => {
             value={searchCollaborator}
           />
        
-            {/* <ListCollaboratorsContent>
-              {searchUser.length > 0 ? (
-                filteredCollaborators.map((collaborator, i) => (
+          <ListCollaboratorsContent>
+             
+             {searchCollaborator.length > 0 ? (
+                 filteredCollaborators && filteredCollaborators.map((collaborator, i) => (
                   <CollaboratorInfoCard key={i} datasCollaborator={collaborator} />
                 ))
-              ) : (
-                listCollaborators.map((collaborator, i) => (
+             ) : (
+                listCollaborators && listCollaborators.map((collaborator, i) => (
                   <CollaboratorInfoCard key={i} datasCollaborator={collaborator} />
                 ))
-              )}
-            </ListCollaboratorsContent> */}
-            
-           <Pagination 
-              searchUser={searchCollaborator} 
-              filteredCollaborators={filteredCollaborators} 
-              listCollaborators={listCollaborators}
-            />
+             )}
 
+          </ListCollaboratorsContent>
+        
         </Container>
       </SectionCollaboratorsContainer>
+      <Footer id="sentinel"/>
     </>
   )
 }

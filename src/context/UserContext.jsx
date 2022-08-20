@@ -10,11 +10,8 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState()
   const [collaborator, setCollaborator] = useState()
   const { signIn } = useAuthContext()
-  const [listCollaborators, setListCollaborators] = useState()
+  const [listCollaborators, setListCollaborators] = useState([])
   const [listCollaboratorsPagesOff, setListCollaboratorsPagesOff] = useState()
-  const [usersPerPage, setUsersPerPage] = useState(10)
-  const [atualPage, setAtualPage] = useState(0)
-  const [pages, setPages] = useState(0)
   const navigate = useNavigate()
 
   const getDatasCollaboratorById = async (id) => {
@@ -45,10 +42,10 @@ const UserProvider = ({ children }) => {
     }
   }
 
-  const getListCollaborators = async () => {
+  const getListCollaborators = async (currentPage) => {
 
     try {
-      const { data: listCollaborators } = await apiDbc.get(`/users/list-all-pageable?page=${atualPage}&register=${usersPerPage}`)
+      const { data: listCollaborators } = await apiDbc.get(`/users/list-all-pageable?page=${currentPage}&register=10`)
 
       const listCollaboratorsFiltredAvatar = listCollaborators.content.map(collaborator => {
         return {
@@ -58,8 +55,8 @@ const UserProvider = ({ children }) => {
           userRole: collaborator.userRole,
         }
       })
-      setListCollaborators(listCollaboratorsFiltredAvatar)
-      setPages(listCollaborators.totalPages)
+      
+      setListCollaborators((prevListCollaborators) => [...prevListCollaborators, ...listCollaboratorsFiltredAvatar])
     } catch (Error) {
       console.log(Error)
     }
@@ -131,11 +128,6 @@ const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider value={
       {
-        setUsersPerPage,
-        setAtualPage,
-        pages,
-        atualPage,
-        usersPerPage,
         getDatasUser,
         getDatasCollaboratorById,
         getListCollaborators,
