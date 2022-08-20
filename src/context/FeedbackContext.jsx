@@ -2,7 +2,7 @@ import { createContext, useState } from "react"
 import toast from "react-hot-toast"
 import { apiDbc } from "../services/api"
 import { useUserContext } from "../hooks/useUserContext"
-import anonimousUserImg from "../images/anonymousUser.jpg"
+import anonimousUserImg from "../images/anonymousUser.png"
 
 const FeedbackContext = createContext()
 
@@ -56,7 +56,7 @@ const FeedbackProvider = ({ children }) => {
                             }
                         }
                     }
-                    
+
                 } else {
                     feedback.feedbackEntityReceived.avatar = feedback.feedbackEntityReceived.avatar ? "data:image/png;base64," + feedback.feedbackEntityReceived.avatar : null
                 }
