@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const FeedbackContent = styled.li`
     display: grid;
-    grid-template-columns: 15% 73% 12%;
+    grid-template-columns: ${props => props.type === 'feedbacksGiven' ? '15% 73% 12%' : '15% 85%'};
     align-items: center;
     gap: 25px;
     padding: 20px 25px;
@@ -18,7 +18,6 @@ const FeedbackContent = styled.li`
     }
 
     div:last-child{
-        width: 60px;
         p {
             font-size: 12px;
             padding: 0 0 4px 4px;
@@ -56,6 +55,7 @@ const DivMessageFeedback = styled.div`
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    padding-right: 15px;
     align-items: flex-start;
     overflow: hidden;
 

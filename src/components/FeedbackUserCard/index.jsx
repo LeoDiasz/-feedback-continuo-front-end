@@ -35,7 +35,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
     }
 
     return (
-        <FeedbackContent>
+        <FeedbackContent type={type}>
             <DivDatasUser>
                 {type === 'feedbacksGiven' ? (
                     <>
