@@ -32,7 +32,10 @@ const CreateUserSchema = Yup.object().shape({
 })
 
 const CreateFeedbackSchema = Yup.object().shape({
-
+  userFeedbackSend: Yup.string()
+  .required("Obrigatório preencher."),
+  message: Yup.string()
+  .required("Obrigatório preencher."),
 })
 
 export {LoginSchema, CreateUserSchema, CreateFeedbackSchema}

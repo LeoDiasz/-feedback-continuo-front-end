@@ -2,59 +2,67 @@ import { Formik } from 'formik'
 import { useEffect, useState } from 'react'
 import { useUserContext } from '../../hooks/useUserContext'
 import { useFeedbackContext } from '../../hooks/useFeedbackContext'
+import { SuggestionUserCreateFeedback } from '../../components/SuggestionUserCreateFeedback'
+import { CreateFeedbackSchema } from '../../utils/validationsSchema'
+import { TagsList } from '../../components/TagsList'
 import { Header } from '../../components/Header'
 import { Loading } from '../../components/Loading'
 import { Container } from '../../components/Container/styles'
-import { Label, InputField } from '../../components/InputStyles/styles'
+import { Label, InputField, DivTextValidation, TextValidation } from '../../components/InputStyles/styles'
 import { Button } from '../../components/Button/styles'
 import { Forms, InputAuto, ListCollaboratorsContent, SearchTagsContent, SectionContent } from './styles'
-import { TagsList } from '../../components/TagsList'
-import { SuggestionUserCreateFeedback } from '../../components/SuggestionUserCreateFeedback'
-
 
 export const CreateFeedback = () => {
-  const { getListCollaboratorsWithoutPages, getListCollaborators, user, listCollaboratorsPagesOff } = useUserContext()
+  const {getListCollaboratorsWithoutPages, listCollaboratorsPagesOff } = useUserContext()
   const [isLoading, setIsLoading] = useState(true)
   const [idUserChooseForFeedback, setIdUserChooseForFeedback] = useState("")
-  const [searchUserForFeedback , setSearchUserForFeedback] = useState("")
-  const [isChooseUser, setIsChooseUser] = useState(true)
+  const [searchCollaboratorForFeedback , setSearchCollaboratorForFeedback] = useState("")
+  const [collaboratorChoose, setCollaboratorChoose] = useState("")
+  const [isClickInInputCollaborator, setIsClickInInputCollaborator] = useState(false)
+  const [isClickInInputTags, setIsClickInInputTags] = useState(false)
   const [listTagsChoose, setListTagsChoose] = useState([])
   const [searchTags, setSearchTags] = useState("")
   
-  const {
-    getTagsServer,
-    getFeedbacksUser,
-    handleCreateFeedback,
-    listTagsServer
-  } = useFeedbackContext()
+  const {getTagsServer, handleCreateFeedback, listTagsServer} = useFeedbackContext()
 
   const setup = async () => {
     await getListCollaboratorsWithoutPages()
-    getListCollaborators()
     await getTagsServer()
-    await getFeedbacksUser("receveid", user.idUser)
-    await getFeedbacksUser("gived", user.idUser)
     setIsLoading(false)
   }
 
-  const handleChooseUserForFeedback = (name, idUser) => {
-    setSearchUserForFeedback(name)
-    setIdUserChooseForFeedback(idUser)
+  const handleClickChooseCollaborator = (setFieldValue, name, idUser) => {
 
-    isChooseUser ? setIsChooseUser(false) : setIsChooseUser(true)
+    if(name, idUser) {
+      setSearchCollaboratorForFeedback(name)
+      setCollaboratorChoose(name)
+      setIdUserChooseForFeedback(idUser)
+      setFieldValue("userFeedbackSend", name)
+    }
 
-    console.log(name, idUser)
+    isClickInInputCollaborator ? setIsClickInInputCollaborator(false) : setIsClickInInputCollaborator(true)
+
   }
 
-  const handleChooseTags = (tagName) => {
+  const handleChangeChooseCollaborator = (setFieldValue, setErrors, event) => {
+    const valueInput = event.target.value
 
-    const countAllTagsChoose = listTagsChoose.length + 1
+    let error
 
-    const tagCreate = {name: tagName, idTag: countAllTagsChoose}
-    setListTagsChoose([...listTagsChoose, tagCreate])
+    if(valueInput !== collaboratorChoose) {
+      setCollaboratorChoose("")
+      
+      error = "Usuário não existe no sistema"
+    }
+
+    setFieldValue("userFeedbackSend", valueInput)
+    setSearchCollaboratorForFeedback(valueInput)
+
+    return error
   }
 
   const handleKeyDownCreateTag = (event) => {
+
     if (event.key !== "Enter") return
 
     event.preventDefault()
@@ -71,10 +79,22 @@ export const CreateFeedback = () => {
   }
   
   const handleChangeTags = (event) => {
-  
     const valueFiltered = event.target.value.replace(/\s/,"")
     setSearchTags(valueFiltered)
 
+  }
+
+  const handleClickChooseTag = (tagName, event) => {
+
+    if(tagName) {
+      const countAllTagsChoose = listTagsChoose.length + 1
+
+      const tagCreate = {name: tagName, idTag: countAllTagsChoose}
+      setListTagsChoose([...listTagsChoose, tagCreate])
+    }
+   
+    
+    isClickInInputTags ? setIsClickInInputTags(false) : setIsClickInInputTags(true)
   }
 
   useEffect(() => {
@@ -87,38 +107,46 @@ export const CreateFeedback = () => {
     )
   }
 
-  const filteredCollaborators = searchUserForFeedback.length > 0 
-  ? listCollaboratorsPagesOff.filter(collaborator => collaborator.name.toLowerCase().includes(searchUserForFeedback.toLowerCase())) 
-  : []
+  const filteredCollaborators = searchCollaboratorForFeedback.length > 0 
+  ?  listCollaboratorsPagesOff.filter(collaborator => collaborator.name.toLowerCase().includes(searchCollaboratorForFeedback.toLowerCase())) 
+  :  listCollaboratorsPagesOff
 
   const filteredTags = searchTags.length > 0 
   ?  listTagsServer.filter(tag => tag.name.toUpperCase().includes(searchTags.toUpperCase())) 
-  : []
+  : listTagsServer
 
   return (
     <>
       <Header />
       <SectionContent>
-     <Container>
+        <Container>
         <Formik
           initialValues={{
             message: '',
             anonymous: '',
             feedbackUserId: '',
+            userFeedbackSend: '',
             tagsList: '',
           }}
-          onSubmit={values => {
+          validationSchema={CreateFeedbackSchema}
+          onSubmit={ async (values, {resetForm}) => {
             const newValues = {
               message: values.message,
-              anonymous: values.anonymous ? values.anonymous : false,
+              anonymous: values.anonymous ? true : false,
               feedbackUserId: parseInt(idUserChooseForFeedback),
               tagsList: listTagsChoose,
             }
-    
-            handleCreateFeedback(newValues)
+            
+            const isResetForm = await handleCreateFeedback(newValues)
+
+            if(isResetForm) {
+              resetForm()
+              setListTagsChoose([])
+              setSearchCollaboratorForFeedback("")
+            }
           }}
         >
-          {({ errors, handleChange, values}) => (
+          {({ errors, handleChange, values, setFieldValue, setErrors}) => (
             <Forms>
               <div>
                 <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
@@ -127,24 +155,24 @@ export const CreateFeedback = () => {
                   name="userFeedbackSend"
                   id="userFeedbackSend"
                   autoComplete="off"
-                  onChange={e => setSearchUserForFeedback(e.target.value)}
-                  value={searchUserForFeedback}
-                  onClick={() => setSearchUserForFeedback(" ")}
+                  onChange={(event) => handleChangeChooseCollaborator(setFieldValue, setErrors, event)}
+                  value={searchCollaboratorForFeedback}
+                  onClick={() => handleClickChooseCollaborator(setFieldValue)}
                 />
                 <ListCollaboratorsContent>
-                  {searchUserForFeedback.length > 0 && isChooseUser && (
-                    filteredCollaborators.map((collaborator) => (
-                      <p onClick={() => handleChooseUserForFeedback(collaborator.name, collaborator.idUser)}>
-                        <SuggestionUserCreateFeedback
-                          key={collaborator.idUser} 
-                          datasCollaborator={collaborator}
-                        />
-                      </p>
-                    ))
-                  )}
+                    {(isClickInInputCollaborator || searchCollaboratorForFeedback.length > 0) && !collaboratorChoose && filteredCollaborators && filteredCollaborators.map((collaborator) => (
+                      <SuggestionUserCreateFeedback
+                        onClick={() => handleClickChooseCollaborator(setFieldValue, collaborator.name, collaborator.idUser)}
+                        key={collaborator.idUser} 
+                        datasCollaborator={collaborator}
+                      />
+                    ))}
                 </ListCollaboratorsContent>
+                <DivTextValidation>
+                  <TextValidation>{errors.userFeedbackSend}</TextValidation>
+                </DivTextValidation>
               </div>
-             
+            
               <div>
                 <Label htmlFor="message">Feedback</Label>
                 <InputField 
@@ -153,7 +181,10 @@ export const CreateFeedback = () => {
                   id="message" 
                   placeholder='Digite o feedback que gostaria de enviar'
                   autoComplete="off"
-                 />
+                />
+                <DivTextValidation>
+                      <TextValidation>{errors.message}</TextValidation>
+                </DivTextValidation>
               </div>
 
               <div>
@@ -163,17 +194,19 @@ export const CreateFeedback = () => {
                   name="tags"
                   id="tags"
                   onChange={handleChangeTags}
+                  onClick={() => handleClickChooseTag()}
                   onKeyDown={handleKeyDownCreateTag}
                   value={searchTags}
                   autoComplete="off"
                 />
                 <SearchTagsContent>
-                  {searchTags.length > 0 && filteredTags.map(({ idTag, name }) =>
-                    <li key={idTag} onClick={() => handleChooseTags(name)}>
-                      <p>{name}</p>
-                    </li>
-                  )}
-                  </SearchTagsContent>
+                  {(isClickInInputTags || searchTags.length > 0) && filteredTags && filteredTags.map(({ idTag, name }) => (
+                     <li key={idTag} onClick={() => handleClickChooseTag(name)}>
+                        <p>{name}</p>
+                      </li>
+                  ))}
+                </SearchTagsContent>
+
                 <TagsList 
                   listTags={listTagsChoose} 
                   setListTags={setListTagsChoose}
@@ -190,7 +223,7 @@ export const CreateFeedback = () => {
                   value={values.anonymous}
                 />
               </div>
-              <Button type='submit'>Criar</Button>
+              <Button type='submit' disabled={Object.values(errors).length > 0}>Criar</Button>
             </Forms>
           )}
         </Formik>

@@ -89,23 +89,13 @@ const ListCollaboratorsContent = styled.ul`
         background: #FFFFFF;
         width: 100%;
         max-height: 150px;
-        border-radius: 8px;
         display: flex;
         flex-direction: column;
+        gap: 10px;
         z-index: 1;
         overflow-y: auto;
         
-        p {
-            color: ${props => props.theme.colors.textGrayDark};
-            font-size: 12px;
-            padding: 5px 0 0 10px;
-            transition: filter 0.3s;
-            cursor: pointer;
-
-        :hover {
-            filter: brightness(0.90);
-        }
-        }
+       
 `
 
 export { InputAuto, ListCollaboratorsContent, Forms, SearchTagsContent, SectionContent }

@@ -11,8 +11,6 @@ const FeedbackProvider = ({ children }) => {
     const [listFeedbacksSend, setListFeedbacksSend] = useState([])
     const [listTagsServer, setListTagsServer] = useState([])
 
-    const {user} = useUserContext()
-
     const getFeedbacksUser = async (type, id, isFiltered, isFilteredAnonimous) => {
         
         try {
@@ -80,19 +78,24 @@ const FeedbackProvider = ({ children }) => {
     }
 
     const handleCreateFeedback = async (feedbackDatas) => {
-
         feedbackDatas.tagsList = feedbackDatas.tagsList.map(tag => { return { name: tag.name } })
+
+        let isResetForm = false
 
         try {
             await apiDbc.post("/feedback", feedbackDatas)
 
             toast.success("Feedback criado com sucesso!")
-        } catch (Error) {
-            console.log(Error)
-        }
-    }
 
-   
+            isResetForm = true
+
+        } catch (Error) {
+            toast.error("Erro ao criar feedback")
+            isResetForm = false
+        }
+
+        return isResetForm
+    }
 
     return (
         <FeedbackContext.Provider value={{

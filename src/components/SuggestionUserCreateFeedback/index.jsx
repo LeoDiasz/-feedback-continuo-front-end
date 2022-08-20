@@ -1,11 +1,9 @@
-import { SuggestionDiv } from "./styles"
+import { ListContent } from "./styles"
 
-export const SuggestionUserCreateFeedback = ( {datasCollaborator} ) => {
-
-console.log(datasCollaborator)
+export const SuggestionUserCreateFeedback = ( {datasCollaborator, onClick} ) => {
 
   return (
-        <>{datasCollaborator.name}</>
+        <ListContent onClick={onClick}>{datasCollaborator ? datasCollaborator.name : ""}</ListContent>
     
   )
 }
