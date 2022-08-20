@@ -126,6 +126,7 @@ export const CreateFeedback = () => {
                   type="text"
                   name="userFeedbackSend"
                   id="userFeedbackSend"
+                  autoComplete="off"
                   onChange={e => setSearchUserForFeedback(e.target.value)}
                   value={searchUserForFeedback}
                   onClick={() => setSearchUserForFeedback(" ")}
@@ -150,7 +151,8 @@ export const CreateFeedback = () => {
                   type="text" 
                   name="message" 
                   id="message" 
-                  placeholder='Digite o feedback que gostaria de enviar' 
+                  placeholder='Digite o feedback que gostaria de enviar'
+                  autoComplete="off"
                  />
               </div>
 
@@ -163,6 +165,7 @@ export const CreateFeedback = () => {
                   onChange={handleChangeTags}
                   onKeyDown={handleKeyDownCreateTag}
                   value={searchTags}
+                  autoComplete="off"
                 />
                 <SearchTagsContent>
                   {searchTags.length > 0 && filteredTags.map(({ idTag, name }) =>

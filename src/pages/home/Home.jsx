@@ -30,7 +30,7 @@ export const Home = () => {
       <Loading/>
     )
   }
-
+  
   return (
     <>
       <Header/>

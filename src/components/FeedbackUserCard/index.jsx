@@ -8,7 +8,7 @@ import { useUserContext } from '../../hooks/useUserContext'
 
 export const FeedbackUserCard = ({ feedbackDatas, type }) => {
     const {user} = useUserContext()
-
+    
     const [isPublicFeedback, setIsPublicFeedback] = useState(() => {
         if (feedbackDatas.publico) {
             return true
@@ -54,6 +54,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
             <DivMessageFeedback>
                 <p>{feedbackDatas.message}</p>
                 <TagsList listTags={feedbackDatas.tagsList} isNotShowDelete />
+                <p>{feedbackDatas.dataEHora}</p>
                 {type === "feedbacksGiven" && feedbackDatas.feedbackUserId == user.idUser && (
                     <Switch
                         onChange={changeVisibleFeedbackReceveid}
