@@ -5,9 +5,16 @@ import { LoginSchema } from "../../utils/validationsSchema"
 import { Button } from '../../components/Button/styles'
 import { DivTextValidation, InputField, TextValidation, Label } from "../../components/InputStyles/styles"
 import { FormDiv} from "./styles";
+import { Loading } from "../../components/Loading"
 
 export const Login = () => {
-  const {signIn} = useAuthContext()
+  const {signIn, isLoading} = useAuthContext()
+
+  if(isLoading) {
+    return (
+      <Loading/>
+    )
+  }
 
   return (
     <ScreenAndRegisterUser titleForm="Entrar na conta" isScreenLogin>

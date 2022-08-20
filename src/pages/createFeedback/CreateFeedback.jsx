@@ -44,21 +44,17 @@ export const CreateFeedback = () => {
 
   }
 
-  const handleChangeChooseCollaborator = (setFieldValue, setErrors, event) => {
+  const handleChangeChooseCollaborator = (setFieldValue, event) => {
     const valueInput = event.target.value
-
-    let error
 
     if(valueInput !== collaboratorChoose) {
       setCollaboratorChoose("")
+      setIdUserChooseForFeedback(0)
       
-      error = "Usuário não existe no sistema"
     }
 
-    setFieldValue("userFeedbackSend", valueInput)
+    setFieldValue("userFeedbackSend", valueInput, false)
     setSearchCollaboratorForFeedback(valueInput)
-
-    return error
   }
 
   const handleKeyDownCreateTag = (event) => {
@@ -146,7 +142,7 @@ export const CreateFeedback = () => {
             }
           }}
         >
-          {({ errors, handleChange, values, setFieldValue, setErrors}) => (
+          {({ errors, handleChange, values, setFieldValue, setFieldError}) => (
             <Forms>
               <div>
                 <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
@@ -155,7 +151,7 @@ export const CreateFeedback = () => {
                   name="userFeedbackSend"
                   id="userFeedbackSend"
                   autoComplete="off"
-                  onChange={(event) => handleChangeChooseCollaborator(setFieldValue, setErrors, event)}
+                  onChange={(event) => handleChangeChooseCollaborator(setFieldValue, event)}
                   value={searchCollaboratorForFeedback}
                   onClick={() => handleClickChooseCollaborator(setFieldValue)}
                 />

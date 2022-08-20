@@ -1,7 +1,6 @@
 import { createContext, useState } from "react"
 import toast from "react-hot-toast"
 import { apiDbc } from "../services/api"
-import { useUserContext } from "../hooks/useUserContext"
 import anonimousUserImg from "../images/anonymousUser.png"
 
 const FeedbackContext = createContext()
@@ -90,7 +89,14 @@ const FeedbackProvider = ({ children }) => {
             isResetForm = true
 
         } catch (Error) {
-            toast.error("Erro ao criar feedback")
+            
+            if(Error.response.data.status == 400 && Error.response.data.message) {
+                toast.error(Error.response.data.message)
+            } else {
+                toast.error("Erro ao criar feedback")
+
+            }
+
             isResetForm = false
         }
 

@@ -9,7 +9,7 @@ const AuthContext = createContext()
 const AuthProvider = ({children}) => {
   const [token, setToken] = useState()
   const [isLogged, setIslogged] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -26,7 +26,8 @@ const AuthProvider = ({children}) => {
     if(getToken && locationNow === "http://localhost:3000/"){
       navigate("/home")
     }
-    setLoading(false)
+    
+    setIsLoading(false)
     
   }, [])
 
@@ -67,12 +68,12 @@ const AuthProvider = ({children}) => {
   
   }
   
-  if (loading) {
+  if (isLoading) {
     <Loading/>
   }
 
   return (
-    <AuthContext.Provider value={{signIn, token, signOut, isLogged}}>
+    <AuthContext.Provider value={{signIn, token, signOut, isLogged, isLoading}}>
       <Toaster/>
       {children}
     </AuthContext.Provider>
