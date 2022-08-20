@@ -7,5 +7,5 @@ export const DivLoading = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100vw;
-
+  background-color: ${props => props.theme.colors.backgroundLight};
 `

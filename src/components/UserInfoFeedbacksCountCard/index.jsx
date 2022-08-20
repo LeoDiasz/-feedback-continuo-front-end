@@ -7,6 +7,7 @@ import { Button } from "../Button/styles"
 export const UserInfoFeedbacksCountCard = ({user, listFeedbacksSend, listFeedbacksReceveid}) => {
   
   const {colors} = useThemeContext()
+  
   return (
     <CardUser>
        {user && (

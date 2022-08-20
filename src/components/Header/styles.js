@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-export const HeaderContainer = styled.header`
+const HeaderContainer = styled.header`
   background-color: ${props => props.theme.colors.primary};
-  padding: 20px 0;
+  padding: 15px 0;
 
   > div {
     display: flex;
@@ -13,7 +13,6 @@ export const HeaderContainer = styled.header`
   nav, ul {
     display: flex;
     align-items: center;
-   
   }
 
   nav {
@@ -23,15 +22,17 @@ export const HeaderContainer = styled.header`
   li {
     color: ${props => props.theme.colors.backgroundLight};
     font-weight: bold;
+    padding: 5px 15px;
 
     + li {
-      margin-left: 40px;
+      margin-left: 20px;
     }
 
     transition: color 0.2s;
+
     :hover {
+      border-radius: 4px;
       color: ${props => props.theme.colors.secondary}
-    
     }
   }
 
@@ -43,8 +44,10 @@ export const HeaderContainer = styled.header`
 
 `
 
-export const DivLogout = styled.div`
+const DivLogout = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
 `
+
+export {HeaderContainer, DivLogout}

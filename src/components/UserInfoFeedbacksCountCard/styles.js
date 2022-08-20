@@ -5,13 +5,20 @@ const CardUser = styled.section`
     width: 100%;
 
   > div {
-    justify-self: flex-start;
     display: flex;
+    justify-self: flex-start;
     flex-direction: column;
     align-items: center;
     gap: 22px;
     width: 75%;
+
+    img {
+      position: relative;
+
+    }
   }
+
+  
 `
 
 const DivInfoText = styled.div`
