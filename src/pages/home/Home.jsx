@@ -29,7 +29,8 @@ export const Home = () => {
     return (
       <Loading/>
     )
-  }
+  } 
+  console.log(listFeedbacksReceveid)
   
   return (
     <>

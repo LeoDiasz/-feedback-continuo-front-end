@@ -2,6 +2,7 @@ import { createContext, useState } from "react"
 import toast from "react-hot-toast"
 import { apiDbc } from "../services/api"
 import { useUserContext } from "../hooks/useUserContext"
+import anonimousUserImg from "../images/anonymousUser.jpg"
 
 const FeedbackContext = createContext()
 
@@ -37,6 +38,25 @@ const FeedbackProvider = ({ children }) => {
             listFeedbacks = listFeedbacks.map(feedback => {
                 if (type === "receveid") {
                     feedback.feedbacksGiven.avatar = feedback.feedbacksGiven.avatar ? "data:image/png;base64," + feedback.feedbacksGiven.avatar : null
+                    
+                    if (feedback.anonymous) {
+                        feedback = {
+                            message: feedback.message,
+                            anonymous: feedback.anonymous,
+                            publico: feedback.publico,
+                            dataEHora: feedback.dataEHora,
+                            feedbackUserId: feedback.feedbackUserId,
+                            idFeedback: feedback.idFeedback,
+                            tagsList: feedback.tagList,
+                            feedbacksGiven: {
+                                avatar: anonimousUserImg,
+                                idUser: null,
+                                name: "Anonimo",
+                                userRole: "Anonimo",
+                            }
+                        }
+                    }
+                    
                 } else {
                     feedback.feedbackEntityReceived.avatar = feedback.feedbackEntityReceived.avatar ? "data:image/png;base64," + feedback.feedbackEntityReceived.avatar : null
                 }
