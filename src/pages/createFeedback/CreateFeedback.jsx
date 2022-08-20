@@ -169,7 +169,7 @@ export const CreateFeedback = () => {
                     ))}
                 </ListCollaboratorsContent>
                 <DivTextValidation>
-                  <TextValidation>{errors.userFeedbackSend}</TextValidation>
+                  <TextValidation id="id-message-collaborator">{errors.userFeedbackSend}</TextValidation>
                 </DivTextValidation>
               </div>
             
@@ -183,7 +183,7 @@ export const CreateFeedback = () => {
                   autoComplete="off"
                 />
                 <DivTextValidation>
-                      <TextValidation>{errors.message}</TextValidation>
+                      <TextValidation id="id-message-feedback">{errors.message}</TextValidation>
                 </DivTextValidation>
               </div>
 

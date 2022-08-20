@@ -71,7 +71,7 @@ export const CreateUser = () => {
 
             <div>
               <Label htmlFor="password">SENHA * </Label>
-              <InputField name="password" id="password" placeholder="Digite uma senha" autoComplete="off" />
+              <InputField name="password" id="password" type="password" placeholder="Digite uma senha" autoComplete="off" />
               <DivTextValidation>
                 <TextValidation id="id-message-password">{errors.password}</TextValidation>
               </DivTextValidation>
@@ -80,7 +80,7 @@ export const CreateUser = () => {
 
             <div>
               <Label htmlFor="password"> CONFIRMAR SENHA * </Label>
-              <InputField name="confirmPassword" id="confirmPassword" placeholder="confirme sua senha" autoComplete="off"/>
+              <InputField name="confirmPassword" id="confirmPassword" type="password" placeholder="confirme sua senha" autoComplete="off"/>
               <DivTextValidation>
                 <TextValidation id="id-message-confirm-password">{errors.confirmPassword}</TextValidation> 
               </DivTextValidation>
