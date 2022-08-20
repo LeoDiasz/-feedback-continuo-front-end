@@ -12,7 +12,7 @@ const FeedbackProvider = ({ children }) => {
 
     const {user} = useUserContext()
 
-    const getFeedbacksUser = async (type, id, isFiltered) => {
+    const getFeedbacksUser = async (type, id, isFiltered, isFilteredAnonimous) => {
         
         try {
             let { data: listFeedbacks } = await apiDbc.get(`/feedback/${type}-por-id?idUser=${id}`)
@@ -25,6 +25,15 @@ const FeedbackProvider = ({ children }) => {
                 }) 
             }
 
+            if(isFilteredAnonimous) {
+                listFeedbacks = listFeedbacks.filter(feedback => {
+                    if (type === "gived" && !feedback.anonymous) {
+                        return feedback
+                    }
+                }) 
+            }
+
+
             listFeedbacks = listFeedbacks.map(feedback => {
                 if (type === "receveid") {
                     feedback.feedbacksGiven.avatar = feedback.feedbacksGiven.avatar ? "data:image/png;base64," + feedback.feedbacksGiven.avatar : null
@@ -34,7 +43,6 @@ const FeedbackProvider = ({ children }) => {
                 return feedback;
             })
 
-                
             type === "receveid" ? setListFeedbacksReceveid(listFeedbacks) : setListFeedbacksSend(listFeedbacks)
                 
         } catch (error) {
