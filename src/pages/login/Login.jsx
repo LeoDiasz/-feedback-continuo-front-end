@@ -1,8 +1,8 @@
-import {Formik} from "formik"
-import {useAuthContext} from "../../hooks/useAuthContext"
+import { Formik } from "formik"
+import { useAuthContext } from "../../hooks/useAuthContext"
 import { ScreenAndRegisterUser } from '../../components/ScreenLoginAndRegisterUser'
-import {Button} from '../../components/Button/styles'
 import { LoginSchema } from "../../utils/validationsSchema"
+import { Button } from '../../components/Button/styles'
 import { DivTextValidation, InputField, TextValidation, Label } from "../../components/InputStyles/styles"
 import { FormDiv} from "./styles";
 
@@ -37,8 +37,7 @@ export const Login = () => {
             </div>
             <Button type="submit" id="id-button-login" disabled={Object.values(errors).length > 0}>ENTRAR</Button>
           </FormDiv>
-         )
-        } 
+         )} 
       </Formik>
     </ScreenAndRegisterUser>
   )

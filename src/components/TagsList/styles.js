@@ -13,9 +13,9 @@ export const ListTagsContent = styled.ul`
     align-items: center;
     justify-content: space-between;
     gap: 5px;
-    background-color: ${props => props.theme.colors.textGrayMedio};
-    padding: 5px 10px;
+    padding: 3px 10px;
     border-radius: 6px;
+    background-color: ${props => props.theme.colors.textGrayMedio};
     color: #fff;
     cursor: pointer;
     position: relative;
@@ -31,7 +31,12 @@ export const ListTagsContent = styled.ul`
     }
 
     span {
-      font-size: 12px;
+      font-size: 11px;
     }
   }
+
+  li:nth-child(2n) {
+    background-color: ${props => props.theme.colors.secondary}
+  }
+  
 `

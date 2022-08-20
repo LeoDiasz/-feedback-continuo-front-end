@@ -2,12 +2,12 @@ import {useEffect, useState} from "react"
 import { useParams } from 'react-router-dom'
 import { useUserContext } from "../../hooks/useUserContext"
 import { useFeedbackContext } from "../../hooks/useFeedbackContext"
+import { SectionFeedbacksUser } from "../../components/SectionFeedbacksUser"
+import { UserInfoFeedbacksCountCard } from "../../components/UserInfoFeedbacksCountCard"
 import { Header } from "../../components/Header"
 import { Loading } from '../../components/Loading'
-import { UserInfoFeedbacksCountCard } from "../../components/UserInfoFeedbacksCountCard"
-import { SectionContent } from "./styles"
 import { Container } from "../../components/Container/styles"
-import { SectionFeedbacksUser } from "../../components/SectionFeedbacksUser"
+import { SectionContent } from "./styles"
 
 export const ProfileCollaborator = () => {
   const {id} = useParams()

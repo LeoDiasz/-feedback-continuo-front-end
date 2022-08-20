@@ -1,14 +1,14 @@
 import { Formik} from "formik"
 import { useState } from "react"
 import PasswordStrengthBar from 'react-password-strength-bar';
-import { CreateUserSchema } from "../../utils/validationsSchema"
 import {listOptionsRole} from "../../utils/consts"
 import { useUserContext } from "../../hooks/useUserContext";
+import { CreateUserSchema } from "../../utils/validationsSchema"
 import { ScreenAndRegisterUser } from '../../components/ScreenLoginAndRegisterUser'
-import { DivTextValidation, InputField, Label, TextValidation } from "../../components/InputStyles/styles"
 import { FormDiv } from "../login/styles"
-import {DivUploadAvatar, DivInputUpload } from "./styles"
 import {Button, ButtonUpload} from '../../components/Button/styles'
+import { DivTextValidation, InputField, Label, TextValidation } from "../../components/InputStyles/styles"
+import {DivUploadAvatar, DivInputUpload } from "./styles"
 
 export const CreateUser = () => {
   const [avatarUserChoose, setAvatarUserChoose] = useState()
@@ -55,7 +55,7 @@ export const CreateUser = () => {
           <FormDiv>
             <div>
               <Label htmlFor="name">NOME COMPLETO * </Label>
-              <InputField name="name" id="name" placeholder="Digite seu nome" />
+              <InputField name="name" id="name" placeholder="Digite seu nome" autoComplete="off"/>
               <DivTextValidation>
                 <TextValidation id="id-message-name">{errors.name}</TextValidation> 
               </DivTextValidation>
@@ -63,7 +63,7 @@ export const CreateUser = () => {
 
             <div>
               <Label htmlFor="email">E-MAIL * </Label>
-              <InputField name="email" id="email" placeholder="email @dbccompany.com.br" />
+              <InputField name="email" id="email" placeholder="email @dbccompany.com.br" autoComplete="off"/>
               <DivTextValidation>
                 <TextValidation id="id-message-email">{errors.email}</TextValidation> 
               </DivTextValidation>
@@ -71,7 +71,7 @@ export const CreateUser = () => {
 
             <div>
               <Label htmlFor="password">SENHA * </Label>
-              <InputField name="password" id="password" placeholder="Digite uma senha" />
+              <InputField name="password" id="password" placeholder="Digite uma senha" autoComplete="off" />
               <DivTextValidation>
                 <TextValidation id="id-message-password">{errors.password}</TextValidation>
               </DivTextValidation>
@@ -80,7 +80,7 @@ export const CreateUser = () => {
 
             <div>
               <Label htmlFor="password"> CONFIRMAR SENHA * </Label>
-              <InputField name="confirmPassword" id="confirmPassword" placeholder="confirme sua senha" />
+              <InputField name="confirmPassword" id="confirmPassword" placeholder="confirme sua senha" autoComplete="off"/>
               <DivTextValidation>
                 <TextValidation id="id-message-confirm-password">{errors.confirmPassword}</TextValidation> 
               </DivTextValidation>
@@ -88,7 +88,7 @@ export const CreateUser = () => {
 
             <div>
               <Label htmlFor="role">CARGO *</Label>
-              <InputField name="role" id="role" component="select">
+              <InputField name="role" id="role" component="select" autoComplete="off">
                 {listOptionsRole && listOptionsRole.map((role, index) => (
                   <option key={index} value={role}>{role.replaceAll("_", " ")}</option>
                 ))}
@@ -100,13 +100,6 @@ export const CreateUser = () => {
 
             <div>
               <Label htmlFor="avatar">FOTO DE PERFIL</Label>
-              <DivUploadAvatar>
-                <DivInputUpload onClick={handleUploadAvatar}>
-                  <span>{avatarUserChoose ? avatarUserChoose.name: ""}</span>
-                </DivInputUpload>
-
-                <ButtonUpload onClick={handleUploadAvatar}>{avatarUserChoose ? "Remover imagem" : "Adicionar imagem"}</ButtonUpload>
-              </DivUploadAvatar>
               <input 
                 name="avatar" 
                 id="avatar" 
@@ -117,9 +110,23 @@ export const CreateUser = () => {
                 values={avatarUserChoose}
                 style={{display: "none"}}
               />
+              <DivUploadAvatar>
+                <DivInputUpload onClick={handleUploadAvatar}>
+                  <span>{avatarUserChoose ? avatarUserChoose.name: ""}</span>
+                </DivInputUpload>
+
+                <ButtonUpload onClick={handleUploadAvatar}>{avatarUserChoose ? "Remover imagem" : "Adicionar imagem"}</ButtonUpload>
+              </DivUploadAvatar> 
             </div>              
 
-            <Button id="id-button-create-user" type="submit" disabled={Object.values(errors).length > 0}>CRIAR CONTA</Button>
+            <Button 
+              id="id-button-create-user" 
+              type="submit" 
+              disabled={Object.values(errors).length > 0} 
+              autoComplete="off"
+            >
+              CRIAR CONTA
+            </Button>
           </FormDiv>
         )}
       </Formik>

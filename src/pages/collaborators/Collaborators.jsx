@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
+import { useUserContext } from '../../hooks/useUserContext'
 import { CollaboratorInfoCard } from '../../components/CollaboratorInfoCard'
-import { Container } from '../../components/Container/styles'
 import { Header } from '../../components/Header'
-import { Input } from '../../components/InputStyles/styles'
 import { Loading } from '../../components/Loading'
 import Pagination from '../../components/Pagination'
-import { useUserContext } from '../../hooks/useUserContext'
+import { Input } from '../../components/InputStyles/styles'
+import { Container } from '../../components/Container/styles'
 import { ListCollaboratorsContent, SectionCollaboratorsContainer, Teste } from "./styles"
 
 export const Collaborators = () => {
   const { listCollaborators, getListCollaborators } = useUserContext()
   const [isLoading, setIsLoading] = useState(true)
-  const [searchUser, setSearchUser] = useState("")
+  const [searchCollaborator, setSearchCollaborator] = useState("")
 
   const setup = async () => {
     await getListCollaborators()
@@ -23,8 +23,8 @@ export const Collaborators = () => {
     setup()
   }, [])
 
-  const filteredCollaborators = searchUser.length > 0
-    ? listCollaborators.filter(collaborator => collaborator.name.toLowerCase().includes(searchUser.toLowerCase()))
+  const filteredCollaborators = searchCollaborator.length > 0
+    ? listCollaborators.filter(collaborator => collaborator.name.toLowerCase().includes(searchCollaborator.toLowerCase()))
     : []
 
   if (isLoading) {
@@ -46,8 +46,8 @@ export const Collaborators = () => {
           <Input
             placeholder='Procure por um colaborador pelo nome'
             type="text"
-            onChange={e => setSearchUser(e.target.value)}
-            value={searchUser}
+            onChange={e => setSearchCollaborator(e.target.value)}
+            value={searchCollaborator}
           />
        
             {/* <ListCollaboratorsContent>
@@ -62,8 +62,12 @@ export const Collaborators = () => {
               )}
             </ListCollaboratorsContent> */}
             
-           <Pagination searchUser={searchUser} filteredCollaborators={filteredCollaborators} listCollaborators={listCollaborators}/>
-        
+           <Pagination 
+              searchUser={searchCollaborator} 
+              filteredCollaborators={filteredCollaborators} 
+              listCollaborators={listCollaborators}
+            />
+
         </Container>
       </SectionCollaboratorsContainer>
     </>
