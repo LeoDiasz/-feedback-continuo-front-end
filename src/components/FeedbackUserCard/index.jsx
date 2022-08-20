@@ -7,7 +7,7 @@ import { FeedbackContent, DivDatasUser, DivMessageFeedback } from './styles'
 import { useUserContext } from '../../hooks/useUserContext'
 
 export const FeedbackUserCard = ({ feedbackDatas, type }) => {
-    const {user} = useUserContext()
+    const { user } = useUserContext()
 
     const [isPublicFeedback, setIsPublicFeedback] = useState(() => {
         if (feedbackDatas.publico) {
@@ -19,21 +19,21 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
 
     const changeVisibleFeedbackReceveid = async () => {
 
-        setIsPublicFeedback(isPublicFeedback ? false : true)   
+        setIsPublicFeedback(isPublicFeedback ? false : true)
 
         let updateVisible
 
         updateVisible = isPublicFeedback ? false : true
-        
+
         try {
             await apiDbc.put(`/feedback?idFeedback=${feedbackDatas.idFeedback}&publico=${updateVisible}`)
 
         } catch (Error) {
             console.log(Error)
         }
-        
+
     }
-    
+
     return (
         <FeedbackContent>
             <DivDatasUser>
@@ -54,7 +54,10 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
             <DivMessageFeedback>
                 <p>{feedbackDatas.message}</p>
                 <TagsList listTags={feedbackDatas.tagsList} isNotShowDelete />
-                {type === "feedbacksGiven" && feedbackDatas.feedbackUserId == user.idUser && (
+            </DivMessageFeedback>
+            {type === "feedbacksGiven" && feedbackDatas.feedbackUserId == user.idUser && (
+                <div>
+                    <p>{isPublicFeedback ? 'Público' : 'Privado'}</p>
                     <Switch
                         onChange={changeVisibleFeedbackReceveid}
                         checked={isPublicFeedback}
@@ -63,10 +66,9 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
                         height={10}
                         width={40}
                         handleDiameter={20}
-
                     />
-                )}
-            </DivMessageFeedback>
+                </div>
+            )}
         </FeedbackContent >
     )
 }
