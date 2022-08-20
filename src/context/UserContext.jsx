@@ -1,3 +1,4 @@
+import {useNavigate} from "react-router-dom"
 import { createContext, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { apiDbc } from "../services/api"
@@ -14,6 +15,7 @@ const UserProvider = ({ children }) => {
   const [usersPerPage, setUsersPerPage] = useState(10)
   const [atualPage, setAtualPage] = useState(0)
   const [pages, setPages] = useState(0)
+  const navigate = useNavigate()
 
   const getDatasCollaboratorById = async (id) => {
     try {
@@ -104,12 +106,14 @@ const UserProvider = ({ children }) => {
         senha: userDatas.password
       }
 
-      await signIn(userLogin)
+      await signIn(userLogin, true)
 
       formData.append("id", userDatasReturn.idUser)
       
       await apiDbc.put(`/users/update-file`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-
+      
+      navigate("/home")
+      toast.success("Usuário criado com sucesso. Seja bem vindo!")
     
     } catch (Error) {
 

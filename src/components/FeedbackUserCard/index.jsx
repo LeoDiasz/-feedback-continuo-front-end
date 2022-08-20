@@ -4,7 +4,7 @@ import { apiDbc } from '../../services/api'
 import { TagsList } from '../TagsList'
 import { AvatarUser } from "../../components/AvatarUser"
 import { FeedbackContent, DivDatasUser, DivMessageFeedback } from './styles'
-import { useUserContext } from '../../hooks/useUserContext'
+import {useUserContext} from "../../hooks/useUserContext"
 
 export const FeedbackUserCard = ({ feedbackDatas, type }) => {
     const {user} = useUserContext()
@@ -19,23 +19,23 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
 
     const changeVisibleFeedbackReceveid = async () => {
 
-        setIsPublicFeedback(isPublicFeedback ? false : true)   
+        setIsPublicFeedback(isPublicFeedback ? false : true)
 
         let updateVisible
 
         updateVisible = isPublicFeedback ? false : true
-        
+
         try {
             await apiDbc.put(`/feedback?idFeedback=${feedbackDatas.idFeedback}&publico=${updateVisible}`)
 
         } catch (Error) {
             console.log(Error)
         }
-        
+
     }
-    
+
     return (
-        <FeedbackContent>
+        <FeedbackContent type={type}>
             <DivDatasUser>
                 {type === 'feedbacksGiven' ? (
                     <>
@@ -54,8 +54,10 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
             <DivMessageFeedback>
                 <p>{feedbackDatas.message}</p>
                 <TagsList listTags={feedbackDatas.tagsList} isNotShowDelete />
-                <p>{feedbackDatas.dataEHora}</p>
-                {type === "feedbacksGiven" && feedbackDatas.feedbackUserId == user.idUser && (
+            </DivMessageFeedback>
+            {type === "feedbacksGiven" && feedbackDatas.feedbackUserId == user.idUser && (
+                <div>
+                    <p>{isPublicFeedback ? 'Público' : 'Privado'}</p>
                     <Switch
                         onChange={changeVisibleFeedbackReceveid}
                         checked={isPublicFeedback}
@@ -64,10 +66,9 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
                         height={10}
                         width={40}
                         handleDiameter={20}
-
                     />
-                )}
-            </DivMessageFeedback>
+                </div>
+            )}
         </FeedbackContent >
     )
 }

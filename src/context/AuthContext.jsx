@@ -30,7 +30,7 @@ const AuthProvider = ({children}) => {
     
   }, [])
 
-  const signIn = async (userDatas) => {
+  const signIn = async (userDatas, isNotNavigateForHome) => {
 
     try {  
       const {data: token} = await apiDbc.post("/users/login", userDatas)
@@ -41,8 +41,11 @@ const AuthProvider = ({children}) => {
       
       apiDbc.defaults.headers.common["authorization"] = token
 
-      navigate("/home")
-      toast.success("Seja bem vindo!")
+      if (!isNotNavigateForHome) {
+        navigate("/home")
+        toast.success("Seja bem vindo!")
+      }
+  
       
     } catch(Error) {
       toast.error("Erro de login. Email ou senha invalido.")
