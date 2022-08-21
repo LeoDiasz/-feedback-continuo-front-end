@@ -23,6 +23,7 @@ function Routers() {
                             <Route path='/user/create' element={<CreateUser />} />
                             <Route element={<PrivateRoute />}>
                                 <Route path='/home' element={<Home />} />
+                                <Route path='/feedback/create/:id' element={<CreateFeedback />} />
                                 <Route path='/feedback/create' element={<CreateFeedback />} />
                                 <Route path='/collaborators' element={<Collaborators />} />
                                 <Route path='/collaborator/profile/:id' element={<ProfileCollaborator />} />

@@ -22,6 +22,7 @@ const UserProvider = ({ children }) => {
 
       setCollaborator(datasCollaborator)
 
+      return datasCollaborator
     } catch (Error) {
 
       console.log(Error)
@@ -55,7 +56,7 @@ const UserProvider = ({ children }) => {
           userRole: collaborator.userRole,
         }
       })
-      
+
       setListCollaborators((prevListCollaborators) => [...prevListCollaborators, ...listCollaboratorsFiltredAvatar])
     } catch (Error) {
       console.log(Error)

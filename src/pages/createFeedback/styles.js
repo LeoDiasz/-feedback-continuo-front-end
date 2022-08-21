@@ -1,4 +1,4 @@
-import { Form, Field } from "formik";
+import {Field } from "formik";
 import styled from "styled-components";
 import { FormPattern } from "../../components/FormPattern/styles";
 
@@ -7,6 +7,25 @@ const SectionContent = styled.section`
     min-height: 100vh;
 
     > div {
+        display: flex;
+        flex-direction: column;
+
+        > div {
+            text-align: center;
+            
+            h1 {
+        
+                cursor: pointer;
+                
+                transition: color 0.3s;
+                :hover {
+                    
+                    color: ${props => props.theme.colors.primary};
+                }
+            }
+        }
+
+        gap: 40px;
         padding: 60px 0;
     }
 `

@@ -1,5 +1,6 @@
 import { Formik } from 'formik'
 import { useEffect, useState } from 'react'
+import {useParams} from "react-router-dom"
 import { useUserContext } from '../../hooks/useUserContext'
 import { useFeedbackContext } from '../../hooks/useFeedbackContext'
 import { SuggestionUserCreateFeedback } from '../../components/SuggestionUserCreateFeedback'
@@ -13,7 +14,9 @@ import { Button } from '../../components/Button/styles'
 import { Forms, InputAuto, ListCollaboratorsContent, SearchTagsContent, SectionContent } from './styles'
 
 export const CreateFeedback = () => {
-  const {getListCollaboratorsWithoutPages, listCollaboratorsPagesOff } = useUserContext()
+  const {id} = useParams()
+  const {getTagsServer, handleCreateFeedback, listTagsServer} = useFeedbackContext()
+  const {getListCollaboratorsWithoutPages, listCollaboratorsPagesOff, collaborator, getDatasCollaboratorById} = useUserContext()
   const [isLoading, setIsLoading] = useState(true)
   const [idUserChooseForFeedback, setIdUserChooseForFeedback] = useState("")
   const [searchCollaboratorForFeedback , setSearchCollaboratorForFeedback] = useState("")
@@ -23,9 +26,15 @@ export const CreateFeedback = () => {
   const [listTagsChoose, setListTagsChoose] = useState([])
   const [searchTags, setSearchTags] = useState("")
   
-  const {getTagsServer, handleCreateFeedback, listTagsServer} = useFeedbackContext()
 
   const setup = async () => {
+
+    if (id) {
+      const datasCollaborator = await getDatasCollaboratorById(id)
+      setCollaboratorChoose(datasCollaborator.name)
+      setIdUserChooseForFeedback(datasCollaborator.idUser)
+      setSearchCollaboratorForFeedback(datasCollaborator.name)
+    }
     await getListCollaboratorsWithoutPages()
     await getTagsServer()
     setIsLoading(false)
@@ -116,113 +125,116 @@ export const CreateFeedback = () => {
       <Header />
       <SectionContent>
         <Container>
-        <Formik
-          initialValues={{
-            message: '',
-            anonymous: '',
-            feedbackUserId: '',
-            userFeedbackSend: '',
-            tagsList: '',
-          }}
-          validationSchema={CreateFeedbackSchema}
-          onSubmit={ async (values, {resetForm}) => {
-            const newValues = {
-              message: values.message,
-              anonymous: values.anonymous ? true : false,
-              feedbackUserId: parseInt(idUserChooseForFeedback),
-              tagsList: listTagsChoose,
-            }
-            
-            const isResetForm = await handleCreateFeedback(newValues)
+          <div>
+            <h1>Cadastrar feedbacks</h1>
+          </div>
+          <Formik
+            initialValues={{
+              message: '',
+              anonymous: '',
+              feedbackUserId: collaborator ? collaborator.idUser : '',
+              userFeedbackSend: collaborator ? collaborator.name : '',
+              tagsList: '',
+            }}
+            validationSchema={CreateFeedbackSchema}
+            onSubmit={ async (values, {resetForm}) => {
+              const newValues = {
+                message: values.message,
+                anonymous: values.anonymous ? true : false,
+                feedbackUserId: parseInt(idUserChooseForFeedback),
+                tagsList: listTagsChoose,
+              }
+              
+              const isResetForm = await handleCreateFeedback(newValues)
 
-            if(isResetForm) {
-              resetForm()
-              setListTagsChoose([])
-              setSearchCollaboratorForFeedback("")
-            }
-          }}
-        >
-          {({ errors, handleChange, values, setFieldValue, setFieldError}) => (
-            <Forms>
-              <div>
-                <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
-                <InputAuto
-                  type="text"
-                  name="userFeedbackSend"
-                  id="userFeedbackSend"
-                  autoComplete="off"
-                  onChange={(event) => handleChangeChooseCollaborator(setFieldValue, event)}
-                  value={searchCollaboratorForFeedback}
-                  onClick={() => handleClickChooseCollaborator(setFieldValue)}
-                />
-                <ListCollaboratorsContent>
-                    {(isClickInInputCollaborator || searchCollaboratorForFeedback.length > 0) && !collaboratorChoose && filteredCollaborators && filteredCollaborators.map((collaborator) => (
-                      <SuggestionUserCreateFeedback
-                        onClick={() => handleClickChooseCollaborator(setFieldValue, collaborator.name, collaborator.idUser)}
-                        key={collaborator.idUser} 
-                        datasCollaborator={collaborator}
-                      />
-                    ))}
-                </ListCollaboratorsContent>
-                <DivTextValidation>
-                  <TextValidation id="id-message-collaborator">{errors.userFeedbackSend}</TextValidation>
-                </DivTextValidation>
-              </div>
-            
-              <div>
-                <Label htmlFor="message">Feedback</Label>
-                <InputField 
-                  type="text" 
-                  name="message" 
-                  id="message" 
-                  placeholder='Digite o feedback que gostaria de enviar'
-                  autoComplete="off"
-                />
-                <DivTextValidation>
-                      <TextValidation id="id-message-feedback">{errors.message}</TextValidation>
-                </DivTextValidation>
-              </div>
-
-              <div>
-                <Label htmlFor="tags">Escolha as tags</Label>
-                <InputAuto
-                  type="text"
-                  name="tags"
-                  id="tags"
-                  onChange={handleChangeTags}
-                  onClick={() => handleClickChooseTag()}
-                  onKeyDown={handleKeyDownCreateTag}
-                  value={searchTags}
-                  autoComplete="off"
-                />
-                <SearchTagsContent>
-                  {(isClickInInputTags || searchTags.length > 0) && filteredTags && filteredTags.map(({ idTag, name }) => (
-                     <li key={idTag} onClick={() => handleClickChooseTag(name)}>
-                        <p>{name}</p>
-                      </li>
-                  ))}
-                </SearchTagsContent>
-
-                <TagsList 
-                  listTags={listTagsChoose} 
-                  setListTags={setListTagsChoose}
+              if(isResetForm) {
+                resetForm()
+                setListTagsChoose([])
+                setSearchCollaboratorForFeedback("")
+              }
+            }}
+          >
+            {({ errors, handleChange, values, setFieldValue, setFieldError}) => (
+              <Forms>
+                <div>
+                  <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
+                  <InputAuto
+                    type="text"
+                    name="userFeedbackSend"
+                    id="userFeedbackSend"
+                    autoComplete="off"
+                    onChange={(event) => handleChangeChooseCollaborator(setFieldValue, event)}
+                    value={searchCollaboratorForFeedback}
+                    onClick={() => handleClickChooseCollaborator(setFieldValue)}
                   />
-              </div>
+                  <ListCollaboratorsContent>
+                      {(isClickInInputCollaborator || searchCollaboratorForFeedback.length > 0) && !collaboratorChoose && filteredCollaborators && filteredCollaborators.map((collaborator) => (
+                        <SuggestionUserCreateFeedback
+                          onClick={() => handleClickChooseCollaborator(setFieldValue, collaborator.name, collaborator.idUser)}
+                          key={collaborator.idUser} 
+                          datasCollaborator={collaborator}
+                        />
+                      ))}
+                  </ListCollaboratorsContent>
+                  <DivTextValidation>
+                    <TextValidation id="id-message-collaborator">{errors.userFeedbackSend}</TextValidation>
+                  </DivTextValidation>
+                </div>
+              
+                <div>
+                  <Label htmlFor="message">Feedback</Label>
+                  <InputField 
+                    type="text" 
+                    name="message" 
+                    id="message" 
+                    placeholder='Digite o feedback que gostaria de enviar'
+                    autoComplete="off"
+                  />
+                  <DivTextValidation>
+                        <TextValidation id="id-message-feedback">{errors.message}</TextValidation>
+                  </DivTextValidation>
+                </div>
 
-              <div>
-                <Label htmlFor="message">Quer deixar feedback anonimo</Label>
-                <input 
-                  type="checkbox" 
-                  name="anonymous" 
-                  id="anonymous" 
-                  onChange={handleChange} 
-                  value={values.anonymous}
-                />
-              </div>
-              <Button type='submit' disabled={Object.values(errors).length > 0}>Criar</Button>
-            </Forms>
-          )}
-        </Formik>
+                <div>
+                  <Label htmlFor="tags">Escolha as tags</Label>
+                  <InputAuto
+                    type="text"
+                    name="tags"
+                    id="tags"
+                    onChange={handleChangeTags}
+                    onClick={() => handleClickChooseTag()}
+                    onKeyDown={handleKeyDownCreateTag}
+                    value={searchTags}
+                    autoComplete="off"
+                  />
+                  <SearchTagsContent>
+                    {(isClickInInputTags || searchTags.length > 0) && filteredTags && filteredTags.map(({ idTag, name }) => (
+                      <li key={idTag} onClick={() => handleClickChooseTag(name)}>
+                          <p>{name}</p>
+                        </li>
+                    ))}
+                  </SearchTagsContent>
+
+                  <TagsList 
+                    listTags={listTagsChoose} 
+                    setListTags={setListTagsChoose}
+                    />
+                </div>
+
+                <div>
+                  <Label htmlFor="message">Quer deixar feedback anonimo</Label>
+                  <input 
+                    type="checkbox" 
+                    name="anonymous" 
+                    id="anonymous" 
+                    onChange={handleChange} 
+                    value={values.anonymous}
+                  />
+                </div>
+                <Button type='submit' disabled={Object.values(errors).length > 0}>Criar</Button>
+              </Forms>
+            )}
+          </Formik>
         </Container>
       </SectionContent>
     </>

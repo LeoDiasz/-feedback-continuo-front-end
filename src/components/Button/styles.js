@@ -5,8 +5,8 @@ const Button = styled.button`
     color: ${props => props.color ? props.color : "#ffffff"};
     border: ${props => props.border ? props.border : "none"};
     width: ${props => props.width ? props.width : "100%"};
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: ${props => props.radius ? props.radius : "4px"};
+    padding: ${props => props.padding ? props.padding : "10px"};
 `
 
 const ButtonIcon = styled.button `
