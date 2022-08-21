@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import Switch from 'react-switch'
 import {useUserContext} from "../../hooks/useUserContext"
+import { useThemeContext } from '../../hooks/useThemeContext'
 import { apiDbc } from '../../services/api'
 import { TagsList } from '../TagsList'
 import { AvatarUser } from "../../components/AvatarUser"
 import { formatDateExtended } from '../../utils/formatDatas'
 import { FeedbackContent, DivDatasUser, DivMessageFeedback, DivMoreInfos } from './styles'
 
-
 export const FeedbackUserCard = ({ feedbackDatas, type }) => {
     const {user} = useUserContext()
+    const {colors} = useThemeContext()
 
     const [isPublicFeedback, setIsPublicFeedback] = useState(() => {  
         return feedbackDatas.publico ? true : false
@@ -55,6 +56,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
             </DivMessageFeedback>
             {type === "feedbacksGiven" && feedbackDatas.feedbackUserId == user.idUser ? (
                 <DivMoreInfos chooseColor={isPublicFeedback}>
+                    <div>
                     <span>{isPublicFeedback ? 'Público' : 'Privado'}</span>
                     <Switch
                         onChange={changeVisibleFeedbackReceveid}
@@ -62,13 +64,18 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
                         checkedIcon={false}
                         uncheckedIcon={false}
                         height={10}
-                        width={40}
+                        width={35}
                         handleDiameter={20}
+                        offHandleColor={colors.textGray}
+                        onHandleColor={colors.inputBorder}
+                        onColor={colors.secondary}
                     />
+                    </div>
+                   
                 </DivMoreInfos>
             ) : (
-                <DivMoreInfos chooseColor={feedbackDatas.anonymous}>
-                {user.idUser == feedbackDatas.userId && <span>{feedbackDatas.anonymous ? "Anonimo" : "Não anonimo"}</span>}
+                <DivMoreInfos type="anonymous">
+                {user.idUser == feedbackDatas.userId && feedbackDatas.anonymous && <span>anônimo</span>}
                 </DivMoreInfos>
             )}
              <small>Criado em: {formatDateExtended(feedbackDatas.dataEHora)}</small>

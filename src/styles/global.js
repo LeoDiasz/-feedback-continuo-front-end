@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const theme = {
+  title: "light",
   colors: {
     primary: "#1166d9",
     secondary: "#48BD82",

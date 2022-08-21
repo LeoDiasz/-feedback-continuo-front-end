@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const FeedbackContent = styled.li`
     display: grid;
-    grid-template-columns: 20% 70% 10%;
+    grid-template-columns: 20% 65% 15%;
     align-items: center;
     width: 100%;
     padding: 18px 25px;
@@ -86,14 +86,27 @@ const DivMoreInfos = styled.div`
     flex-direction: column;
     height: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     text-align: center;
     position: relative;
 
-    > span {
-        font-size: 14px;
-        color: ${props => props.chooseColor ? props.theme.colors.black : props.theme.colors.textGrayMedio};
+    > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
     }
+
+    span {
+        font-size: ${props => props.type == "anonymous" ? "11px" : "12px"};
+        color: ${props => props.type !== "anonymous" ? props.chooseColor ? props.theme.colors.black : props.theme.colors.textGrayMedio: props.theme.colors.backgroundLight};
+        background-color: ${props => props.type == "anonymous"  ? props.theme.colors.primary : ""};
+        padding: ${props => props.type == "anonymous" && "3px 10px"} ;
+        border-radius: ${props => props.type == "anonymous" ? "8px" : "0"} ;
+        
+    }
+
+    color: ${props => props.type == "anonymous" && props.theme.colors.backgroundLight}
 `
 
 export {FeedbackContent, DivDatasUser, DivMessageFeedback, DivMoreInfos}

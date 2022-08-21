@@ -48,6 +48,15 @@ const DivLogout = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  > button:last-child {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 25px;
+    color: ${props => props.theme.colors.backgroundLight}
+  }
 `
 
 export {HeaderContainer, DivLogout}

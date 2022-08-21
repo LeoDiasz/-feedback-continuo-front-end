@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import {MdOutlineArrowDropDown} from "react-icons/md"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useUserContext } from "../../hooks/useUserContext"
 import { Logo } from "../Logo"
@@ -31,12 +32,16 @@ export const Header = () => {
         
         <DivLogout>
           {isOpenButtonSignOut && (
-            <Button  width="100px" id="id-button-signout" onClick={signOut}>Sair</Button>
+            <Button  width="70px" padding="3px" id="id-button-signout" onClick={signOut}>Sair</Button>
           )}
           <button onClick={() => setIsOpenButtonSignOut(isOpenButtonSignOut ? false : true)}>
-            {user && <AvatarUser img={user.avatar ? user.avatar : uploadUser} width="60px" id="id-avatar-top-right"/>}
+            {user &&  ( 
+              <>
+                <AvatarUser img={user.avatar ? user.avatar : uploadUser} width="60px" id="id-avatar-top-right"/>
+                <MdOutlineArrowDropDown/>
+              </>
+            )}
           </button>
-
         </DivLogout>
       </Container>
     </HeaderContainer>
