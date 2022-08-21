@@ -41,7 +41,7 @@ export const Login = () => {
             <div>
               <Label htmlFor="senha">SENHA</Label>
               <InputField name="senha" id="senha" type={passwordShow ? 'text' : 'password'} placeholder="Digite sua senha" />
-              <button onClick={() => setPasswordShow(passwordShow ? false : true)}>{passwordShow ? <MdOutlineVisibility /> : <MdOutlineVisibilityOff />}</button>
+              <button type='button' onClick={() => setPasswordShow(passwordShow ? false : true)}>{passwordShow ? <MdOutlineVisibility /> : <MdOutlineVisibilityOff />}</button>
               <DivTextValidation>
                 <TextValidation>{errors.senha}</TextValidation>
               </DivTextValidation>

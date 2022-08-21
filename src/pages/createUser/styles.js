@@ -22,3 +22,41 @@ export const DivInputUpload = styled.div`
     cursor: pointer;
 
 `
+export const DivSenha = styled.div`
+
+    position: relative;  
+    
+    button {
+        position: absolute;
+        bottom: 53px;
+        right: 15px;
+        border: none;
+        background-color: transparent;
+        font-size: 18px;
+        color: ${props => props.theme.colors.textGrayMedio};
+
+    :focus{
+        outline: none;
+    }
+    } 
+` 
+export const DivConfirmSenha = styled.div`
+
+    position: relative;  
+    
+    button {
+        position: absolute;
+        bottom: 30px;
+        right: 15px;
+        border: none;
+        background-color: transparent;
+        font-size: 18px;
+        color: ${props => props.theme.colors.textGrayMedio};
+
+    :focus{
+        outline: none;
+    }
+    } 
+` 
+
+    

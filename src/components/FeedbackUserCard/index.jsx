@@ -12,7 +12,7 @@ import { FeedbackContent, DivDatasUser, DivMessageFeedback, DivMoreInfos } from 
 export const FeedbackUserCard = ({ feedbackDatas, type }) => {
     const { user } = useUserContext()
     const { colors } = useThemeContext()
-    const [showAllMessage, setShowAllMessage] = useState(false)
+    const [showAllMessage, setShowAllMessage] = useState(true)
 
     const [isPublicFeedback, setIsPublicFeedback] = useState(() => {
         return feedbackDatas.publico ? true : false
