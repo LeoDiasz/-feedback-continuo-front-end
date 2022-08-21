@@ -27,7 +27,6 @@ export const CreateFeedback = () => {
   const [listTagsChoose, setListTagsChoose] = useState([])
   const [searchTags, setSearchTags] = useState("")
   
-
   const setup = async () => {
 
     if (id) {
@@ -218,7 +217,7 @@ export const CreateFeedback = () => {
                   <TagsList 
                     listTags={listTagsChoose} 
                     setListTags={setListTagsChoose}
-                    />
+                  />
                 </div>
 
                 <div>

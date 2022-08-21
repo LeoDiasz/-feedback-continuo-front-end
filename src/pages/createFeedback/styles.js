@@ -14,7 +14,8 @@ const SectionContent = styled.section`
             text-align: center;
             
             h1 {
-        
+                
+                color: ${props => props.theme.colors.textGrayDark};
                 cursor: pointer;
                 
                 transition: color 0.3s;

@@ -9,7 +9,7 @@ export const CardContent = styled.li`
   padding: 10px 40px;
   border-radius: 8px;
   cursor: pointer;
-  background-color: ${props => props.theme.colors.backgroundCard};
+  background-color: ${props => props.theme.colors.backgroundSecondary};
   -webkit-box-shadow: ${props => props.shadow ? 0 : "0px 0px 15px 0px rgba(166,166,166,0.41)"}; 
   box-shadow: ${props => props.shadow ? 0 : "0px 0px 15px 0px rgba(166,166,166,0.41)"};
   transition: filter 0.2s;

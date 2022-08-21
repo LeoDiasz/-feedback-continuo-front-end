@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Switch from 'react-switch'
 
 const HeaderContainer = styled.header`
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => props.themeDark.title == "dark" ? props.theme.colors.backgroundSecondary : props.theme.colors.primary };
   padding: 15px 0;
 
   > div {

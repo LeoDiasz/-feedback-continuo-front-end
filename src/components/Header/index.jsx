@@ -19,10 +19,10 @@ export const Header = ({handleToggleTheme, theme}) => {
   const {signOut} = useAuthContext()
   
   return (
-    <HeaderContainer>
+    <HeaderContainer themeDark={theme}>
       <Container>
         <nav>
-          <Logo width="120px" isLogoWhite/>
+          <Logo width="120px" isLogoWhite={theme.title == "light"}/>
           <ul>
             <li>
               <Link to="/collaborators">Colaboradores</Link>
