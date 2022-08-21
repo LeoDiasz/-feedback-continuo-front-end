@@ -10,10 +10,10 @@ import { ListCollaboratorsContent, SectionCollaboratorsContainer, Teste } from "
 import { Footer } from '../../components/Footer'
 
 export const Collaborators = () => {
-  const { listCollaborators, getListCollaborators, listCollaboratorsPagesOff, getListCollaboratorsWithoutPages } = useUserContext()
+  const { listCollaborators, getListCollaborators, listCollaboratorsPagesOff, getListCollaboratorsWithoutPages, setListCollaborators } = useUserContext()
   const [isLoading, setIsLoading] = useState(true)
   const [searchCollaborator, setSearchCollaborator] = useState("")
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(0)
 
   const setup = async () => {
     await getListCollaborators(currentPage)
@@ -23,18 +23,21 @@ export const Collaborators = () => {
 
   useEffect(() => {
     getListCollaboratorsWithoutPages()
+
+    return () => setListCollaborators([])
   }, [])
 
   useEffect(() => {
     setup()
+   
   }, [currentPage])
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
       if(entries.some(entry => entry.isIntersecting)) {
         
+       
         setCurrentPage(currentPageInsideState => currentPageInsideState + 1)
-        console.log(entries)
       }
  
     })
@@ -75,8 +78,7 @@ export const Collaborators = () => {
             value={searchCollaborator}
           />
        
-          <ListCollaboratorsContent>
-             
+          <ListCollaboratorsContent>        
              {searchCollaborator.length > 0 ? (
                  filteredCollaborators && filteredCollaborators.map((collaborator, i) => (
                   <CollaboratorInfoCard key={i} datasCollaborator={collaborator} />
@@ -88,7 +90,6 @@ export const Collaborators = () => {
              )}
 
           </ListCollaboratorsContent>
-        
         </Container>
       </SectionCollaboratorsContainer>
       <Footer id="sentinel"/>

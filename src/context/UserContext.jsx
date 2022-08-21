@@ -136,6 +136,7 @@ const UserProvider = ({ children }) => {
         listCollaboratorsPagesOff,
         handleCreateUser,
         user,
+        setListCollaborators,
         collaborator,
         listCollaborators,
       }}>
