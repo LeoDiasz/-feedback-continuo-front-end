@@ -3,7 +3,6 @@ import { useUserContext } from '../../hooks/useUserContext'
 import { CollaboratorInfoCard } from '../../components/CollaboratorInfoCard'
 import { Header } from '../../components/Header'
 import { Loading } from '../../components/Loading'
-import Pagination from '../../components/Pagination'
 import { Input } from '../../components/InputStyles/styles'
 import { Container } from '../../components/Container/styles'
 import { ListCollaboratorsContent, SectionCollaboratorsContainer, Teste } from "./styles"

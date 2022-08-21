@@ -68,7 +68,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
                 </DivMoreInfos>
             ) : (
                 <DivMoreInfos chooseColor={feedbackDatas.anonymous}>
-                    <span>{feedbackDatas.anonymous ? "Anonimo" : "Não anonimo"}</span>
+                {user.idUser == feedbackDatas.userId && <span>{feedbackDatas.anonymous ? "Anonimo" : "Não anonimo"}</span>}
                 </DivMoreInfos>
             )}
              <small>Criado em: {formatDateExtended(feedbackDatas.dataEHora)}</small>
