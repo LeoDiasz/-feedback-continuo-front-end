@@ -7,6 +7,7 @@ import { UserInfoFeedbacksCountCard } from '../../components/UserInfoFeedbacksCo
 import { SectionFeedbacksUser } from '../../components/SectionFeedbacksUser'
 import { Container } from '../../components/Container/styles'
 import { MainContent} from './styles'
+import { Footer } from '../../components/Footer'
 
 export const Home = () => {
   const {user, getDatasUser} = useUserContext()
@@ -35,7 +36,6 @@ export const Home = () => {
 
   return (
     <>
-      <Header/>
       <MainContent>
         <Container>
           <UserInfoFeedbacksCountCard
@@ -49,8 +49,8 @@ export const Home = () => {
           /> 
         </Container >
       </MainContent>
+      <Footer/>
     </>
-   
   )
 }
 

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Switch from 'react-switch'
 
 const HeaderContainer = styled.header`
   background-color: ${props => props.theme.colors.primary};
@@ -8,6 +9,12 @@ const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
   }
 
   nav, ul {
@@ -20,7 +27,7 @@ const HeaderContainer = styled.header`
   }
 
   li {
-    color: ${props => props.theme.colors.backgroundLight};
+    color: ${props => props.theme.colors.white};
     font-weight: bold;
     padding: 5px 15px;
 
@@ -55,8 +62,15 @@ const DivLogout = styled.div`
     gap: 5px;
 
     font-size: 25px;
-    color: ${props => props.theme.colors.backgroundLight}
+    color: ${props => props.theme.colors.white}
   }
 `
 
-export {HeaderContainer, DivLogout}
+const SwitchStyle = styled(Switch)`
+  
+  > div {
+    text-align: center;
+  }
+`
+
+export {HeaderContainer, DivLogout, SwitchStyle}

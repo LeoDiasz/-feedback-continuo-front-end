@@ -62,7 +62,6 @@ export const Collaborators = () => {
 
   return (
     <>
-      <Header />
       <SectionCollaboratorsContainer>
         <Container>
           <div>

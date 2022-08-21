@@ -11,5 +11,5 @@ export const FormPattern = styled(Form)`
   -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
   box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
   border-radius: 8px;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.backgroundSecondary};
 `

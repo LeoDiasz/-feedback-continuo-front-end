@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const SectionCollaboratorsContainer =  styled.section`
   min-height: 100vh;
-  background-color: ${props => props.theme.colors.backgroundLight};
+  background-color: ${props => props.theme.colors.background};
   
   > div {
     display: flex;

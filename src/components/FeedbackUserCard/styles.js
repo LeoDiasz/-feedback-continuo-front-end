@@ -99,14 +99,13 @@ const DivMoreInfos = styled.div`
 
     span {
         font-size: ${props => props.type == "anonymous" ? "11px" : "12px"};
-        color: ${props => props.type !== "anonymous" ? props.chooseColor ? props.theme.colors.black : props.theme.colors.textGrayMedio: props.theme.colors.backgroundLight};
+        color: ${props => props.type !== "anonymous" ? props.chooseColor ? props.theme.colors.black : props.theme.colors.textGrayMedio: props.theme.colors.white};
         background-color: ${props => props.type == "anonymous"  ? props.theme.colors.primary : ""};
         padding: ${props => props.type == "anonymous" && "3px 10px"} ;
         border-radius: ${props => props.type == "anonymous" ? "8px" : "0"} ;
         
     }
 
-    color: ${props => props.type == "anonymous" && props.theme.colors.backgroundLight}
 `
 
 export {FeedbackContent, DivDatasUser, DivMessageFeedback, DivMoreInfos}

@@ -12,6 +12,7 @@ import { Container } from '../../components/Container/styles'
 import { Label, InputField, DivTextValidation, TextValidation } from '../../components/InputStyles/styles'
 import { Button } from '../../components/Button/styles'
 import { Forms, InputAuto, ListCollaboratorsContent, SearchTagsContent, SectionContent } from './styles'
+import { Footer } from '../../components/Footer'
 
 export const CreateFeedback = () => {
   const {id} = useParams()
@@ -122,7 +123,6 @@ export const CreateFeedback = () => {
 
   return (
     <>
-      <Header />
       <SectionContent>
         <Container>
           <div>
@@ -237,8 +237,7 @@ export const CreateFeedback = () => {
           </Formik>
         </Container>
       </SectionContent>
+      <Footer/>
     </>
-
-
   )
 }

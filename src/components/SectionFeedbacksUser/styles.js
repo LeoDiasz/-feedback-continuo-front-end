@@ -7,7 +7,7 @@ const SectionFeedbacksContent = styled.section`
     border-radius: 0 0 8px 8px;
     -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
     box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
-    background-color: ${props => props.theme.colors.backgroundLight};
+    background-color: ${props => props.theme.colors.background};
 `;
 
 const Tabs = styled.div`   

@@ -1,6 +1,6 @@
 
 
-const theme = {
+const dark = {
   title: "dark",
   colors: {
     primary: "#1166d9",
@@ -13,6 +13,10 @@ const theme = {
     border: "#DFE0EB",
     black: "#292929",
     backgroundCard: "#FCFDFE",
-    backgroundLight: "#F2F2F2",
+    background: "#22272E",
+    backgroundSecondary: "#2D333B",
+    white: "#F2F2F2",
   }
 }
+
+export default dark

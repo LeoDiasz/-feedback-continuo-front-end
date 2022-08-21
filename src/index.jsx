@@ -2,16 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import Routers from './routers';
-import { GlobalStyle, theme } from './styles/global';
-import { ThemeProvider } from 'styled-components';
+import GlobalStyle from './styles/global';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <GlobalStyle/>
-    <ThemeProvider theme={theme}>
-      <Routers />
-    </ThemeProvider>
+    <Routers />
   </>
 );
 

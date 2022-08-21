@@ -42,7 +42,7 @@ const SectionForm = styled.section`
   display: grid;
   align-items: center;
   padding: 30px 0;
-  background-color: ${props => props.theme.colors.backgroundLight};
+  background-color: ${props => props.theme.colors.background};
 
   h1 {
     font-size: 18px;
@@ -62,7 +62,7 @@ const SectionForm = styled.section`
     -moz-box-shadow: 0px 0px 8px 8px rgba(235,235,235,0.6);
     box-shadow: 0px 0px 8px 8px rgba(235,235,235,0.6);
     border-radius: 8px;
-    background-color: #fff;
+    background-color: ${props => props.theme.colors.backgroundSecondary};
   }
 
   a:last-child{

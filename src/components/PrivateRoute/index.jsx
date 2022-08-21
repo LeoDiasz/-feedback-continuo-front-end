@@ -1,11 +1,18 @@
 import {Outlet, Navigate} from "react-router-dom"
 import { useAuthContext } from "../../hooks/useAuthContext"
-
-export const PrivateRoute = () => {
+import { Header } from "../Header"
+export const PrivateRoute = ({ handleToggleTheme, theme}) => {
   const {isLogged} = useAuthContext()
 
   return (
-    isLogged ? <Outlet/> : <Navigate to="/"/>
+    isLogged ? (
+      <>
+        <Header handleToggleTheme={handleToggleTheme} theme={theme}/>
+        <Outlet/>
+      </>
+    ) :  (
+    <Navigate to="/"/>
+    )
   )
 
 }

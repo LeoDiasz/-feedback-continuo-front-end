@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const SectionContent = styled.section`
-  background-color: ${props => props.theme.colors.backgroundLight};
+  background-color: ${props => props.theme.colors.background};
   min-height: 100vh;
 
   > div {
