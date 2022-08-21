@@ -6,7 +6,8 @@ export const AvatarUserStyles = styled.img`
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
-  transition: filter 0.3s;
+  transition: filter 0.3s;  
+  background-color: black;
 
   &:hover {
     filter: brightness(0.95)

@@ -11,9 +11,10 @@ import { DivTextValidation, InputField, Label, TextValidation } from "../../comp
 import {DivUploadAvatar, DivInputUpload } from "./styles"
 
 export const CreateUser = () => {
+
   const [avatarUserChoose, setAvatarUserChoose] = useState()
   const { handleCreateUser} = useUserContext()
- 
+  
   const changeHandlerAvatar = (event) => {
     const file = event.target.files[0]
     setAvatarUserChoose(file)

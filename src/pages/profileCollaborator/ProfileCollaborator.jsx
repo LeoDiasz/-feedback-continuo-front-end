@@ -4,7 +4,6 @@ import { useUserContext } from "../../hooks/useUserContext"
 import { useFeedbackContext } from "../../hooks/useFeedbackContext"
 import { SectionFeedbacksUser } from "../../components/SectionFeedbacksUser"
 import { UserInfoFeedbacksCountCard } from "../../components/UserInfoFeedbacksCountCard"
-import { Header } from "../../components/Header"
 import { Loading } from '../../components/Loading'
 import { Container } from "../../components/Container/styles"
 import { SectionContent } from "./styles"
@@ -34,11 +33,10 @@ export const ProfileCollaborator = () => {
 
   return (
     <>
-    <Header/>
     <SectionContent>
       <Container>
         <UserInfoFeedbacksCountCard
-          user={collaborator}
+          userPerfil={collaborator}
           listFeedbacksReceveid={listFeedbacksReceveid} 
           listFeedbacksSend={listFeedbacksSend}
         /> 
