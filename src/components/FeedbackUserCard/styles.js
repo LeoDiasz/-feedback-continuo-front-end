@@ -61,25 +61,43 @@ const DivDatasUser = styled.div`
 const DivMessageFeedback = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
     height: 100%;
     padding-right: 15px;
+    justify-content: space-between;
     align-items: flex-start;
     overflow: hidden;
-    width: 100%;
-
+    
     > ul {
         align-items: flex-end;
     }
 
-    p {
-        color: ${props => props.theme.colors.textGrayDark};
-        font-size: 14px;
-        margin-top: 10px;
+    >div{
         width: 100%;
     }
-`
 
+    > div > p:nth-child(1) {
+        font-size: 14px;
+        margin-top: 10px;
+        color: ${props => props.theme.colors.textGrayDark};
+
+        max-width: ${props => props.isShowAllMessage && '100ch'};
+        overflow: ${props => props.isShowAllMessage && 'hidden'};
+        text-overflow: ${props => props.isShowAllMessage && 'ellipsis'};
+        white-space: ${props => props.isShowAllMessage && 'nowrap'};
+    }
+
+    > div > span:nth-child(2){
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        color: ${props => props.theme.colors.textGrayDark};
+        padding-top: 5px;
+        font-size: 12px;
+    }
+        
+`
 
 const DivMoreInfos = styled.div`
     display: flex;
@@ -99,8 +117,8 @@ const DivMoreInfos = styled.div`
 
     span {
         font-size: ${props => props.type == "anonymous" ? "11px" : "12px"};
-        color: ${props => props.type !== "anonymous" ? props.chooseColor ? props.theme.colors.black : props.theme.colors.textGrayMedio: props.theme.colors.white};
-        background-color: ${props => props.type == "anonymous"  ? props.theme.colors.primary : ""};
+        color: ${props => props.type !== "anonymous" ? props.chooseColor ? props.theme.colors.black : props.theme.colors.textGrayMedio : props.theme.colors.white};
+        background-color: ${props => props.type == "anonymous" ? props.theme.colors.primary : ""};
         padding: ${props => props.type == "anonymous" && "3px 10px"} ;
         border-radius: ${props => props.type == "anonymous" ? "8px" : "0"} ;
         
@@ -108,4 +126,4 @@ const DivMoreInfos = styled.div`
 
 `
 
-export {FeedbackContent, DivDatasUser, DivMessageFeedback, DivMoreInfos}
+export { FeedbackContent, DivDatasUser, DivMessageFeedback, DivMoreInfos }
