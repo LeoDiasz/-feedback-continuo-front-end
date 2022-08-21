@@ -14,13 +14,10 @@ const SectionContent = styled.section`
             text-align: center;
             
             h1 {
-                
-                color: ${props => props.theme.colors.textGrayDark};
                 cursor: pointer;
-                
                 transition: color 0.3s;
+
                 :hover {
-                    
                     color: ${props => props.theme.colors.primary};
                 }
             }
@@ -93,6 +90,7 @@ const InputAuto = styled(Field)`
     margin-top: 8px;
     border: 1px solid ${props => props.theme.colors.textGray};
     color: ${props => props.theme.colors.textGrayDark};
+    background-color: ${props => props.theme.colors.backgroundInput};
 
     &::placeholder {
         color: ${props => props.theme.colors.textGray};
@@ -114,8 +112,6 @@ const ListCollaboratorsContent = styled.ul`
         gap: 10px;
         z-index: 1;
         overflow-y: auto;
-        
-       
 `
 
 export { InputAuto, ListCollaboratorsContent, Forms, SearchTagsContent, SectionContent }

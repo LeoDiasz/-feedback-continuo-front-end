@@ -6,7 +6,7 @@ import { Button } from "../Button/styles";
 import { useThemeContext } from "../../hooks/useThemeContext";
 
 export const CollaboratorInfoCard = ({ datasCollaborator, notIsNavigate, shadowNone }) => {
-  const {colors} = useThemeContext()
+  const {colors, title} = useThemeContext()
   const navigate = useNavigate()
 
   const navigateFor = (event, navigation) => {
@@ -20,7 +20,7 @@ export const CollaboratorInfoCard = ({ datasCollaborator, notIsNavigate, shadowN
   }
 
   return (
-    <CardContent shadow={shadowNone}>
+    <CardContent typeTheme={title} shadow={shadowNone}>
       <div>
         <AvatarUser width="60px" img={datasCollaborator.avatar ? datasCollaborator.avatar : uploadUserImg} />
         <div>

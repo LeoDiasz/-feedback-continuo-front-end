@@ -21,10 +21,6 @@ const CardUser = styled.section`
 const DivInfoText = styled.div`
   text-align: center;
 
-  h2 {
-    color: ${props => props.theme.colors.black}
-  }
-
   small, p {
     color: ${props => props.theme.colors.textGrayDark};
   }

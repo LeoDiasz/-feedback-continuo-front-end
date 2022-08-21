@@ -41,7 +41,7 @@ export const Header = ({handleToggleTheme, theme}) => {
             uncheckedIcon={false}
             height={18}
             width={40}
-            checkedHandleIcon={<BsFillSunFill size={10}/> }
+            checkedHandleIcon={<BsFillSunFill size={10} /> }
             uncheckedHandleIcon={<BsFillMoonFill size={10}/>}
             handleDiameter={20}
             

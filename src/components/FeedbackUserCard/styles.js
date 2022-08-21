@@ -8,9 +8,9 @@ const FeedbackContent = styled.li`
     padding: 18px 25px;
 
     position: relative;
-    border: 1px solid ${props => props.theme.colors.border};
+    border: 1px solid ${props => props.theme.colors.backgroundSecondary};
     border-radius: 8px;
-    background-color: #FAFAFA;
+    background-color: ${props => props.theme.colors.background};
 
     cursor: pointer;
     transition: filter 0.2s;
@@ -43,10 +43,6 @@ const DivDatasUser = styled.div`
         width: 70%;
         gap: 8px;
 
-    }
-    
-    h4 {
-        color: ${props => props.theme.colors.black};
     }
 
     p {
@@ -99,7 +95,7 @@ const DivMoreInfos = styled.div`
 
     span {
         font-size: ${props => props.type == "anonymous" ? "11px" : "12px"};
-        color: ${props => props.type !== "anonymous" ? props.chooseColor ? props.theme.colors.black : props.theme.colors.textGrayMedio: props.theme.colors.white};
+        color: ${props => props.type !== "anonymous" ? props.chooseColor ? props.theme.colors.title : props.theme.colors.textGrayMedio: props.theme.colors.white};
         background-color: ${props => props.type == "anonymous"  ? props.theme.colors.primary : ""};
         padding: ${props => props.type == "anonymous" && "3px 10px"} ;
         border-radius: ${props => props.type == "anonymous" ? "8px" : "0"} ;

@@ -1,10 +1,10 @@
 
-
 const light = {
   title: "light",
   colors: {
     primary: "#1166d9",
     secondary: "#48BD82",
+    title: "#292929",
     textGray: "#C6C9D2",
     textGrayMedio: "#9FA2B4",
     textGrayDark: "#4B506D",
@@ -15,6 +15,7 @@ const light = {
     backgroundCard: "#FCFDFE",
     background: "#F2F2F2",
     backgroundSecondary: "#fff",
+    backgroundInput: "#fff",
     white: "#F2F2F2",
   }
 }

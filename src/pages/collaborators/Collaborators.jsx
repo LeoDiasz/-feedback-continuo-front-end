@@ -14,20 +14,22 @@ export const Collaborators = () => {
   const [currentPage, setCurrentPage] = useState(0)
 
   const setup = async () => {
+    setIsLoading(true)
+    await getListCollaboratorsWithoutPages()
     await getListCollaborators(currentPage)
 
     setIsLoading(false)
+    
   }
 
   useEffect(() => {
-    getListCollaboratorsWithoutPages()
-
+    setup()
+  
     return () => setListCollaborators([])
   }, [])
 
   useEffect(() => {
-    setup()
-   
+    getListCollaborators(currentPage)
   }, [currentPage])
 
   useEffect(() => {
@@ -64,7 +66,7 @@ export const Collaborators = () => {
         <Container>
           <div>
             <h1>Colaboradores</h1>
-            <span>{listCollaboratorsPagesOff ? `${listCollaboratorsPagesOff.length} colaboradores` : "nenhum colaborador"}</span>
+            <span>{listCollaboratorsPagesOff.length > 0 ? `${listCollaboratorsPagesOff.length} colaboradores` : "nenhum colaborador"}</span>
           </div>
 
           <Input

@@ -1,23 +1,22 @@
 import {Link} from "react-router-dom"
 import bannerChat from "../../images/banner-chat.png"
 import { Logo } from "../Logo"
+import {useThemeContext} from "../../hooks/useThemeContext"
 import { DivContainer, SectionBanner, SectionForm } from "./styles"
 
 export const ScreenAndRegisterUser = ({children, titleForm, isScreenLogin}) => {
+  const {title} = useThemeContext()
 
   return (
     <DivContainer>
-      <SectionBanner>
+      <SectionBanner typeTheme={title}>
         <div>
           <h1>DBC Feedbacks</h1>
           <p>Realize feedback entre seus colegas</p>
         </div>
         <img src={bannerChat} alt="banner chat" />
-
-
-       
       </SectionBanner>
-      <SectionForm>
+      <SectionForm typeTheme={title}>
         <div>
           <Logo isDisabledText/>
           {titleForm && <h1>{titleForm}</h1>}

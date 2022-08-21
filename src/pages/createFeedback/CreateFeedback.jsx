@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import {useParams} from "react-router-dom"
 import { useUserContext } from '../../hooks/useUserContext'
 import { useFeedbackContext } from '../../hooks/useFeedbackContext'
+import { useThemeContext } from '../../hooks/useThemeContext'
 import { SuggestionUserCreateFeedback } from '../../components/SuggestionUserCreateFeedback'
 import { CreateFeedbackSchema } from '../../utils/validationsSchema'
 import { TagsList } from '../../components/TagsList'
@@ -26,6 +27,7 @@ export const CreateFeedback = () => {
   const [isClickInInputTags, setIsClickInInputTags] = useState(false)
   const [listTagsChoose, setListTagsChoose] = useState([])
   const [searchTags, setSearchTags] = useState("")
+  const {title} = useThemeContext()
   
   const setup = async () => {
 
@@ -154,7 +156,7 @@ export const CreateFeedback = () => {
             }}
           >
             {({ errors, handleChange, values, setFieldValue, setFieldError}) => (
-              <Forms>
+              <Forms typeTheme={title}>
                 <div>
                   <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
                   <InputAuto

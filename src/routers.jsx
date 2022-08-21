@@ -15,6 +15,7 @@ import { FeedbackProvider } from './context/FeedbackContext';
 import { useChooseStateTheme } from './hooks/useChooseStateTheme';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
+import GlobalStyle from './styles/global';
 
 function Routers() {
     const [theme, setTheme] = useChooseStateTheme("theme", light)
@@ -25,8 +26,9 @@ function Routers() {
 
     return (
         <BrowserRouter>
-            <AuthProvider>
-                <ThemeProvider theme={theme}>
+            <ThemeProvider theme={theme}>
+                <GlobalStyle/>
+                <AuthProvider>   
                     <UserProvider>
                         <FeedbackProvider>
                             <Routes>
@@ -42,9 +44,9 @@ function Routers() {
                                 <Route path='*' element={<NotFound />} />
                             </Routes>
                         </FeedbackProvider>
-                    </UserProvider>
-                </ThemeProvider>
-            </AuthProvider>
+                    </UserProvider>  
+                </AuthProvider>
+            </ThemeProvider>
         </BrowserRouter>
     )
 }

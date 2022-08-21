@@ -19,8 +19,7 @@ const CreateUserSchema = Yup.object().shape({
   .matches(emailDbc, 'O email deve conter: @dbccompany.com.br')
   .required("Obrigatório preencher."),
   password: Yup.string()
-  .matches(/[a-z]/, 'Senha deve conter uma letra minuscula')
-  .matches(/[A-Z]/, 'Senha deve conter uma letra maiuscula')
+  .matches(/[a-zA-Z]/, 'Senha deve conter uma letra')
   .matches(/\d/, 'A senha deve conter ao menos um número')
   .matches(/[^a-zA-Z0-9]+/g, 'A senha deve conter ao menos um caractre especial')
   .required("Obrigatório preencher."),

@@ -4,7 +4,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
-
+  
   * {
     padding: 0;
     margin: 0;
@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     font-family: "Lato", sans-serif;
+    color: ${props => props.theme.colors.title};
   }
 
   button {

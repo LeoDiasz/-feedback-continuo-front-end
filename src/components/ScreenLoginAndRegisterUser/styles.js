@@ -13,7 +13,7 @@ const SectionBanner = styled.section`
   justify-content: flex-start;
   padding-top: 100px;
   gap: 60px;
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => props.typeTheme == "dark" ?  props.theme.colors.backgroundSecondary : props.theme.colors.primary};
   height: 100%;
   color: #fff;
 
@@ -47,7 +47,6 @@ const SectionForm = styled.section`
   h1 {
     font-size: 18px;
     font-weight: 600;
-    color: #474748;
     margin-bottom: 30px;
   }
 
@@ -58,11 +57,11 @@ const SectionForm = styled.section`
     align-items: center;
     margin: 0 auto;
     padding: 30px;
-    -webkit-box-shadow: 0px 0px 8px 8px rgba(235,235,235,0.6);
-    -moz-box-shadow: 0px 0px 8px 8px rgba(235,235,235,0.6);
-    box-shadow: 0px 0px 8px 8px rgba(235,235,235,0.6);
+    -webkit-box-shadow: ${props => props.typeTheme == "light" && "8px 8px rgba(235,235,235,0.6)"};
+    -moz-box-shadow: ${props => props.typeTheme == "light" && "8px 8px rgba(235,235,235,0.6)"};
+    box-shadow: ${props => props.typeTheme == "light" && "8px 8px rgba(235,235,235,0.6)"};
     border-radius: 8px;
-    background-color: ${props => props.theme.colors.backgroundSecondary};
+    background-color: ${props => props.typeTheme == "light" && props.theme.colors.backgroundSecondary};
   }
 
   a:last-child{

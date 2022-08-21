@@ -10,8 +10,8 @@ export const CardContent = styled.li`
   border-radius: 8px;
   cursor: pointer;
   background-color: ${props => props.theme.colors.backgroundSecondary};
-  -webkit-box-shadow: ${props => props.shadow ? 0 : "0px 0px 15px 0px rgba(166,166,166,0.41)"}; 
-  box-shadow: ${props => props.shadow ? 0 : "0px 0px 15px 0px rgba(166,166,166,0.41)"};
+  -webkit-box-shadow: ${props => props.typeTheme == "dark" || props.shadow ? 0 : "0px 0px 15px 0px rgba(166,166,166,0.41)"}; 
+  box-shadow: ${props => props.typeTheme == "dark" || props.shadow ? 0 : "0px 0px 15px 0px rgba(166,166,166,0.41)"};
   transition: filter 0.2s;
 
   > div {
@@ -20,12 +20,8 @@ export const CardContent = styled.li`
     gap: 40px;
   }
   
-
-  h4 {
-    color: ${props => props.theme.colors.black}
-  }
   p {
-    margin-top: 2px;
+    margin-top: 6px;
     color: ${props => props.theme.colors.textGrayDark};
     font-size: 0.8rem;
   }

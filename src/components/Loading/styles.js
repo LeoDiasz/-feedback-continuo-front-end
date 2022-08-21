@@ -8,7 +8,7 @@ export const DivLoading = styled.div`
   position: absolute;
   
   height: 100vh;
-  top: 10px;
+  top: 0px;
   width: 100vw;
   background-color: ${props => props.theme.colors.background};
 `

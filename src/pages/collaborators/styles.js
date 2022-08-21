@@ -11,8 +11,8 @@ const SectionCollaboratorsContainer =  styled.section`
     padding: 60px 0;
 
     > div {
+      
         h1 {
-          color: ${props => props.theme.colors.black};
           margin-bottom: 5px;
         }
 

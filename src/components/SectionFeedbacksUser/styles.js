@@ -5,15 +5,16 @@ const SectionFeedbacksContent = styled.section`
     border: 1px solid ${props => props.theme.colors.border};
     border-top: none;
     border-radius: 0 0 8px 8px;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41); 
-    box-shadow: 0px 0px 15px 0px rgba(166,166,166,0.41);
-    background-color: ${props => props.theme.colors.background};
+    -webkit-box-shadow: ${props => props.typeTheme == "light" && "0px 0px 15px 0px rgba(166,166,166,0.41)"}; 
+    box-shadow: ${props => props.typeTheme == "light" && "0px 0px 15px 0px rgba(166,166,166,0.41)"};
+    background-color: ${props => props.theme.colors.backgroundSecondary};
 `;
 
 const Tabs = styled.div`   
     position: relative;
     display: flex;
     height: 60px;
+
 
 `;
 
@@ -25,12 +26,12 @@ const ButtonTabs = styled.button`
     bottom: 0;
     width: 50%;
     height: ${props => props.isUpHeight ? props.isUpHeight : '50px'};   
-    background: ${props => props.isUpHeight ? "#FFFFFF" : "#EEEEEE"};
+    background: ${props => props.isUpHeight ? props.theme.colors.backgroundSecondary: props.theme.colors.background};
     border: 1px solid ${props => props.theme.colors.border};     
     border-radius: 8px 8px 0 0; 
     font-weight: bold;
     font-size: 14px;
-    color: ${props => props.isUpHeight ? props.theme.colors.black : "#9E9E9E"};
+    color: ${props => props.isUpHeight ? props.theme.colors.title : "#9E9E9E"};
 
     cursor: pointer;
 

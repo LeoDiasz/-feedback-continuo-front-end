@@ -10,6 +10,7 @@ export const baseStyleInputs = css`
   margin-top: 8px;
   border: 1px solid ${props => props.theme.colors.textGray};
   color: ${props => props.theme.colors.textGrayDark};
+  background-color: ${props => props.theme.colors.backgroundInput};
 
   &::placeholder {
     color: ${props => props.theme.colors.textGray};
