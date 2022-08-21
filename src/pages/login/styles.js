@@ -12,11 +12,11 @@ export const FormDiv = styled(Form)`
         button {
             position: absolute;
             bottom: 30px;
-            right: 10px;
+            right: 15px;
             border: none;
             background-color: transparent;
             font-size: 18px;
-            color: ${props => props.theme.colors.textGrayDark};
+            color: ${props => props.theme.colors.textGrayMedio};
 
         :focus{
             outline: none;
