@@ -10,5 +10,5 @@ export const DivLoading = styled.div`
   height: 100vh;
   top: 10px;
   width: 100vw;
-  background-color: ${props => props.theme.colors.backgroundLight};
+  background-color: ${props => props.theme.colors.background};
 `

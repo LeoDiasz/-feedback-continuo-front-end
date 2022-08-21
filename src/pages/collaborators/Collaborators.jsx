@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useUserContext } from '../../hooks/useUserContext'
-import { CollaboratorInfoCard } from '../../components/CollaboratorInfoCard'
-import { Header } from '../../components/Header'
 import { Loading } from '../../components/Loading'
+import { CollaboratorInfoCard } from '../../components/CollaboratorInfoCard'
+import { Footer } from '../../components/Footer'
 import { Input } from '../../components/InputStyles/styles'
 import { Container } from '../../components/Container/styles'
-import { ListCollaboratorsContent, SectionCollaboratorsContainer, Teste } from "./styles"
-import { Footer } from '../../components/Footer'
+import { ListCollaboratorsContent, SectionCollaboratorsContainer } from "./styles"
 
 export const Collaborators = () => {
   const { listCollaborators, getListCollaborators, listCollaboratorsPagesOff, getListCollaboratorsWithoutPages, setListCollaborators } = useUserContext()
@@ -33,19 +32,18 @@ export const Collaborators = () => {
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
+
       if(entries.some(entry => entry.isIntersecting)) {
-        
-       
         setCurrentPage(currentPageInsideState => currentPageInsideState + 1)
       }
- 
+
     })
     
     const sentinel = document.getElementById("sentinel")
 
     intersectionObserver.observe(sentinel)
     return () => intersectionObserver.disconnect(sentinel)
-
+    
   }, [isLoading])
 
   const filteredCollaborators = searchCollaborator.length > 0
@@ -75,7 +73,7 @@ export const Collaborators = () => {
             onChange={e => setSearchCollaborator(e.target.value)}
             value={searchCollaborator}
           />
-       
+  
           <ListCollaboratorsContent>        
              {searchCollaborator.length > 0 ? (
                  filteredCollaborators && filteredCollaborators.map((collaborator, i) => (
@@ -86,7 +84,6 @@ export const Collaborators = () => {
                   <CollaboratorInfoCard key={i} datasCollaborator={collaborator} />
                 ))
              )}
-
           </ListCollaboratorsContent>
         </Container>
       </SectionCollaboratorsContainer>
