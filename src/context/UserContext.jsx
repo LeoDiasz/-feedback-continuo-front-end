@@ -12,6 +12,7 @@ const UserProvider = ({ children }) => {
   const { signIn } = useAuthContext()
   const [listCollaborators, setListCollaborators] = useState([])
   const [listCollaboratorsPagesOff, setListCollaboratorsPagesOff] = useState()
+  const [uploadPhoto, setUploadPhoto] = useState(false)
   const navigate = useNavigate()
 
   const getDatasCollaboratorById = async (id) => {
@@ -126,6 +127,26 @@ const UserProvider = ({ children }) => {
 
   }
 
+  const handleUploadPhoto = async (event) => {
+    const file = event.target.files[0]
+
+    if (!file) return
+
+    const formatedPhoto = new FormData()
+
+    formatedPhoto.append("file", file)
+
+    formatedPhoto.append("id", user.idUser)
+
+    try {
+        await apiDbc.put(`/users/update-file`, formatedPhoto, { headers: { 'Content-Type': 'multipart/form-data' } })
+       !uploadPhoto ? setUploadPhoto(true) : setUploadPhoto(false)
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
   return (
     <UserContext.Provider value={
       {
@@ -139,6 +160,8 @@ const UserProvider = ({ children }) => {
         setListCollaborators,
         collaborator,
         listCollaborators,
+        handleUploadPhoto,
+        uploadPhoto
       }}>
       {children}
     </UserContext.Provider>

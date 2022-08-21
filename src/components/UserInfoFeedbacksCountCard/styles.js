@@ -3,7 +3,6 @@ import styled from "styled-components"
 const CardUser = styled.section`
     display: flex;
     width: 100%;
-
   > div {
     display: flex;
     justify-self: flex-start;
@@ -16,9 +15,7 @@ const CardUser = styled.section`
       position: relative;
 
     }
-  }
-
-  
+  }  
 `
 
 const DivInfoText = styled.div`
@@ -70,5 +67,9 @@ const DivFeedbacksCount = styled.div`
     margin-top: 15px;
   }
 `
+const Avatar = styled.div`
+position: relative;
+padding: 10px;
+`
 
-export {DivInfoText, CardUser, DivFeedbacksCount}
+export {DivInfoText, CardUser, DivFeedbacksCount, Avatar }
