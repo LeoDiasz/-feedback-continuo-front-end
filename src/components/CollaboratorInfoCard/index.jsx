@@ -1,9 +1,9 @@
-import { AvatarUser } from "../AvatarUser"
 import { useNavigate } from "react-router-dom";
-import { CardContent } from "./styles"
+import { useThemeContext } from "../../hooks/useThemeContext";
+import { AvatarUser } from "../AvatarUser"
 import uploadUserImg from "../../images/uploadUser.jpg"
 import { Button } from "../Button/styles";
-import { useThemeContext } from "../../hooks/useThemeContext";
+import { CardContent } from "./styles"
 
 export const CollaboratorInfoCard = ({ datasCollaborator, notIsNavigate, shadowNone }) => {
   const {colors, title} = useThemeContext()
@@ -23,11 +23,13 @@ export const CollaboratorInfoCard = ({ datasCollaborator, notIsNavigate, shadowN
     <CardContent typeTheme={title} shadow={shadowNone}>
       <div>
         <AvatarUser width="60px" img={datasCollaborator.avatar ? datasCollaborator.avatar : uploadUserImg} />
+        
         <div>
           <h4>{datasCollaborator.name}</h4>
           <p>{datasCollaborator.userRole}</p>
         </div>
       </div>
+
       <div>
         <Button 
           width="100px" 
@@ -35,16 +37,19 @@ export const CollaboratorInfoCard = ({ datasCollaborator, notIsNavigate, shadowN
           radius="10px" 
           backgroundColor={colors.primary} 
           onClick={(event) => navigateFor(event, `/collaborator/profile/${datasCollaborator.idUser}`)
-        }>Ver Perfil</Button>
+        }>
+          Ver Perfil
+        </Button>
         
         <Button 
           width="130px" 
           padding="5px 15px" 
           radius="10px" 
           onClick={(event) => navigateFor(event, `/feedback/create/${datasCollaborator.idUser}`)
-        }>Enviar feedback</Button>
+        }>
+          Enviar feedback
+        </Button>
       </div>
-     
     </CardContent>    
   )
 }

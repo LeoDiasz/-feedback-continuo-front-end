@@ -1,5 +1,5 @@
 import * as Yup from "yup"
-import { emailDbc, invalidEmail} from "./masks"
+import { emailDbc, invalidEmail, existsCharacter, existsNumber, existsCharacterSpecial} from "./masks"
 
 const LoginSchema = Yup.object().shape({
   login: Yup.string()
@@ -19,9 +19,9 @@ const CreateUserSchema = Yup.object().shape({
   .matches(emailDbc, 'O email deve conter: @dbccompany.com.br')
   .required("Obrigatório preencher."),
   password: Yup.string()
-  .matches(/[a-zA-Z]/, 'Senha deve conter uma letra')
-  .matches(/\d/, 'A senha deve conter ao menos um número')
-  .matches(/[^a-zA-Z0-9]+/g, 'A senha deve conter ao menos um caractre especial')
+  .matches(existsCharacter, 'Senha deve conter uma letra')
+  .matches(existsNumber, 'A senha deve conter ao menos um número')
+  .matches(existsCharacterSpecial, 'A senha deve conter ao menos um caractre especial')
   .required("Obrigatório preencher."),
   confirmPassword: Yup.string()
   .oneOf([Yup.ref('password'), null], 'As senhas precisam ser iguais.')

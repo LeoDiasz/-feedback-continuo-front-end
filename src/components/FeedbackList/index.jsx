@@ -1,7 +1,7 @@
-import { FeedbackUserCard } from "../FeedbackUserCard"
-import { Feedbackscontent } from "./styles"
 import { useState } from "react"
+import { FeedbackUserCard } from "../FeedbackUserCard"
 import { Pager } from "./ComponentsPages/Pager"
+import { Feedbackscontent } from "./styles"
 
 export const FeedbackList = ({ listFeedbacks, type }) => {
     const [feedbacksPerPage, setFeedbackPerPage] = useState(3)

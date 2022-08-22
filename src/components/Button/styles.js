@@ -18,7 +18,6 @@ const ButtonIcon = styled.button `
     align-items: center;
     background-color: transparent;
     border: none;
-
     font-size: 30px;
     color: ${props => props.theme.colors.blue};
 

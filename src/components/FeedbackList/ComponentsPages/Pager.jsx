@@ -2,8 +2,7 @@ import { Button } from "../../Button/styles"
 import {AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai"
 
 export const Pager = ({pages, setCurrentPage, currentPage}) => {
-  console.log(pages)
-  console.log(currentPage)
+
   return (  
     <div>
         <div>

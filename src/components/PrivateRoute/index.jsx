@@ -6,8 +6,6 @@ import { Header } from "../Header"
 export const PrivateRoute = ({ handleToggleTheme, theme}) => {
   const {isLogged} = useContext(AuthContext)
 
-  debugger
-  
   return (
    <>
       {isLogged ? (

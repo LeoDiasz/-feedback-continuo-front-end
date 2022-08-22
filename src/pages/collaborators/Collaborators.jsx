@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import {FadeLoader} from "react-spinners"
 import { useUserContext } from '../../hooks/useUserContext'
 import { Loading } from '../../components/Loading'
 import { CollaboratorInfoCard } from '../../components/CollaboratorInfoCard'
@@ -7,14 +6,12 @@ import { Footer } from '../../components/Footer'
 import { Input } from '../../components/InputStyles/styles'
 import { Container } from '../../components/Container/styles'
 import { ListCollaboratorsContent, SectionCollaboratorsContainer } from "./styles"
-import { useThemeContext } from '../../hooks/useThemeContext'
 
 export const Collaborators = () => {
-  const {colors} = useThemeContext()
   const [isLoading, setIsLoading] = useState(true)
   const [searchCollaborator, setSearchCollaborator] = useState("")
   const [currentPage, setCurrentPage] = useState(0)
-  const [showLoadingScroll, setShowLoadingScroll] = useState(true)
+
   const { 
     listCollaborators, 
     getListCollaborators, 
@@ -27,14 +24,12 @@ export const Collaborators = () => {
     setIsLoading(true)
 
     await getListCollaboratorsWithoutPages()
-    await getListCollaborators(currentPage)
 
     setIsLoading(false)
   }
 
   const setupCollaboratorsPage = async () => {
     await getListCollaborators(currentPage)
-    setShowLoadingScroll(false)
   }
 
   useEffect(() => {
@@ -45,14 +40,13 @@ export const Collaborators = () => {
   }, [])
 
   useEffect(() => {
-    setupCollaboratorsPage()
+    setupCollaboratorsPage(currentPage)
   }, [currentPage])
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
 
       if(entries.some(entry => entry.isIntersecting)) {
-        setShowLoadingScroll(true)
         setCurrentPage(currentPageInsideState => currentPageInsideState + 1)
       }
 
@@ -104,15 +98,6 @@ export const Collaborators = () => {
                 ))
              )}
           </ListCollaboratorsContent>
-          {showLoadingScroll && (
-            <FadeLoader
-              color={colors.primary}
-              cssOverride={{}}
-              loading
-              size={15}
-              speedMultiplier={2}
-            />
-          )}
         </Container>
       </SectionCollaboratorsContainer>
       <Footer id="sentinel"/>
