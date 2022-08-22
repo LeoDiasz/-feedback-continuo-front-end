@@ -5,7 +5,7 @@ export const UploadAvatar = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: #FFF;
     width: 35px;
     height: 35px;
     right: 20px;

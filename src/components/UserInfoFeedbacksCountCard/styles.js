@@ -66,6 +66,11 @@ const DivFeedbacksCount = styled.div`
 const Avatar = styled.div`
 position: relative;
 padding: 10px;
+
+img{
+  padding: 5px;
+  background-color: #fff;
+}
 `
 
 export {DivInfoText, CardUser, DivFeedbacksCount, Avatar }

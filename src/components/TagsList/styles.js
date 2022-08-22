@@ -7,7 +7,8 @@ export const ListTagsContent = styled.ul`
   flex-wrap: wrap;
   width: 100%;
   height: 50px;
-
+  margin-bottom: 10px;
+  
   li {
     display: flex;
     align-items: center;

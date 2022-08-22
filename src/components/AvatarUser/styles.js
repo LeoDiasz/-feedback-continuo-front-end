@@ -8,7 +8,7 @@ export const AvatarUserStyles = styled.img`
   cursor: pointer;
   transition: filter 0.3s;  
   background-color: black;
-
+  
   &:hover {
     filter: brightness(0.95)
   }
