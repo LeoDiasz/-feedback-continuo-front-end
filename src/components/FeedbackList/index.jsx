@@ -24,7 +24,7 @@ export const FeedbackList = ({ listFeedbacks, type }) => {
             ) : (
                 <h3>Nenhum feedback {type == "feedbacksGiven" ? "Recebido" : "Enviado"}</h3>
             )}
-            <Pager pages={pages} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+            {listFeedbacks.length > 0 && <Pager pages={pages} setCurrentPage={setCurrentPage} currentPage={currentPage} />}
         </Feedbackscontent>
     )
 }
