@@ -12,8 +12,6 @@ const SectionContent = styled.section`
     padding: 60px 0;
   }
 
-
-
   @media(max-width: 1350px) {
         > div {
             width: 95%;

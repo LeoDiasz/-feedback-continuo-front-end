@@ -1,5 +1,5 @@
-import {ListTagsContent} from "./styles"
 import {TiDelete} from "react-icons/ti"
+import {ListTagsContent} from "./styles"
 
 export const TagsList = ({listTags, setListTags, isNotShowDelete}) => {
 
@@ -18,7 +18,7 @@ export const TagsList = ({listTags, setListTags, isNotShowDelete}) => {
               <TiDelete onClick={() => handleDeleteTag(idTag)}/>
             )}
           </li>
-      )) }
+      ))}
     </ListTagsContent>
   )
 }

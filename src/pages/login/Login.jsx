@@ -4,10 +4,10 @@ import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md'
 import { useAuthContext } from "../../hooks/useAuthContext"
 import ScreenLoginAndRegisterUser from '../../components/ScreenLoginAndRegisterUser'
 import { LoginSchema } from "../../utils/validationsSchema"
+import { Loading } from "../../components/Loading"
 import { Button } from '../../components/Button/styles'
 import { DivTextValidation, InputField, TextValidation, Label } from "../../components/InputStyles/styles"
 import { FormDiv } from "./styles";
-import { Loading } from "../../components/Loading"
 
 export const Login = () => {
   const { signIn, isLoading } = useAuthContext()

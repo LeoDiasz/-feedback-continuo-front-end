@@ -1,5 +1,5 @@
+import {IoMdArrowRoundForward, IoMdArrowRoundBack} from "react-icons/io"
 import { Button } from "../../Button/styles"
-import {AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai"
 
 export const Pager = ({pages, setCurrentPage, currentPage}) => {
 
@@ -8,11 +8,11 @@ export const Pager = ({pages, setCurrentPage, currentPage}) => {
         <div>
           {currentPage > 0  && 
             <Button onClick={() => setCurrentPage(currentPage - 1)}> 
-              <AiOutlineArrowLeft/>
+              <IoMdArrowRoundBack/>
             </Button>}
           {currentPage + 1 !== pages && 
             <Button onClick={() => setCurrentPage(currentPage + 1)}>
-              <AiOutlineArrowRight/>
+              <IoMdArrowRoundForward/>
             </Button>
           }
         </div>

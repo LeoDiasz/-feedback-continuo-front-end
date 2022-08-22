@@ -62,7 +62,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
                             <span onClick={() => setShowAllMessage(!showAllMessage)}>{showAllMessage ? (
                                 <span>Ver mais<MdOutlineExpandMore /></span>
                             ) : (
-                                <span>Ver menos<MdOutlineExpandLess /></span>
+                                <span>Ver menos</span>
                             )}
                             </span>
 

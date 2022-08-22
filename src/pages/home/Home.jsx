@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useUserContext } from '../../hooks/useUserContext'
 import { useFeedbackContext } from '../../hooks/useFeedbackContext'
 import { Loading } from '../../components/Loading'
-import { UserInfoFeedbacksCountCard } from '../../components/UserInfoFeedbacksCountCard'
+import { UserInfoWithCounterFeedbacks } from '../../components/UserInfoWithCounterFeedbacks'
 import { SectionFeedbacksUser } from '../../components/SectionFeedbacksUser'
 import { Container } from '../../components/Container/styles'
 import { MainContent} from './styles'
@@ -38,7 +38,7 @@ export const Home = () => {
     <>
       <MainContent>
         <Container>
-          <UserInfoFeedbacksCountCard
+          <UserInfoWithCounterFeedbacks 
             userPerfil={user}
             listFeedbacksReceveid={listFeedbacksReceveid} 
             listFeedbacksSend={listFeedbacksSend}

@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 const CardUser = styled.section`
-    display: flex;
-    width: 100%;
+  display: flex;
+
   > div {
     display: flex;
     justify-self: flex-start;
@@ -13,7 +13,6 @@ const CardUser = styled.section`
 
     img {
       position: relative;
-
     }
   }  
 `
@@ -26,27 +25,22 @@ const DivInfoText = styled.div`
   }
 
   p {
-    margin-top: 4px;
-    margin-bottom: 5px;
+    margin: 5px 0;
     font-weight: bold;
   }
 
 `
 
-const DivFeedbacksCount = styled.div`
+const DivFeedbacksCounter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   
-
   button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    min-width: 40px; 
     width: 100%;
+    min-width: 40px; 
+    gap: 20px;
     font-size: 12px;
     font-weight: bold;
     border-radius: 10px;
@@ -62,15 +56,16 @@ const DivFeedbacksCount = styled.div`
   button + button {
     margin-top: 15px;
   }
+  
 `
-const Avatar = styled.div`
-position: relative;
-padding: 10px;
+const DivAvatarWithUpload = styled.div`
+  position: relative;
+  padding: 10px;
 
-img{
-  padding: 5px;
-  background-color: #fff;
-}
+  img{
+    padding: 5px;
+    background-color: #fff;
+  }
 `
 
-export {DivInfoText, CardUser, DivFeedbacksCount, Avatar }
+export {DivInfoText, CardUser, DivFeedbacksCounter, DivAvatarWithUpload }

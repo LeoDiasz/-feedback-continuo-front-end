@@ -33,7 +33,7 @@ export const DivSenha = styled.div`
         border: none;
         background-color: transparent;
         font-size: 18px;
-        color: ${props => props.theme.colors.textGrayMedio};
+        color: ${props => props.theme.colors.textGrayMiddle};
 
     :focus{
         outline: none;
@@ -51,7 +51,7 @@ export const DivConfirmSenha = styled.div`
         border: none;
         background-color: transparent;
         font-size: 18px;
-        color: ${props => props.theme.colors.textGrayMedio};
+        color: ${props => props.theme.colors.textGrayMiddle};
 
     :focus{
         outline: none;

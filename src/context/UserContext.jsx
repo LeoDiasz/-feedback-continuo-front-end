@@ -1,18 +1,18 @@
 import {useNavigate} from "react-router-dom"
 import { createContext, useState } from "react";
+import { toast } from "react-hot-toast"
 import { useAuthContext } from "../hooks/useAuthContext";
 import { apiDbc } from "../services/api"
-import { toast } from "react-hot-toast"
 
 const UserContext = createContext()
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState()
-  const [collaborator, setCollaborator] = useState()
-  const { signIn } = useAuthContext()
+  const [user, setUser] = useState("")
+  const [collaborator, setCollaborator] = useState("")
   const [listCollaborators, setListCollaborators] = useState([])
-  const [listCollaboratorsPagesOff, setListCollaboratorsPagesOff] = useState()
+  const [listCollaboratorsPagesOff, setListCollaboratorsPagesOff] = useState([])
   const [uploadPhoto, setUploadPhoto] = useState(false)
+  const { signIn } = useAuthContext()
   const navigate = useNavigate()
 
   const getDatasCollaboratorById = async (id) => {
@@ -116,7 +116,7 @@ const UserProvider = ({ children }) => {
     
     } catch (Error) {
 
-      if (Error.response.data.status == 400) {
+      if (Error.response.data.status == 400 && Error.response.data.message) {
         toast.error(Error.response.data.message)
         return
       }
@@ -127,7 +127,7 @@ const UserProvider = ({ children }) => {
 
   }
 
-  const handleUploadPhoto = async (event) => {
+  const handleUpdateAvatar = async (event) => {
     const file = event.target.files[0]
 
     if (!file) return
@@ -154,13 +154,13 @@ const UserProvider = ({ children }) => {
         getDatasCollaboratorById,
         getListCollaborators,
         getListCollaboratorsWithoutPages,
-        listCollaboratorsPagesOff,
+        handleUpdateAvatar,
         handleCreateUser,
         user,
+        listCollaboratorsPagesOff,
+        listCollaborators,
         setListCollaborators,
         collaborator,
-        listCollaborators,
-        handleUploadPhoto,
         uploadPhoto
       }}>
       {children}

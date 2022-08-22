@@ -1,12 +1,12 @@
 import { useThemeContext } from "../../hooks/useThemeContext"
+import { useUserContext } from "../../hooks/useUserContext"
 import { UpdateAvatar } from "../UpdateAvatar"
 import { AvatarUser } from "../AvatarUser"
 import uploadUser from "../../images/uploadUser.jpg"
-import { CardUser, DivInfoText, DivFeedbacksCount, Avatar } from "./styles"
 import { Button } from "../Button/styles"
-import { useUserContext } from "../../hooks/useUserContext"
+import { CardUser, DivInfoText, DivFeedbacksCounter, DivAvatarWithUpload } from "./styles"
 
-export const UserInfoFeedbacksCountCard = ({ userPerfil, listFeedbacksSend, listFeedbacksReceveid }) => {
+export const UserInfoWithCounterFeedbacks = ({ userPerfil, listFeedbacksSend, listFeedbacksReceveid }) => {
   const { user } = useUserContext()
   const { colors } = useThemeContext()
 
@@ -14,16 +14,16 @@ export const UserInfoFeedbacksCountCard = ({ userPerfil, listFeedbacksSend, list
     <CardUser>
       {userPerfil && (
         <div>
-          <Avatar>
+          <DivAvatarWithUpload>
             <AvatarUser img={userPerfil.avatar ? userPerfil.avatar : uploadUser} width="170px" />
             {user.idUser === userPerfil.idUser && <UpdateAvatar />}
-          </Avatar>
+          </DivAvatarWithUpload>
           <DivInfoText>
             <h2 id="id-user-name">{userPerfil.name}</h2>
-            <p > {userPerfil.userRole}</p>
+            <p> {userPerfil.userRole}</p>
             <small id="id-user-email">{userPerfil.email}</small>
           </DivInfoText>
-          <DivFeedbacksCount>
+          <DivFeedbacksCounter>
             <Button backgroundColor={colors.primary}>
               <span>{listFeedbacksSend.length > 0 ? listFeedbacksSend.length : "0"}</span>
               Feedbacks Enviados
@@ -32,7 +32,7 @@ export const UserInfoFeedbacksCountCard = ({ userPerfil, listFeedbacksSend, list
               <span>{listFeedbacksReceveid.length > 0 ? listFeedbacksReceveid.length : "0"}</span>
               Feedbacks recebidos
             </Button>
-          </DivFeedbacksCount>
+          </DivFeedbacksCounter>
         </div>
       )}
     </CardUser>

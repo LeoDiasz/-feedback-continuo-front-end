@@ -15,12 +15,10 @@ const AuthProvider = ({children}) => {
   useEffect(() => {
     const getToken = localStorage.getItem("token")
     
-    debugger
     if (getToken) {
       setIslogged(true)
       setToken(getToken)
       apiDbc.defaults.headers.common["authorization"] = getToken
-
     }
     
     const locationNow = window.location.pathname

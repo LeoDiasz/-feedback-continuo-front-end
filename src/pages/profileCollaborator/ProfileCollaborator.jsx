@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useUserContext } from "../../hooks/useUserContext"
 import { useFeedbackContext } from "../../hooks/useFeedbackContext"
 import { SectionFeedbacksUser } from "../../components/SectionFeedbacksUser"
-import { UserInfoFeedbacksCountCard } from "../../components/UserInfoFeedbacksCountCard"
+import { UserInfoWithCounterFeedbacks } from '../../components/UserInfoWithCounterFeedbacks'
 import { Loading } from '../../components/Loading'
 import { Container } from "../../components/Container/styles"
 import { SectionContent } from "./styles"
@@ -15,6 +15,7 @@ export const ProfileCollaborator = () => {
   const {getFeedbacksUser, listFeedbacksReceveid, listFeedbacksSend} = useFeedbackContext()
 
   const setup = async () => {
+    setIsLoading(true)
     await getDatasCollaboratorById(id)
     await getFeedbacksUser("receveid", id, true)
     await getFeedbacksUser("gived", id, false, true)
@@ -35,7 +36,7 @@ export const ProfileCollaborator = () => {
     <>
     <SectionContent>
       <Container>
-        <UserInfoFeedbacksCountCard
+        <UserInfoWithCounterFeedbacks
           userPerfil={collaborator}
           listFeedbacksReceveid={listFeedbacksReceveid} 
           listFeedbacksSend={listFeedbacksSend}

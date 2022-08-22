@@ -14,6 +14,7 @@ const MainContent = styled.main`
     }
 
     @media(max-width: 1350px) {
+
         > div {
             width: 95%;
         }
@@ -21,6 +22,7 @@ const MainContent = styled.main`
 
 
     @media(max-width: 1000px) {
+
         > div {
             grid-template-columns: 1fr;
             gap: 50px;
@@ -28,7 +30,7 @@ const MainContent = styled.main`
             > section:first-child {
                 justify-content: center;
             }
-
+            
         }
     }
 

@@ -6,7 +6,7 @@ const dark = {
     secondary: "#48BD82",
     title: "#C6C9D2",
     textGray: "#C6C9D2",
-    textGrayMedio: "#9FA2B4",
+    textGrayMiddle: "#9FA2B4",
     textGrayDark: "#F0F6FC",
     error: "#F12B2C",
     inputBorder: "#F0F1F7",

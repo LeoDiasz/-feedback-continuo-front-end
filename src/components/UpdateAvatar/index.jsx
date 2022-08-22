@@ -3,11 +3,9 @@ import { MdAddAPhoto } from 'react-icons/md'
 import { useUserContext } from '../../hooks/useUserContext';
 
 export const UpdateAvatar = () => {
-
-    const { handleUploadPhoto } = useUserContext()
+    const { handleUpdateAvatar } = useUserContext()
 
     return (
-
         <UploadAvatar>
             <label htmlFor='avatarUpload'>
                 <MdAddAPhoto />
@@ -18,7 +16,7 @@ export const UpdateAvatar = () => {
                 type="file"
                 accept="image/png, image/jpeg"
                 placeholder="Digite seu e-mail"
-                onChange={handleUploadPhoto}
+                onChange={handleUpdateAvatar}
                 style={{ display: "none" }}
             />
         </UploadAvatar>

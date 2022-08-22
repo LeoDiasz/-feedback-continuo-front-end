@@ -16,7 +16,7 @@ export const FormDiv = styled(Form)`
           border: none;
           background-color: transparent;
           font-size: 18px;
-          color: ${props => props.theme.colors.textGrayMedio};
+          color: ${props => props.theme.colors.textGrayMiddle};
 
         :focus{
             outline: none;

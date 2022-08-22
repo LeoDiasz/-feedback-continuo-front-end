@@ -7,7 +7,7 @@ import { Feedbackscontent } from "./styles"
 export const FeedbackList = ({ listFeedbacks, type }) => {
 
     const { currentPage, setCurrentPage } = useFeedbackContext()
-    const [feedbacksPerPage, setFeedbackPerPage] = useState(3)
+    const [feedbacksPerPage, setFeedbackPerPage] = useState(10)
     
     const pages = Math.ceil(listFeedbacks.length / feedbacksPerPage)
     const startIndex = currentPage * feedbacksPerPage;

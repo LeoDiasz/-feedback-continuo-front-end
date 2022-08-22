@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import { Login } from "./pages/login/Login";
-import { Home } from './pages/home/Home';
 import { CreateUser } from './pages/createUser/CreateUser';
+import { Home } from './pages/home/Home';
 import { CreateFeedback } from './pages/createFeedback/CreateFeedback';
 import { NotFound } from './pages/notFound/NotFound';
 import { ProfileCollaborator } from './pages/profileCollaborator/ProfileCollaborator';
@@ -23,8 +23,6 @@ function Routers() {
         setTheme(theme.title == "light" ? dark : light)
     }
 
-    
-
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle/>
@@ -36,11 +34,11 @@ function Routers() {
                                 <Route path='/' element={<Login />} />
                                 <Route path='/user/create' element={<CreateUser />} />
                                 <Route element={<PrivateRoute handleToggleTheme={handleToggleTheme} theme={theme}/>}>
-                                    <Route path='home' element={<Home />} />
-                                    <Route path='feedback/create/:id' element={<CreateFeedback />} />
-                                    <Route path='feedback/create' element={<CreateFeedback />} />
-                                    <Route path='collaborators' element={<Collaborators />} />
-                                    <Route path='collaborator/profile/:id' element={<ProfileCollaborator />} />
+                                    <Route path='/home' element={<Home />} />
+                                    <Route path='/feedback/create/:id' element={<CreateFeedback />} />
+                                    <Route path='/feedback/create' element={<CreateFeedback />} />
+                                    <Route path='/collaborators' element={<Collaborators />} />
+                                    <Route path='/collaborator/profile/:id' element={<ProfileCollaborator />} />
                                 </Route>
                                 <Route path='*' element={<NotFound />} />
                             </Routes>

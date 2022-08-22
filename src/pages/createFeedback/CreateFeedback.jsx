@@ -97,6 +97,7 @@ export const CreateFeedback = () => {
 
       const tagCreate = { name: tagName, idTag: countAllTagsChoose }
       setListTagsChoose([...listTagsChoose, tagCreate])
+      setSearchTags("")
     }
 
 

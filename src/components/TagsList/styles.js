@@ -16,7 +16,7 @@ export const ListTagsContent = styled.ul`
     gap: 5px;
     padding: 3px 10px;
     border-radius: 6px;
-    background-color: ${props => props.theme.colors.textGrayMedio};
+    background-color: ${props => props.theme.colors.textGrayMiddle};
     color: #fff;
     cursor: pointer;
     position: relative;

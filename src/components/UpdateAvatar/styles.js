@@ -2,20 +2,20 @@ import styled from "styled-components";
 
 export const UploadAvatar = styled.button`
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: ${props => props.theme.colors.primary};
     color: #FFF;
     width: 35px;
     height: 35px;
     right: 20px;
     bottom: 20px;
     border: 4px solid #FFF;
-    background-color: ${props => props.theme.colors.primary};
     border-radius: 50%;
     cursor: pointer;
 
-    label {
+    > label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
     }
 `
