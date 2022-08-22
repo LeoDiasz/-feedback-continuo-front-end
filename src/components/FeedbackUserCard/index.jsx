@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Switch from 'react-switch'
-import { MdExpandMore } from 'react-icons/md'
+import { MdOutlineExpandMore, MdOutlineExpandLess  } from 'react-icons/md'
 import { useUserContext } from "../../hooks/useUserContext"
 import { useThemeContext } from '../../hooks/useThemeContext'
 import { apiDbc } from '../../services/api'
@@ -20,9 +20,9 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
 
     const changeVisibleFeedbackReceveid = async () => {
 
-        setIsPublicFeedback(isPublicFeedback ? false : true)
+        setIsPublicFeedback(!isPublicFeedback)
 
-        let updateVisible = isPublicFeedback ? false : true
+        let updateVisible = !isPublicFeedback
 
         try {
             await apiDbc.put(`/feedback?idFeedback=${feedbackDatas.idFeedback}&publico=${updateVisible}`)
@@ -57,10 +57,15 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
                 <div>
                     {feedbackDatas.message.length > 75 ? (
                         <>
-                            <p onClick={() => setShowAllMessage(showAllMessage ? false : true)}>{feedbackDatas.message}</p>
-                            {showAllMessage &&
-                                <span onClick={() => setShowAllMessage(showAllMessage ? false : true)}>Ver mais <MdExpandMore /></span>
-                            }
+                            <p onClick={() => setShowAllMessage(!showAllMessage)}>{feedbackDatas.message}</p>
+
+                            <span onClick={() => setShowAllMessage(!showAllMessage)}>{showAllMessage ? (
+                                <span>Ver mais<MdOutlineExpandMore /></span>
+                            ) : (
+                                <span>Ver menos<MdOutlineExpandLess /></span>
+                            )}
+                            </span>
+
                         </>
                     ) : (
                         <>

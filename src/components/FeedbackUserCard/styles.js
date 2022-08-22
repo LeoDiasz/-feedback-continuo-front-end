@@ -88,7 +88,7 @@ const DivMessageFeedback = styled.div`
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        color: ${props => props.theme.colors.textGrayDark};
+        color: ${props => props.theme.colors.primary};
         padding-top: 5px;
         font-size: 12px;
     }
