@@ -9,7 +9,7 @@ const FeedbackProvider = ({ children }) => {
     const [listFeedbacksReceveid, setListFeedbacksReceveid] = useState([])
     const [listFeedbacksSend, setListFeedbacksSend] = useState([])
     const [listTagsServer, setListTagsServer] = useState([])
-
+    const [currentPage, setCurrentPage] = useState(0)
     const getFeedbacksUser = async (type, id, isFiltered, isFilteredAnonimous) => {
         
         try {
@@ -110,7 +110,9 @@ const FeedbackProvider = ({ children }) => {
             handleCreateFeedback,
             listFeedbacksReceveid,
             listFeedbacksSend,
-            listTagsServer
+            listTagsServer,
+            currentPage, 
+            setCurrentPage
         }}>
             {children}
         </FeedbackContext.Provider>

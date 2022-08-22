@@ -1,11 +1,14 @@
 import { useState } from "react"
+import { useFeedbackContext } from "../../hooks/useFeedbackContext"
 import { FeedbackUserCard } from "../FeedbackUserCard"
 import { Pager } from "./ComponentsPages/Pager"
 import { Feedbackscontent } from "./styles"
 
 export const FeedbackList = ({ listFeedbacks, type }) => {
+
+    const { currentPage, setCurrentPage } = useFeedbackContext()
     const [feedbacksPerPage, setFeedbackPerPage] = useState(3)
-    const [currentPage, setCurrentPage] = useState(0)
+    
     const pages = Math.ceil(listFeedbacks.length / feedbacksPerPage)
     const startIndex = currentPage * feedbacksPerPage;
     const endIndex = startIndex + feedbacksPerPage;
