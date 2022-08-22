@@ -3,8 +3,8 @@ import styled from "styled-components"
 const DivContainer = styled.div`
   display: grid;
   grid-template-columns: 45% 55%;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  
 
   @media (max-width: 1360px) {
     grid-template-columns: 1fr;

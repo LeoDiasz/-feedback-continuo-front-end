@@ -30,7 +30,7 @@ const AuthProvider = ({children}) => {
     
     setIsLoading(false)
     
-  }, [isLogged])
+  }, [])
 
   const signIn = async (userDatas, isNotNavigateForHome) => {
 
