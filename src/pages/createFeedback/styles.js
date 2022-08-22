@@ -49,7 +49,7 @@ const Forms = styled(FormPattern)`
 
     > div:nth-child(4){
         display: flex;
-        padding: 10px 0;
+        padding: 20px 0 10px 0;
         gap: 10px;    
         
         input {
@@ -61,11 +61,10 @@ const Forms = styled(FormPattern)`
 
 const SearchTagsContent = styled.ul`
     position: absolute;
-    background-color: #FFFFFF;
+    background-color: ${props => props.theme.colors.background};
     display: flex;
     max-height: 110px;
     flex-direction: column;
-    padding-bottom: 5px;
     width: 100%;
     z-index: 1;
     overflow-y: auto;
@@ -73,7 +72,7 @@ const SearchTagsContent = styled.ul`
     li {
         color: ${props => props.theme.colors.textGrayDark};
         font-size: 12px;
-        padding: 5px 0 0 10px;
+        padding: 5px 0 5px 10px;
         font-size: 10px;
         transition: filter 0.3s;
         cursor: pointer;
@@ -110,7 +109,7 @@ const InputAuto = styled(Field)`
 
 const ListCollaboratorsContent = styled.ul`
         position: absolute;
-        background: #FFFFFF;
+        background: ${props => props.theme.colors.background};
         width: 100%;
         max-height: 150px;
         display: flex;

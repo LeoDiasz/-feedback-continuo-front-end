@@ -1,13 +1,12 @@
 import { Formik } from 'formik'
 import { useEffect, useState } from 'react'
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useUserContext } from '../../hooks/useUserContext'
 import { useFeedbackContext } from '../../hooks/useFeedbackContext'
 import { useThemeContext } from '../../hooks/useThemeContext'
 import { SuggestionUserCreateFeedback } from '../../components/SuggestionUserCreateFeedback'
 import { CreateFeedbackSchema } from '../../utils/validationsSchema'
 import { TagsList } from '../../components/TagsList'
-import { Header } from '../../components/Header'
 import { Loading } from '../../components/Loading'
 import { Container } from '../../components/Container/styles'
 import { Label, InputField, DivTextValidation, TextValidation } from '../../components/InputStyles/styles'
@@ -16,19 +15,19 @@ import { Forms, InputAuto, ListCollaboratorsContent, SearchTagsContent, SectionC
 import { Footer } from '../../components/Footer'
 
 export const CreateFeedback = () => {
-  const {id} = useParams()
-  const {getTagsServer, handleCreateFeedback, listTagsServer} = useFeedbackContext()
-  const {getListCollaboratorsWithoutPages, listCollaboratorsPagesOff, collaborator, getDatasCollaboratorById} = useUserContext()
+  const { id } = useParams()
+  const { getTagsServer, handleCreateFeedback, listTagsServer } = useFeedbackContext()
+  const { getListCollaboratorsWithoutPages, listCollaboratorsPagesOff, collaborator, getDatasCollaboratorById } = useUserContext()
   const [isLoading, setIsLoading] = useState(true)
   const [idUserChooseForFeedback, setIdUserChooseForFeedback] = useState("")
-  const [searchCollaboratorForFeedback , setSearchCollaboratorForFeedback] = useState("")
+  const [searchCollaboratorForFeedback, setSearchCollaboratorForFeedback] = useState("")
   const [collaboratorChoose, setCollaboratorChoose] = useState("")
   const [isClickInInputCollaborator, setIsClickInInputCollaborator] = useState(false)
   const [isClickInInputTags, setIsClickInInputTags] = useState(false)
   const [listTagsChoose, setListTagsChoose] = useState([])
   const [searchTags, setSearchTags] = useState("")
-  const {title} = useThemeContext()
-  
+  const { title } = useThemeContext()
+
   const setup = async () => {
 
     if (id) {
@@ -44,7 +43,7 @@ export const CreateFeedback = () => {
 
   const handleClickChooseCollaborator = (setFieldValue, name, idUser) => {
 
-    if(name, idUser) {
+    if (name, idUser) {
       setSearchCollaboratorForFeedback(name)
       setCollaboratorChoose(name)
       setIdUserChooseForFeedback(idUser)
@@ -58,10 +57,10 @@ export const CreateFeedback = () => {
   const handleChangeChooseCollaborator = (setFieldValue, event) => {
     const valueInput = event.target.value
 
-    if(valueInput !== collaboratorChoose) {
+    if (valueInput !== collaboratorChoose) {
       setCollaboratorChoose("")
       setIdUserChooseForFeedback(0)
-      
+
     }
 
     setFieldValue("userFeedbackSend", valueInput, false)
@@ -75,32 +74,32 @@ export const CreateFeedback = () => {
     event.preventDefault()
     const valueTag = event.target.value
 
-    if(!valueTag.trim()) return
+    if (!valueTag.trim()) return
 
     const countAllTagsChoose = listTagsChoose.length + 1
 
-    const tagCreate = {name: valueTag, idTag: countAllTagsChoose}
+    const tagCreate = { name: valueTag, idTag: countAllTagsChoose }
 
     setSearchTags("")
-    setListTagsChoose([...listTagsChoose, tagCreate ])
+    setListTagsChoose([...listTagsChoose, tagCreate])
   }
-  
+
   const handleChangeTags = (event) => {
-    const valueFiltered = event.target.value.replace(/\s/,"")
+    const valueFiltered = event.target.value.replace(/\s/, "")
     setSearchTags(valueFiltered)
 
   }
 
   const handleClickChooseTag = (tagName, event) => {
 
-    if(tagName) {
+    if (tagName) {
       const countAllTagsChoose = listTagsChoose.length + 1
 
-      const tagCreate = {name: tagName, idTag: countAllTagsChoose}
+      const tagCreate = { name: tagName, idTag: countAllTagsChoose }
       setListTagsChoose([...listTagsChoose, tagCreate])
     }
-   
-    
+
+
     isClickInInputTags ? setIsClickInInputTags(false) : setIsClickInInputTags(true)
   }
 
@@ -110,17 +109,17 @@ export const CreateFeedback = () => {
 
   if (isLoading) {
     return (
-      <Loading/>
+      <Loading />
     )
   }
 
-  const filteredCollaborators = searchCollaboratorForFeedback.length > 0 
-  ?  listCollaboratorsPagesOff.filter(collaborator => collaborator.name.toLowerCase().includes(searchCollaboratorForFeedback.toLowerCase())) 
-  :  listCollaboratorsPagesOff
+  const filteredCollaborators = searchCollaboratorForFeedback.length > 0
+    ? listCollaboratorsPagesOff.filter(collaborator => collaborator.name.toLowerCase().includes(searchCollaboratorForFeedback.toLowerCase()))
+    : listCollaboratorsPagesOff
 
-  const filteredTags = searchTags.length > 0 
-  ?  listTagsServer.filter(tag => tag.name.toUpperCase().includes(searchTags.toUpperCase())) 
-  : listTagsServer
+  const filteredTags = searchTags.length > 0
+    ? listTagsServer.filter(tag => tag.name.toUpperCase().includes(searchTags.toUpperCase()))
+    : listTagsServer
 
   return (
     <>
@@ -138,24 +137,24 @@ export const CreateFeedback = () => {
               tagsList: '',
             }}
             validationSchema={CreateFeedbackSchema}
-            onSubmit={ async (values, {resetForm}) => {
+            onSubmit={async (values, { resetForm }) => {
               const newValues = {
                 message: values.message,
                 anonymous: values.anonymous ? true : false,
                 feedbackUserId: parseInt(idUserChooseForFeedback),
                 tagsList: listTagsChoose,
               }
-              
+
               const isResetForm = await handleCreateFeedback(newValues)
 
-              if(isResetForm) {
+              if (isResetForm) {
                 resetForm()
                 setListTagsChoose([])
                 setSearchCollaboratorForFeedback("")
               }
             }}
           >
-            {({ errors, handleChange, values, setFieldValue, setFieldError}) => (
+            {({ errors, handleChange, values, setFieldValue, setFieldError }) => (
               <Forms typeTheme={title}>
                 <div>
                   <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
@@ -169,30 +168,30 @@ export const CreateFeedback = () => {
                     onClick={() => handleClickChooseCollaborator(setFieldValue)}
                   />
                   <ListCollaboratorsContent>
-                      {(isClickInInputCollaborator || searchCollaboratorForFeedback.length > 0) && !collaboratorChoose && filteredCollaborators && filteredCollaborators.map((collaborator) => (
-                        <SuggestionUserCreateFeedback
-                          onClick={() => handleClickChooseCollaborator(setFieldValue, collaborator.name, collaborator.idUser)}
-                          key={collaborator.idUser} 
-                          datasCollaborator={collaborator}
-                        />
-                      ))}
+                    {(isClickInInputCollaborator || searchCollaboratorForFeedback.length > 0) && !collaboratorChoose && filteredCollaborators && filteredCollaborators.map((collaborator) => (
+                      <SuggestionUserCreateFeedback
+                        onClick={() => handleClickChooseCollaborator(setFieldValue, collaborator.name, collaborator.idUser)}
+                        key={collaborator.idUser}
+                        datasCollaborator={collaborator}
+                      />
+                    ))}
                   </ListCollaboratorsContent>
                   <DivTextValidation>
                     <TextValidation id="id-message-collaborator">{errors.userFeedbackSend}</TextValidation>
                   </DivTextValidation>
                 </div>
-              
+
                 <div>
                   <Label htmlFor="message">Feedback</Label>
-                  <InputField 
-                    type="text" 
-                    name="message" 
-                    id="message" 
+                  <InputField
+                    type="text"
+                    name="message"
+                    id="message"
                     placeholder='Digite o feedback que gostaria de enviar'
                     autoComplete="off"
                   />
                   <DivTextValidation>
-                        <TextValidation id="id-message-feedback">{errors.message}</TextValidation>
+                    <TextValidation id="id-message-feedback">{errors.message}</TextValidation>
                   </DivTextValidation>
                 </div>
 
@@ -211,34 +210,36 @@ export const CreateFeedback = () => {
                   <SearchTagsContent>
                     {(isClickInInputTags || searchTags.length > 0) && filteredTags && filteredTags.map(({ idTag, name }) => (
                       <li key={idTag} onClick={() => handleClickChooseTag(name)}>
-                          <p>{name}</p>
-                        </li>
+                        <p>{name}</p>
+                      </li>
                     ))}
                   </SearchTagsContent>
 
-                  <TagsList 
-                    listTags={listTagsChoose} 
-                    setListTags={setListTagsChoose}
-                  />
                 </div>
 
                 <div>
                   <Label htmlFor="message">Quer deixar feedback anonimo</Label>
-                  <input 
-                    type="checkbox" 
-                    name="anonymous" 
-                    id="anonymous" 
-                    onChange={handleChange} 
+                  <input
+                    type="checkbox"
+                    name="anonymous"
+                    id="anonymous"
+                    onChange={handleChange}
                     value={values.anonymous}
                   />
                 </div>
+
+                <TagsList
+                  listTags={listTagsChoose}
+                  setListTags={setListTagsChoose}
+                />
+
                 <Button type='submit' disabled={Object.values(errors).length > 0}>Criar</Button>
               </Forms>
             )}
           </Formik>
         </Container>
       </SectionContent>
-      <Footer/>
+      <Footer />
     </>
   )
 }
