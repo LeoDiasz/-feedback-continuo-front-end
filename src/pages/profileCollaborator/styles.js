@@ -12,6 +12,26 @@ const SectionContent = styled.section`
     padding: 60px 0;
   }
 
+
+
+  @media(max-width: 1350px) {
+        > div {
+            width: 95%;
+        }
+    }
+
+
+    @media(max-width: 1000px) {
+        > div {
+            grid-template-columns: 1fr;
+            gap: 50px;
+
+            > section:first-child {
+                justify-content: center;
+            }
+
+        }
+    }
 `
 
 

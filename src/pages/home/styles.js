@@ -32,9 +32,7 @@ const MainContent = styled.main`
         }
     }
 
-    @media(max-width: 1000px) {
-
-    }
+    
 `
 
 export {MainContent}

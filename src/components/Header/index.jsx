@@ -44,7 +44,6 @@ export const Header = ({ handleToggleTheme, theme }) => {
             checkedHandleIcon={<BsFillSunFill size={10} />}
             uncheckedHandleIcon={<BsFillMoonFill size={10} />}
             handleDiameter={20}
-
             offHandleColor={colors.textGray}
             onHandleColor={colors.inputBorder}
             onColor={colors.textGray}

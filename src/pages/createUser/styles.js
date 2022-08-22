@@ -28,7 +28,7 @@ export const DivSenha = styled.div`
     
     button {
         position: absolute;
-        bottom: 53px;
+        bottom: 50px;
         right: 15px;
         border: none;
         background-color: transparent;
@@ -46,7 +46,7 @@ export const DivConfirmSenha = styled.div`
     
     button {
         position: absolute;
-        bottom: 30px;
+        bottom: 25px;
         right: 15px;
         border: none;
         background-color: transparent;

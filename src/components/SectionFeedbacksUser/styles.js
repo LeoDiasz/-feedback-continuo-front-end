@@ -8,6 +8,60 @@ const SectionFeedbacksContent = styled.section`
     -webkit-box-shadow: ${props => props.typeTheme == "light" && "0px 0px 15px 0px rgba(166,166,166,0.41)"}; 
     box-shadow: ${props => props.typeTheme == "light" && "0px 0px 15px 0px rgba(166,166,166,0.41)"};
     background-color: ${props => props.theme.colors.backgroundSecondary};
+
+
+    @media(max-width: 780px) {
+        >ul > li {
+            grid-template-columns: 1fr;
+            min-height: 500px;
+            gap: 20px;
+            align-items: center;
+
+            > * {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            > div:first-child {
+                img {
+                    width: 150px;
+                    height: 150px;
+                    margin-bottom: 20px;
+                }
+
+                h4 {
+                    font-size: 20px;
+                }
+
+                p {
+                    font-size: 16px;
+                }
+            }
+            
+            > div:nth-child(2) {
+                padding: 0;
+                
+                > div p {
+                    max-width: 100%;
+                }
+                > ul {
+                    margin-top: 15px;
+                    justify-content: center;
+                }
+            }
+
+            > div:nth-child(3) {
+                > div{
+                    align-self: center;
+                    margin-bottom: 40px;
+                }
+            }
+
+            
+           
+        }
+    }
 `;
 
 const Tabs = styled.div`   

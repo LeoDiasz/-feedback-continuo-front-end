@@ -34,11 +34,11 @@ function Routers() {
                                 <Route path='/' element={<Login />} />
                                 <Route path='/user/create' element={<CreateUser />} />
                                 <Route element={<PrivateRoute handleToggleTheme={handleToggleTheme} theme={theme}/>}>
-                                    <Route path='/home' element={<Home />} />
-                                    <Route path='/feedback/create/:id' element={<CreateFeedback />} />
-                                    <Route path='/feedback/create' element={<CreateFeedback />} />
-                                    <Route path='/collaborators' element={<Collaborators />} />
-                                    <Route path='/collaborator/profile/:id' element={<ProfileCollaborator />} />
+                                    <Route path='home' element={<Home />} />
+                                    <Route path='feedback/create/:id' element={<CreateFeedback />} />
+                                    <Route path='feedback/create' element={<CreateFeedback />} />
+                                    <Route path='collaborators' element={<Collaborators />} />
+                                    <Route path='collaborator/profile/:id' element={<ProfileCollaborator />} />
                                 </Route>
                                 <Route path='*' element={<NotFound />} />
                             </Routes>

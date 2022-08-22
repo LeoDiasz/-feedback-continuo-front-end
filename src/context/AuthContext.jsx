@@ -7,29 +7,30 @@ import { Loading } from "../components/Loading";
 const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
-  const [token, setToken] = useState()
+  const [token, setToken] = useState("")
   const [isLogged, setIslogged] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
   useEffect(() => {
     const getToken = localStorage.getItem("token")
-
+    
     if (getToken) {
       setIslogged(true)
       setToken(getToken)
       apiDbc.defaults.headers.common["authorization"] = getToken
+
     }
     
-    const locationNow = window.location.href
-    
-    if(getToken && locationNow === "http://localhost:3000/"){
+    const locationNow = window.location.pathname
+  
+    if(getToken && locationNow === "/"){
       navigate("/home")
     }
     
     setIsLoading(false)
     
-  }, [])
+  }, [isLogged])
 
   const signIn = async (userDatas, isNotNavigateForHome) => {
 

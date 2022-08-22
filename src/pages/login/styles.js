@@ -11,7 +11,7 @@ export const FormDiv = styled(Form)`
       
       button {
           position: absolute;
-          bottom: 30px;
+          bottom: 25px;
           right: 15px;
           border: none;
           background-color: transparent;

@@ -47,6 +47,49 @@ const HeaderContainer = styled.header`
     background-color: ${props => props.theme.colors.secondary};
     border: none;
   }
+
+  @media(max-width: 1350px) {
+    > div {
+        width: 95%;
+    }
+  }
+
+  @media(max-width: 780px) {
+
+    nav {
+      gap: 20px;
+      img {
+        width: 80px;
+      }
+
+      li {
+        font-size: 12px;
+      }
+
+      
+    }
+
+    > div > div img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+
+  @media(max-width: 576px) {
+
+    nav {
+      gap: 0;
+    }
+
+    > div > div {
+      gap: 10px;
+    }
+
+    li {
+      margin-left: 0;
+    }
+  }
 `
 
 const DivLogout = styled.div`
@@ -58,7 +101,7 @@ const DivLogout = styled.div`
 
   :before {
     content: "";
-    height: 100%;
+    height: 80%;
     position: absolute;
     right: 108px;
     border-left: 1px solid ${props => props.theme.colors.border};
@@ -84,6 +127,29 @@ const DivLogout = styled.div`
     background: transparent;
     font-size: 25px;
     color: ${props => props.theme.colors.white}
+  }
+
+  
+  @media(max-width: 780px) {
+    :before {
+      right: 90px;
+    }
+  }
+
+  @media(max-width: 576px) {
+    > div {
+      height: 20px;
+      right: 14px;
+      width: 100%;
+   
+    }
+
+    gap: 0;
+
+    :before {
+      display: none;
+    }
+  
   }
 `
 
