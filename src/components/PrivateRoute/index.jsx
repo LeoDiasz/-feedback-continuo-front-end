@@ -1,14 +1,38 @@
 import {Outlet, Navigate} from "react-router-dom"
-import { useContext} from "react"
-import {AuthContext} from "../../context/AuthContext"
+import {useState, useEffect} from "react"
+import { apiDbc } from "../../services/api"
 import { Header } from "../Header"
+import { useUserContext } from "../../hooks/useUserContext"
+import { Loading } from "../Loading"
 
 export const PrivateRoute = ({ handleToggleTheme, theme}) => {
-  const {isLogged} = useContext(AuthContext)
+  const {getDatasUser} = useUserContext()
+  const [loading, setLoading] = useState(true)
+
+  const token = localStorage.getItem("token")
+
+  if(token) {
+    apiDbc.defaults.headers.common["authorization"] = token
+  }
+
+  const setup  = async () => {
+    await  getDatasUser()
+    setLoading(false)
+  }
+
+  useEffect(() => {
+    setup()
+  }, [])
+  
+  if (loading) {
+    return (
+      <Loading/>
+    )
+  }
 
   return (
    <>
-      {isLogged ? (
+      {token ? (
         <>
           <Header handleToggleTheme={handleToggleTheme} theme={theme}/>
           <Outlet/>
