@@ -11,7 +11,7 @@ export const UploadAvatar = styled.button`
     right: 20px;
     bottom: 20px;
     border: 4px solid #FFF;
-    background-color: ${props => props.theme.colors.border};
+    background-color: ${props => props.theme.colors.primary};
     border-radius: 50%;
     cursor: pointer;
 
