@@ -44,23 +44,44 @@ const HeaderContainer = styled.header`
   }
 
   button:last-child {
-    background-color: transparent;
+    background-color: ${props => props.theme.colors.secondary};
     border: none;
   }
-
-
 `
 
 const DivLogout = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column-reverse;
+  justify-content: center;
   gap: 20px;
+  position: relative;
 
+  :before {
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: 108px;
+    border-left: 1px solid ${props => props.theme.colors.border};
+  } 
+
+  >div{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    width: 90px;
+    height: 50px;
+    top: 52px;
+    right: 4px;
+    z-index: 1;
+        
+  }
+  
   > button:last-child {
     display: flex;
     align-items: center;
     gap: 5px;
-
+    background: transparent;
     font-size: 25px;
     color: ${props => props.theme.colors.white}
   }

@@ -55,7 +55,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
             </DivDatasUser>
             <DivMessageFeedback isShowAllMessage={showAllMessage}>
                 <div>
-                    {feedbackDatas.message.length > 30 ? (
+                    {feedbackDatas.message.length > 75 ? (
                         <>
                             <p onClick={() => setShowAllMessage(showAllMessage ? false : true)}>{feedbackDatas.message}</p>
                             {showAllMessage &&

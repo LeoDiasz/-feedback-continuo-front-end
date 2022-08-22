@@ -77,7 +77,7 @@ const DivMessageFeedback = styled.div`
         margin-top: 10px;
         color: ${props => props.theme.colors.textGrayDark};
 
-        max-width: ${props => props.isShowAllMessage && '100ch'};
+        max-width: ${props => props.isShowAllMessage && '70ch'};
         overflow: ${props => props.isShowAllMessage && 'hidden'};
         text-overflow: ${props => props.isShowAllMessage && 'ellipsis'};
         white-space: ${props => props.isShowAllMessage && 'nowrap'};

@@ -10,6 +10,7 @@ const Button = styled.button`
     width: ${props => props.width ? props.width : "100%"};
     border-radius: ${props => props.radius ? props.radius : "4px"};
     padding: ${props => props.padding ? props.padding : "10px"};
+    
 `
 
 const ButtonIcon = styled.button `

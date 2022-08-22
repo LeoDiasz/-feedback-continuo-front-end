@@ -5,8 +5,7 @@ import { SectionFeedbacksContent, Tabs, ButtonTabs } from './styles'
 
 export const SectionFeedbacksUser = ({ listFeedbacksReceveid, listFeedbacksSend }) => {
     const {title} = useThemeContext()
-    const [showFeedbacks, setShowFeedbacks] = useState(true)
-
+    const [showFeedbacks, setShowFeedbacks] = useState(true)    
     return (
         <div>
             <Tabs>
