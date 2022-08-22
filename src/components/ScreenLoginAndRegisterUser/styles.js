@@ -6,7 +6,7 @@ const DivContainer = styled.div`
   height: 100vh;
   overflow: hidden;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1360px) {
     grid-template-columns: 1fr;
 
     > section:first-child {

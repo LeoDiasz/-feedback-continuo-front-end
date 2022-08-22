@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import { Login } from "./pages/login/Login";
 import { Home } from './pages/home/Home';
-import { Header } from './components/Header';
 import { CreateUser } from './pages/createUser/CreateUser';
 import { CreateFeedback } from './pages/createFeedback/CreateFeedback';
 import { NotFound } from './pages/notFound/NotFound';
@@ -25,9 +24,9 @@ function Routers() {
     }
 
     return (
-        <BrowserRouter>
-            <ThemeProvider theme={theme}>
-                <GlobalStyle/>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle/>
+            <BrowserRouter>
                 <AuthProvider>   
                     <UserProvider>
                         <FeedbackProvider>
@@ -46,8 +45,8 @@ function Routers() {
                         </FeedbackProvider>
                     </UserProvider>  
                 </AuthProvider>
-            </ThemeProvider>
-        </BrowserRouter>
+            </BrowserRouter>
+        </ThemeProvider>
     )
 }
 export default Routers;

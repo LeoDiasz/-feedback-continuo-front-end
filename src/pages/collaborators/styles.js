@@ -10,6 +10,10 @@ const SectionCollaboratorsContainer =  styled.section`
     gap: 30px;
     padding: 60px 0;
 
+    > *:last-child {
+      align-self: center;
+    }
+
     > div {    
         h1 {
           margin-bottom: 5px;
@@ -44,6 +48,8 @@ const ListCollaboratorsContent = styled.ul`
       padding: 40px 20px;
       min-height: 400px;
       flex-direction: column;
+      justify-content: center;
+      gap: 60px;
 
       > div:first-child {
         flex-direction: column; 
@@ -52,6 +58,7 @@ const ListCollaboratorsContent = styled.ul`
         gap: 15px;
 
           img {
+            margin-bottom: 30px;
             width: 120px;
             height: 120px;   
           }
