@@ -9,6 +9,9 @@ const SectionContent = styled.section`
     > div {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 60px 0;
 
         > div {
             text-align: center;
@@ -21,10 +24,7 @@ const SectionContent = styled.section`
                     color: ${props => props.theme.colors.primary};
                 }
             }
-        }
-
-        gap: 40px;
-        padding: 60px 0;
+        }  
     }
 `
 
@@ -32,6 +32,8 @@ const Forms = styled(FormPattern)`
     padding: 30px;
     border: 1px solid ${props => props.theme.colors.border};
     border-radius: 8px;
+    width: 90%;
+
     >div:first-child {
         position: relative;
         
@@ -98,6 +100,10 @@ const InputAuto = styled(Field)`
     
     &:focus {
         outline: none;
+    }
+
+    @media (max-width: 576px) {
+        height: 25px;
     }
     
 `

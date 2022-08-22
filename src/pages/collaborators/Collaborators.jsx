@@ -8,18 +8,26 @@ import { Container } from '../../components/Container/styles'
 import { ListCollaboratorsContent, SectionCollaboratorsContainer } from "./styles"
 
 export const Collaborators = () => {
-  const { listCollaborators, getListCollaborators, listCollaboratorsPagesOff, getListCollaboratorsWithoutPages, setListCollaborators } = useUserContext()
+
+  const { 
+    listCollaborators, 
+    getListCollaborators, 
+    listCollaboratorsPagesOff, 
+    getListCollaboratorsWithoutPages, 
+    setListCollaborators 
+  } = useUserContext()
+
   const [isLoading, setIsLoading] = useState(true)
   const [searchCollaborator, setSearchCollaborator] = useState("")
   const [currentPage, setCurrentPage] = useState(0)
 
   const setup = async () => {
     setIsLoading(true)
+
     await getListCollaboratorsWithoutPages()
     await getListCollaborators(currentPage)
 
     setIsLoading(false)
-    
   }
 
   useEffect(() => {
@@ -30,6 +38,7 @@ export const Collaborators = () => {
 
   useEffect(() => {
     getListCollaborators(currentPage)
+    
   }, [currentPage])
 
   useEffect(() => {

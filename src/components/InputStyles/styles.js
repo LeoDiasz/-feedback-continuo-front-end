@@ -4,7 +4,7 @@ import { Field } from "formik"
 
 export const baseStyleInputs = css`
   width: 100%;
-  min-height: 40px;
+  height: 30px;
   padding: 0 20px;
   border-radius: 8px;
   margin-top: 8px;
@@ -15,6 +15,8 @@ export const baseStyleInputs = css`
   &::placeholder {
     color: ${props => props.theme.colors.textGray};
   }
+
+
 `
 
 const Input = styled.input`

@@ -5,8 +5,8 @@ export const CardContent = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   padding: 10px 40px;
+  width: 100%;
   border-radius: 8px;
   cursor: pointer;
   background-color: ${props => props.theme.colors.backgroundSecondary};

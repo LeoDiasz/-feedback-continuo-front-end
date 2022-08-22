@@ -1,6 +1,9 @@
 import styled from "styled-components"
 
 const Button = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: ${props => props.backgroundColor ? props.backgroundColor : props.theme.colors.secondary};
     color: ${props => props.color ? props.color : "#ffffff"};
     border: ${props => props.border ? props.border : "none"};

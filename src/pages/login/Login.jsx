@@ -2,7 +2,7 @@ import { Formik } from "formik"
 import { useState } from 'react'
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md'
 import { useAuthContext } from "../../hooks/useAuthContext"
-import { ScreenAndRegisterUser } from '../../components/ScreenLoginAndRegisterUser'
+import ScreenLoginAndRegisterUser from '../../components/ScreenLoginAndRegisterUser'
 import { LoginSchema } from "../../utils/validationsSchema"
 import { Button } from '../../components/Button/styles'
 import { DivTextValidation, InputField, TextValidation, Label } from "../../components/InputStyles/styles"
@@ -20,7 +20,7 @@ export const Login = () => {
   }
 
   return (
-    <ScreenAndRegisterUser titleForm="Entrar na conta" isScreenLogin>
+    <ScreenLoginAndRegisterUser titleForm="Entrar na conta" isScreenLogin>
       <Formik
         initialValues={{ login: "", senha: "" }}
         validationSchema={LoginSchema}
@@ -50,6 +50,6 @@ export const Login = () => {
           </FormDiv>
         )}
       </Formik>
-    </ScreenAndRegisterUser>
+    </ScreenLoginAndRegisterUser>
   )
 }

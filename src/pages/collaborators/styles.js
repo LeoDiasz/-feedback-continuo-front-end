@@ -10,8 +10,7 @@ const SectionCollaboratorsContainer =  styled.section`
     gap: 30px;
     padding: 60px 0;
 
-    > div {
-      
+    > div {    
         h1 {
           margin-bottom: 5px;
         }
@@ -22,6 +21,14 @@ const SectionCollaboratorsContainer =  styled.section`
         }
     }
     
+
+    @media(max-width: 1400px) {
+      width: 95%;
+      
+      text-align: center;
+    }
+
+   
   }
 `
 
@@ -30,6 +37,47 @@ const ListCollaboratorsContent = styled.ul`
   flex-direction: column;
   gap: 20px;
   width: 100%;
+
+  @media(max-width: 780px) {
+     
+   li {
+      padding: 40px 20px;
+      min-height: 400px;
+      flex-direction: column;
+
+      > div:first-child {
+        flex-direction: column; 
+        text-align: center;
+        width: 100%;
+        gap: 15px;
+
+          img {
+            width: 120px;
+            height: 120px;   
+          }
+       
+
+      }
+    }
+
+  }
+
+
+  @media(max-width: 576px) {
+
+    div:last-child { 
+      width: 100%;
+      gap: 15px;
+
+    }
+
+    button {
+      height: 40px;
+      width: 50%;
+      font-size: 13px;
+    }
+
+  }
 `
 
 export {ListCollaboratorsContent, SectionCollaboratorsContainer}

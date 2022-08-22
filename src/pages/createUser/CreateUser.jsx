@@ -5,7 +5,7 @@ import PasswordStrengthBar from 'react-password-strength-bar';
 import { listOptionsRole } from "../../utils/consts"
 import { useUserContext } from "../../hooks/useUserContext";
 import { CreateUserSchema } from "../../utils/validationsSchema"
-import { ScreenAndRegisterUser } from '../../components/ScreenLoginAndRegisterUser'
+import ScreenLoginAndRegisterUser from '../../components/ScreenLoginAndRegisterUser'
 import { FormDiv } from "../login/styles"
 import { Button, ButtonUpload } from '../../components/Button/styles'
 import { DivTextValidation, InputField, Label, TextValidation } from "../../components/InputStyles/styles"
@@ -39,7 +39,7 @@ export const CreateUser = () => {
   }
 
   return (
-    <ScreenAndRegisterUser titleForm="Criar conta">
+    <ScreenLoginAndRegisterUser titleForm="Criar conta">
       <Formik
         initialValues={
           {
@@ -136,6 +136,6 @@ export const CreateUser = () => {
           </FormDiv>
         )}
       </Formik>
-    </ScreenAndRegisterUser>
+    </ScreenLoginAndRegisterUser>
   )
 }
