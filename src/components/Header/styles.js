@@ -4,6 +4,10 @@ import Switch from 'react-switch'
 const HeaderContainer = styled.header`
   background-color: ${props => props.themeDark.title == "dark" ? props.theme.colors.backgroundSecondary : props.theme.colors.primary };
   padding: 15px 0;
+  
+  @media (max-width: 500px){
+    width: auto;
+  }
 
   > div {
     display: flex;
@@ -43,6 +47,19 @@ const HeaderContainer = styled.header`
     }
   }
 
+  @media (max-width: 500px){
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav>ul>li{
+      padding: 5px;
+      margin: 0;
+    }
+  }
+
   button:last-child {
     background-color: ${props => props.theme.colors.secondary};
     border: none;
@@ -64,9 +81,7 @@ const HeaderContainer = styled.header`
 
       li {
         font-size: 12px;
-      }
-
-      
+      }      
     }
 
     > div > div img {
