@@ -16,8 +16,8 @@ export const Pager = ({pages, setCurrentPage, currentPage}) => {
               <AiOutlineArrowRight/>
             </Button>
           }
-        <span>{currentPage + 1}/{pages}</span>
         </div>
+        <span>{currentPage + 1}/{pages}</span>
     </div>
   )
 }

@@ -12,12 +12,12 @@ export const Feedbackscontent = styled.ul`
     }
 
     > div:last-child {
-        padding: 20px 0;
         display: flex;
-        flex-direction: column;
+        padding: 20px 0;
         align-items: center;
         justify-content: center;
         gap: 10px;
+        position: relative;
 
         > div {
             margin-left: 5px;
@@ -32,7 +32,11 @@ export const Feedbackscontent = styled.ul`
         }
 
         span {
-            font-size: 12px;
+            font-weight: bold;
+            padding-right: 10px;
+            right: 0px;
+            position: absolute;
+            font-size: 14px;
             color: ${props => props.theme.colors.textGrayDark}
         }
        

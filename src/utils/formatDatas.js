@@ -1,7 +1,7 @@
 import moment from "moment"
 import "moment/locale/pt-br"
 
-const formatDateExtended = (date) => {
+const formatDate = (date) => {
   moment.locale("pt-br")
   const newDate = moment(date).format("L")
 
@@ -9,4 +9,4 @@ const formatDateExtended = (date) => {
 }
 
 
-export {formatDateExtended}
+export {formatDate}

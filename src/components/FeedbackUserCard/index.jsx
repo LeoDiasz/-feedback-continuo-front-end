@@ -6,7 +6,7 @@ import { useThemeContext } from '../../hooks/useThemeContext'
 import { apiDbc } from '../../services/api'
 import { TagsList } from '../TagsList'
 import { AvatarUser } from "../../components/AvatarUser"
-import { formatDateExtended } from '../../utils/formatDatas'
+import { formatDate } from '../../utils/formatDatas'
 import { FeedbackContent, DivDatasUser, DivMessageFeedback, DivMoreInfos } from './styles'
 
 export const FeedbackUserCard = ({ feedbackDatas, type }) => {
@@ -97,7 +97,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
                     {user.idUser == feedbackDatas.userId && feedbackDatas.anonymous && <span>anônimo</span>}
                 </DivMoreInfos>
             )}
-            <small>Criado em: {formatDateExtended(feedbackDatas.dataEHora)}</small>
+            <small>Criado em: {formatDate(feedbackDatas.dataEHora)}</small>
         </FeedbackContent >
     )
 }
