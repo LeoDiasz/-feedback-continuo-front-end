@@ -3,6 +3,7 @@ import {useThemeContext} from "../../hooks/useThemeContext"
 import { Logo } from "../Logo"
 import bannerChat from "../../images/banner-chat.png"
 import { DivContainer, SectionBanner, SectionForm } from "./styles"
+import { ResponsiveTitle } from "../ResponsiveTitle"
 
 const ScreenLoginAndRegisterUser = ({children, titleForm, isScreenLogin}) => {
   const {title} = useThemeContext()
@@ -18,6 +19,7 @@ const ScreenLoginAndRegisterUser = ({children, titleForm, isScreenLogin}) => {
       </SectionBanner>
       <SectionForm typeTheme={title}>
         <div>
+          <ResponsiveTitle />
           <Logo isDisabledText width="140px" />
           {titleForm && <h1>{titleForm}</h1>}
           {children}

@@ -30,7 +30,7 @@ export const UserInfoWithCounterFeedbacks = ({ userPerfil, listFeedbacksSend, li
             </Button>
             <Button backgroundColor={colors.primary}>
               <span>{listFeedbacksReceveid.length > 0 ? listFeedbacksReceveid.length : "0"}</span>
-              Feedbacks recebidos
+              Feedbacks Recebidos
             </Button>
           </DivFeedbacksCounter>
         </div>
