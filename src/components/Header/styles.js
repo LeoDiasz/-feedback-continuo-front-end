@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Switch from 'react-switch'
 
 const HeaderContainer = styled.header`
-  background-color: ${props => props.themeDark.title == "dark" ? props.theme.colors.backgroundSecondary : props.theme.colors.primary };
+  background-color: ${props => props.themeDark.title == "dark" ? props.theme.colors.backgroundSecondary : props.theme.colors.primary};
   padding: 15px 0;
   
   @media (max-width: 500px){
@@ -111,7 +111,7 @@ const DivLogout = styled.div`
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   position: relative;
 
   :before {
@@ -132,7 +132,7 @@ const DivLogout = styled.div`
     top: 52px;
     right: 4px;
     z-index: 1;
-        
+    
   }
   
   > button:last-child {
@@ -152,14 +152,18 @@ const DivLogout = styled.div`
   }
 
   @media(max-width: 576px) {
-    > div {
-      height: 20px;
-      right: 14px;
-      width: 100%;
-   
+    gap: 0;
+
+    button:first-child{
+      height: 18px;
     }
 
-    gap: 0;
+    > div {
+      height: 15px;
+      right: 14px;
+      top: 46px;
+      width: 100%;
+    }
 
     :before {
       display: none;
@@ -175,4 +179,4 @@ const SwitchStyle = styled(Switch)`
   }
 `
 
-export {HeaderContainer, DivLogout, SwitchStyle}
+export { HeaderContainer, DivLogout, SwitchStyle }
