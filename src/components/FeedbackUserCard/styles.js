@@ -120,6 +120,14 @@ const DivMoreInfos = styled.div`
         
     }
 
+    @media(max-width: 780px) {
+        align-items: center;
+
+        span {
+            margin-bottom: 5px;
+        }
+        
+    }
 `
 
 export { FeedbackContent, DivDatasUser, DivMessageFeedback, DivMoreInfos }
