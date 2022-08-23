@@ -9,10 +9,10 @@ export const CardContent = styled.li`
   width: 100%;
   border-radius: 8px;
   cursor: pointer;
+  transition: filter 0.2s;
   background-color: ${props => props.theme.colors.backgroundSecondary};
   -webkit-box-shadow: ${props => props.typeTheme == "dark" || props.shadow ? 0 : "0px 0px 15px 0px rgba(166,166,166,0.41)"}; 
   box-shadow: ${props => props.typeTheme == "dark" || props.shadow ? 0 : "0px 0px 15px 0px rgba(166,166,166,0.41)"};
-  transition: filter 0.2s;
 
   > div {
     display: flex;

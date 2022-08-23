@@ -10,6 +10,7 @@ const FeedbackProvider = ({ children }) => {
     const [listFeedbacksSend, setListFeedbacksSend] = useState([])
     const [listTagsServer, setListTagsServer] = useState([])
     const [currentPage, setCurrentPage] = useState(0)
+    
     const getFeedbacksUser = async (type, id, isFiltered, isFilteredAnonimous) => {
         
         try {

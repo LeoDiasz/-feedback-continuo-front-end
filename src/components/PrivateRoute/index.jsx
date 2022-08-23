@@ -1,8 +1,8 @@
 import {Outlet, Navigate} from "react-router-dom"
 import {useState, useEffect} from "react"
+import { useUserContext } from "../../hooks/useUserContext"
 import { apiDbc } from "../../services/api"
 import { Header } from "../Header"
-import { useUserContext } from "../../hooks/useUserContext"
 import { Loading } from "../Loading"
 
 export const PrivateRoute = ({ handleToggleTheme, theme}) => {

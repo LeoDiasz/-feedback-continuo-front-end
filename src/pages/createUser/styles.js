@@ -22,7 +22,7 @@ export const DivInputUpload = styled.div`
     cursor: pointer;
 
 `
-export const DivSenha = styled.div`
+export const DivPassword = styled.div`
 
     position: relative;  
     
@@ -40,7 +40,7 @@ export const DivSenha = styled.div`
     }
     } 
 ` 
-export const DivConfirmSenha = styled.div`
+export const DivConfirmPassword = styled.div`
 
     position: relative;  
     

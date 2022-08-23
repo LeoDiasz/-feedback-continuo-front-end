@@ -11,7 +11,7 @@ const ScreenLoginAndRegisterUser = ({children, titleForm, isScreenLogin}) => {
     <DivContainer>
       <SectionBanner typeTheme={title}>
         <div>
-          <h1>Feedbacks DBC</h1>
+          <h1>Feedbacks Contínuos DBC</h1>
           <p>Realize feedback entre seus colegas</p>
         </div>
         <img src={bannerChat} alt="banner chat" />

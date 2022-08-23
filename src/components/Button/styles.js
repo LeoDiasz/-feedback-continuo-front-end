@@ -13,21 +13,6 @@ const Button = styled.button`
     
 `
 
-const ButtonIcon = styled.button `
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    font-size: 30px;
-    color: ${props => props.theme.colors.blue};
-
-    transition: filter 0.2s;
-    
-    &:hover {
-        filter: brightness(0.98)
-    }
-`
-
 const ButtonUpload = styled.button `
     height: 40px;
     border-radius: 8px;
@@ -44,4 +29,4 @@ const ButtonUpload = styled.button `
     }
 `
 
-export {Button, ButtonIcon, ButtonUpload}
+export {Button, ButtonUpload}

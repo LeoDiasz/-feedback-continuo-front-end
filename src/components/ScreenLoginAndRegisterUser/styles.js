@@ -112,12 +112,6 @@ const SectionForm = styled.section`
       width: 90%;
       padding: 20px;
     }
-
-    button, input, select{
-      height: 25px;
-    }
-
-  
   }
   
 `

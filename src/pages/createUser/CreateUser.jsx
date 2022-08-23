@@ -9,10 +9,9 @@ import ScreenLoginAndRegisterUser from '../../components/ScreenLoginAndRegisterU
 import { FormDiv } from "../login/styles"
 import { Button, ButtonUpload } from '../../components/Button/styles'
 import { DivTextValidation, InputField, Label, TextValidation } from "../../components/InputStyles/styles"
-import { DivUploadAvatar, DivInputUpload, DivSenha, DivConfirmSenha } from "./styles"
+import { DivUploadAvatar, DivInputUpload, DivPassword, DivConfirmPassword } from "./styles"
 
 export const CreateUser = () => {
-
   const [avatarUserChoose, setAvatarUserChoose] = useState()
   const [passwordShow, setPasswordShow] = useState(false)
   const [confirmPasswordShow, setConfirmPasswordShow] = useState(false)
@@ -73,24 +72,26 @@ export const CreateUser = () => {
               </DivTextValidation>
             </div>
 
-            <DivSenha>
+            <DivPassword>
               <Label htmlFor="password">SENHA * </Label>
               <InputField name="password" id="password" type={passwordShow ? 'text' : 'password'} placeholder="Digite uma senha" autoComplete="off" />
-              <button type='button' onClick={() => setPasswordShow(passwordShow ? false : true)}>{passwordShow ? <MdOutlineVisibility /> : <MdOutlineVisibilityOff />}</button>
+              <button type='button' onClick={() => setPasswordShow(!passwordShow)}>{passwordShow ? <MdOutlineVisibility /> : <MdOutlineVisibilityOff />}</button>
               <DivTextValidation>
                 <TextValidation id="id-message-password">{errors.password}</TextValidation>
               </DivTextValidation>
               <PasswordStrengthBar password={values.password} />
-            </DivSenha>
+            </DivPassword>
 
-            <DivConfirmSenha>
+            <DivConfirmPassword>
               <Label htmlFor="password"> CONFIRMAR SENHA * </Label>
               <InputField name="confirmPassword" id="confirmPassword" type={confirmPasswordShow ? 'text' : 'password'} placeholder="confirme sua senha" autoComplete="off" />
-              <button type='button' onClick={() => setConfirmPasswordShow(confirmPasswordShow ? false : true)}>{confirmPasswordShow ? <MdOutlineVisibility /> : <MdOutlineVisibilityOff />}</button>
+              <button type='button' onClick={() => setConfirmPasswordShow(!confirmPasswordShow)}>
+                {confirmPasswordShow ? <MdOutlineVisibility /> : <MdOutlineVisibilityOff />}
+              </button>
               <DivTextValidation>
                 <TextValidation id="id-message-confirm-password">{errors.confirmPassword}</TextValidation>
               </DivTextValidation>
-            </DivConfirmSenha>
+            </DivConfirmPassword>
 
             <div>
               <Label htmlFor="role">CARGO *</Label>

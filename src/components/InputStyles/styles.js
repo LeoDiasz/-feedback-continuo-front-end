@@ -3,6 +3,7 @@ import MaskedInput from "react-text-mask"
 import { Field } from "formik"
 
 export const baseStyleInputs = css`
+
   width: 100%;
   height: 30px;
   padding: 0 20px;
@@ -16,6 +17,9 @@ export const baseStyleInputs = css`
     color: ${props => props.theme.colors.textGray};
   }
 
+  &:focus {
+        outline: none;
+  }
 
 `
 

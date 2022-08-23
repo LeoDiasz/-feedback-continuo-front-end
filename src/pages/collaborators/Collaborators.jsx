@@ -35,7 +35,6 @@ export const Collaborators = () => {
   useEffect(() => {
     setup()
     
-    console.log(listCollaborators)
     return () => setListCollaborators([])
   }, [])
 

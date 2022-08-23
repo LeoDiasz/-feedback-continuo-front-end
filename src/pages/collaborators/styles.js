@@ -28,8 +28,7 @@ const SectionCollaboratorsContainer =  styled.section`
 
     @media(max-width: 1400px) {
       width: 95%;
-      
-      text-align: center;
+     
     }
 
    

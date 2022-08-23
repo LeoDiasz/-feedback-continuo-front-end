@@ -1,4 +1,3 @@
-import {Field } from "formik";
 import styled from "styled-components";
 import { FormPattern } from "../../components/FormPattern/styles";
 
@@ -83,30 +82,6 @@ const SearchTagsContent = styled.ul`
     }
 `
 
-const InputAuto = styled(Field)`
-    width: 100%;
-    min-height: 40px;
-    padding: 0 20px;
-    border-radius: 8px;
-    margin-top: 8px;
-    border: 1px solid ${props => props.theme.colors.textGray};
-    color: ${props => props.theme.colors.textGrayDark};
-    background-color: ${props => props.theme.colors.backgroundInput};
-
-    &::placeholder {
-        color: ${props => props.theme.colors.textGray};
-    }
-    
-    &:focus {
-        outline: none;
-    }
-
-    @media (max-width: 576px) {
-        height: 25px;
-    }
-    
-`
-
 const ListCollaboratorsContent = styled.ul`
         position: absolute;
         background: ${props => props.theme.colors.background};
@@ -119,4 +94,4 @@ const ListCollaboratorsContent = styled.ul`
         overflow-y: auto;
 `
 
-export { InputAuto, ListCollaboratorsContent, Forms, SearchTagsContent, SectionContent }
+export {ListCollaboratorsContent, Forms, SearchTagsContent, SectionContent }

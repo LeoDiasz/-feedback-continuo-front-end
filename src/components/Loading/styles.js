@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const DivLoading = styled.div`
   display: flex;
   align-items: center;

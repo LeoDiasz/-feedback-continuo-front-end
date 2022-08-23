@@ -64,7 +64,6 @@ export const Header = ({ handleToggleTheme, theme }) => {
             </button>
           </DivLogout>
         </div>
-
       </Container>
     </HeaderContainer>
   )

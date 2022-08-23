@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Switch from 'react-switch'
-import { MdOutlineExpandMore, MdOutlineExpandLess  } from 'react-icons/md'
+import { MdOutlineExpandMore} from 'react-icons/md'
 import { useUserContext } from "../../hooks/useUserContext"
 import { useThemeContext } from '../../hooks/useThemeContext'
 import { apiDbc } from '../../services/api'
@@ -43,7 +43,7 @@ export const FeedbackUserCard = ({ feedbackDatas, type }) => {
                     <div>
                         <AvatarUser img={feedbackDatas.feedbacksGiven.avatar} width="75px" />
                         <h4>{feedbackDatas.feedbacksGiven.name}</h4>
-                        <p>{feedbackDatas.feedbacksGiven.userRole}</p>
+                        {!feedbackDatas.anonymous && <p>{feedbackDatas.feedbacksGiven.userRole}</p>}
                     </div>
                 ) : (
                     <div>

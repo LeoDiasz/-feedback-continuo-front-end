@@ -5,14 +5,14 @@ import { useUserContext } from '../../hooks/useUserContext'
 import { useFeedbackContext } from '../../hooks/useFeedbackContext'
 import { useThemeContext } from '../../hooks/useThemeContext'
 import { SuggestionUserCreateFeedback } from '../../components/SuggestionUserCreateFeedback'
+import { Footer } from '../../components/Footer'
 import { CreateFeedbackSchema } from '../../utils/validationsSchema'
 import { TagsList } from '../../components/TagsList'
 import { Loading } from '../../components/Loading'
 import { Container } from '../../components/Container/styles'
-import { Label, InputField, DivTextValidation, TextValidation } from '../../components/InputStyles/styles'
+import { Label, InputField, DivTextValidation, TextValidation, Input} from '../../components/InputStyles/styles'
 import { Button } from '../../components/Button/styles'
-import { Forms, InputAuto, ListCollaboratorsContent, SearchTagsContent, SectionContent } from './styles'
-import { Footer } from '../../components/Footer'
+import { Forms, ListCollaboratorsContent, SearchTagsContent, SectionContent } from './styles'
 
 export const CreateFeedback = () => {
   const { id } = useParams()
@@ -159,7 +159,7 @@ export const CreateFeedback = () => {
               <Forms typeTheme={title}>
                 <div>
                   <Label htmlFor="userFeedbackSend">Para quem gostaria de enviar?</Label>
-                  <InputAuto
+                  <Input
                     type="text"
                     name="userFeedbackSend"
                     id="userFeedbackSend"
@@ -198,7 +198,7 @@ export const CreateFeedback = () => {
 
                 <div>
                   <Label htmlFor="tags">Escolha as tags</Label>
-                  <InputAuto
+                  <Input
                     type="text"
                     name="tags"
                     id="tags"
@@ -208,6 +208,7 @@ export const CreateFeedback = () => {
                     value={searchTags}
                     autoComplete="off"
                   />
+
                   <SearchTagsContent>
                     {(isClickInInputTags || searchTags.length > 0) && filteredTags && filteredTags.map(({ idTag, name }) => (
                       <li key={idTag} onClick={() => handleClickChooseTag(name)}>

@@ -11,7 +11,7 @@ const UserProvider = ({ children }) => {
   const [collaborator, setCollaborator] = useState("")
   const [listCollaborators, setListCollaborators] = useState([])
   const [listCollaboratorsPagesOff, setListCollaboratorsPagesOff] = useState([])
-  const [uploadPhoto, setUploadPhoto] = useState(false)
+  const [updateAvatar, setUpdateAvatar] = useState(false)
   const { signIn } = useAuthContext()
   const navigate = useNavigate()
 
@@ -68,6 +68,7 @@ const UserProvider = ({ children }) => {
 
     try {
       const { data: listCollaboratorsPagesOff } = await apiDbc.get(`/users/list-all`)
+      
       const listCollaboratorsPagesOffFiltredAvatar = listCollaboratorsPagesOff.map(collaborator => {
         return {
           avatar: collaborator.avatar ? "data:image/png;base64," + collaborator.avatar : null,
@@ -140,7 +141,7 @@ const UserProvider = ({ children }) => {
 
     try {
         await apiDbc.put(`/users/update-file`, formatedPhoto, { headers: { 'Content-Type': 'multipart/form-data' } })
-       !uploadPhoto ? setUploadPhoto(true) : setUploadPhoto(false)
+       !updateAvatar ? setUpdateAvatar(true) : setUpdateAvatar(false)
     } catch (error) {
         console.log(error)
     }
@@ -161,7 +162,7 @@ const UserProvider = ({ children }) => {
         listCollaborators,
         setListCollaborators,
         collaborator,
-        uploadPhoto
+        updateAvatar
       }}>
       {children}
     </UserContext.Provider>
