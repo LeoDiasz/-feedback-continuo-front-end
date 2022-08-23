@@ -84,7 +84,7 @@ export const CreateUser = () => {
 
             <DivConfirmPassword>
               <Label htmlFor="password"> CONFIRMAR SENHA * </Label>
-              <InputField name="confirmPassword" id="confirmPassword" type={confirmPasswordShow ? 'text' : 'password'} placeholder="confirme sua senha" autoComplete="off" />
+              <InputField name="confirmPassword" id="confirmPassword" type={confirmPasswordShow ? 'text' : 'password'} placeholder="Confirme sua senha" autoComplete="off" />
               <button type='button' onClick={() => setConfirmPasswordShow(!confirmPasswordShow)}>
                 {confirmPasswordShow ? <MdOutlineVisibility /> : <MdOutlineVisibilityOff />}
               </button>
