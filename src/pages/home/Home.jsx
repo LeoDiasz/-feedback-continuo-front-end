@@ -9,7 +9,7 @@ import { MainContent} from './styles'
 import { Footer } from '../../components/Footer'
 
 export const Home = () => {
-  const {user, getDatasUser, uploadPhoto} = useUserContext()
+  const {user, getDatasUser, updateAvatar} = useUserContext()
   const {getFeedbacksUser,  listFeedbacksReceveid, listFeedbacksSend} = useFeedbackContext()
   const [isLoading, setIsLoading] = useState(true)  
   
@@ -26,7 +26,7 @@ export const Home = () => {
 
   useEffect(() => {
     setup()    
-  }, [uploadPhoto])
+  }, [updateAvatar])
 
   if(isLoading) {
     return (
